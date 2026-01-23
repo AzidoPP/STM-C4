@@ -27,7 +27,7 @@
 ".\objects\stm32f10x_wwdg.o"
 ".\objects\delay.o"
 ".\objects\systick.o"
-".\objects\1602a.o"
+".\objects\1601a.o"
 ".\objects\matrixkey.o"
 ".\objects\led.o"
 ".\objects\serial.o"

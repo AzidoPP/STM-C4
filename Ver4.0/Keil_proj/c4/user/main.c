@@ -1,25 +1,13 @@
 #include "stm32f10x.h"
 #include "MatrixKey.h"
-#include "1602a.h"
+#include "1601a.h"
 #include "Delay.h"
 #include "LED.h"
 #include "Systick.h"
 #include "Serial.h"
 #include "mp3.h"
+#include "config.h"
 #include <string.h>
-
-#define PASSWORD_LEN 7
-#define LCD_COLS 16
-
-#define COUNTDOWN_MS 40000U
-#define ARM_DELAY_MS 800U
-#define BEEP_LEN_MS 125U
-#define BREATH_PERIOD_MS 500U
-#define SCROLL_INTERVAL_MS 200U
-#define LONG_PRESS_MS 1000U
-#define MANUAL_DEFUSE_MS 10000U
-#define EXTERNAL_DEFUSE_MS 5000U
-#define DEFUSE_DISPLAY_HOLD_MS 1200U
 
 typedef enum
 {
@@ -44,15 +32,15 @@ typedef struct
 	uint32_t next_step_ms;
 	uint8_t digit_index;
 	uint8_t cycle_step;
-	char display[PASSWORD_LEN + 1];
+	char display[CONFIG_PASSWORD_LEN + 1];
 } DefuseAnim;
 
 static AppState app_state = STATE_IDLE;
 static DefuseMode defuse_mode = DEFUSE_NONE;
 
-static char arm_input[PASSWORD_LEN + 1];
-static char arm_code[PASSWORD_LEN + 1];
-static char defuse_input[PASSWORD_LEN + 1];
+static char arm_input[CONFIG_PASSWORD_LEN + 1];
+static char arm_code[CONFIG_PASSWORD_LEN + 1];
+static char defuse_input[CONFIG_PASSWORD_LEN + 1];
 static uint8_t defuse_pos = 0;
 
 static uint32_t arm_last_change_ms = 0;
@@ -62,8 +50,9 @@ static uint32_t beep_off_ms = 0;
 static uint8_t beep_active = 0;
 
 static uint32_t scroll_next_ms = 0;
-static uint8_t scroll_pos = 0;
-static int8_t scroll_dir = 1;
+static uint16_t scroll_pos = 0;
+static uint8_t scroll_dir = 0;
+static unsigned char scroll_pattern[CONFIG_SCROLL_PATTERN_LEN + 1] = "***";
 
 static uint32_t last_defuse_input_ms = 0;
 static uint32_t hash_hold_ms = 0;
@@ -100,11 +89,11 @@ static uint8_t Defuser_IsActive(void)
 static void Password_Reset(char *buf)
 {
 	uint8_t i;
-	for (i = 0; i < PASSWORD_LEN; i++)
+	for (i = 0; i < CONFIG_PASSWORD_LEN; i++)
 	{
 		buf[i] = '*';
 	}
-	buf[PASSWORD_LEN] = '\0';
+	buf[CONFIG_PASSWORD_LEN] = '\0';
 }
 
 static uint8_t Password_IsComplete(const char *buf)
@@ -117,15 +106,15 @@ static void Password_InputRight(char *buf, char key)
 	uint8_t i;
 	if (key >= '0' && key <= '9')
 	{
-		for (i = 0; i < PASSWORD_LEN - 1; i++)
+		for (i = 0; i < CONFIG_PASSWORD_LEN - 1; i++)
 		{
 			buf[i] = buf[i + 1];
 		}
-		buf[PASSWORD_LEN - 1] = key;
+		buf[CONFIG_PASSWORD_LEN - 1] = key;
 	}
 	else if (key == '*')
 	{
-		for (i = PASSWORD_LEN - 1; i > 0; i--)
+		for (i = CONFIG_PASSWORD_LEN - 1; i > 0; i--)
 		{
 			buf[i] = buf[i - 1];
 		}
@@ -141,7 +130,7 @@ static void Password_InputLeft(char *buf, uint8_t *pos, char key)
 {
 	if (key >= '0' && key <= '9')
 	{
-		if (*pos < PASSWORD_LEN)
+		if (*pos < CONFIG_PASSWORD_LEN)
 		{
 			buf[*pos] = key;
 			(*pos)++;
@@ -164,7 +153,7 @@ static void Password_InputLeft(char *buf, uint8_t *pos, char key)
 
 static uint8_t Password_Match(const char *a, const char *b)
 {
-	return (memcmp(a, b, PASSWORD_LEN) == 0) ? 1U : 0U;
+	return (memcmp(a, b, CONFIG_PASSWORD_LEN) == 0) ? 1U : 0U;
 }
 
 static void LCD_ClearLine(void)
@@ -176,29 +165,19 @@ static void LCD_ClearLine(void)
 static void LCD_ShowPassword(const char *buf)
 {
 	LCD_ClearLine();
-	LCD_WRITE_StrDATA((unsigned char *)buf, 3);
+	LCD_WRITE_StrDATA((unsigned char *)buf, CONFIG_PASSWORD_COL);
 }
 
-static void LCD_ShowScroll(uint8_t pos)
+static void LCD_ShowScroll(uint16_t pos)
 {
-	char line[LCD_COLS + 1];
-	uint8_t i;
-	for (i = 0; i < LCD_COLS; i++)
-	{
-		line[i] = ' ';
-	}
-	line[LCD_COLS] = '\0';
-	if (pos < LCD_COLS)
-	{
-		line[pos] = '*';
-	}
-	LCD_WRITE_StrDATA((unsigned char *)line, 0);
+	LCD_ClearLine();
+	LCD_WRITE_StrDATA(scroll_pattern, (unsigned char)pos);
 }
 
 static void LED_Breath(uint32_t now)
 {
-	uint32_t half = BREATH_PERIOD_MS / 2U;
-	uint32_t phase = now % BREATH_PERIOD_MS;
+	uint32_t half = CONFIG_LED_BREATH_PERIOD_MS / 2U;
+	uint32_t phase = now % CONFIG_LED_BREATH_PERIOD_MS;
 	uint16_t level;
 
 	if (phase < half)
@@ -207,7 +186,7 @@ static void LED_Breath(uint32_t now)
 	}
 	else
 	{
-		level = (uint16_t)(((BREATH_PERIOD_MS - phase) * LED_PWM_MAX) / half);
+		level = (uint16_t)(((CONFIG_LED_BREATH_PERIOD_MS - phase) * LED_PWM_MAX) / half);
 	}
 	LED_SetYellow(level);
 }
@@ -226,17 +205,17 @@ static void StartupBeep_Update(uint32_t now)
 	{
 		case 0:
 			Buzzer_On();
-			startup_beep_next_ms = now + 60U;
+			startup_beep_next_ms = now + CONFIG_STARTUP_BEEP_ON_MS;
 			startup_beep_state = 1;
 			break;
 		case 1:
 			Buzzer_Off();
-			startup_beep_next_ms = now + 80U;
+			startup_beep_next_ms = now + CONFIG_STARTUP_BEEP_GAP_MS;
 			startup_beep_state = 2;
 			break;
 		case 2:
 			Buzzer_On();
-			startup_beep_next_ms = now + 60U;
+			startup_beep_next_ms = now + CONFIG_STARTUP_BEEP_ON_MS;
 			startup_beep_state = 3;
 			break;
 		case 3:
@@ -250,13 +229,13 @@ static void StartupBeep_Update(uint32_t now)
 
 static void Countdown_Start(uint32_t now)
 {
-	countdown_end_ms = now + COUNTDOWN_MS;
-	next_beep_ms = now + 1000U;
+	countdown_end_ms = now + CONFIG_COUNTDOWN_MS;
+	next_beep_ms = now + CONFIG_BEEP_INITIAL_MS;
 	beep_off_ms = 0;
 	beep_active = 0;
 	hash_hold_ms = 0;
 	scroll_pos = 0;
-	scroll_dir = 1;
+	scroll_dir = 0;
 	scroll_next_ms = now;
 	defuse_mode = DEFUSE_NONE;
 	Password_Reset(defuse_input);
@@ -283,44 +262,72 @@ static void Countdown_UpdateBeep(uint32_t now)
 		{
 			time_left = countdown_end_ms - now;
 		}
-		f_complete = (float)time_left / (float)COUNTDOWN_MS;
-		interval = 0.1f + 0.9f * f_complete;
-		if (interval < 0.15f)
+		f_complete = (float)time_left / (float)CONFIG_COUNTDOWN_MS;
+		interval = CONFIG_BEEP_INTERVAL_BASE_S + (CONFIG_BEEP_INTERVAL_SCALE_S * f_complete);
+		if (interval < CONFIG_BEEP_INTERVAL_MIN_S)
 		{
-			interval = 0.15f;
+			interval = CONFIG_BEEP_INTERVAL_MIN_S;
 		}
 		next_beep_ms = now + (uint32_t)(interval * 1000.0f);
 		beep_active = 1;
-		beep_off_ms = now + BEEP_LEN_MS;
+		beep_off_ms = now + CONFIG_BEEP_LEN_MS;
 		Buzzer_On();
 	}
 }
 
 static void Countdown_UpdateScroll(uint32_t now)
 {
+	uint16_t max_pos;
+
 	if (now < scroll_next_ms)
 	{
 		return;
 	}
-	scroll_next_ms = now + SCROLL_INTERVAL_MS;
-	if (scroll_pos == 0)
+	scroll_next_ms = now + CONFIG_SCROLL_INTERVAL_MS;
+	max_pos = (uint16_t)(CONFIG_LCD_COLS - CONFIG_SCROLL_PATTERN_LEN);
+	if (scroll_dir == 0)
 	{
-		scroll_dir = 1;
+		if (scroll_pos < max_pos)
+		{
+			scroll_pos++;
+		}
+		if (scroll_pos >= max_pos)
+		{
+			scroll_dir = 1;
+		}
 	}
-	else if (scroll_pos >= (LCD_COLS - 1))
+	else
 	{
-		scroll_dir = -1;
+		if (scroll_pos > 0)
+		{
+			scroll_pos--;
+		}
+		if (scroll_pos == 0)
+		{
+			scroll_dir = 0;
+		}
 	}
-	scroll_pos = (uint8_t)(scroll_pos + scroll_dir);
 	LCD_ShowScroll(scroll_pos);
+}
+
+static void DefuseAnim_Reset(void)
+{
+	defuse_anim.active = 0;
+	defuse_anim.mode = DEFUSE_NONE;
+	defuse_anim.step_ms = 0;
+	defuse_anim.next_step_ms = 0;
+	defuse_anim.digit_index = 0;
+	defuse_anim.cycle_step = 0;
+	Password_Reset(defuse_anim.display);
 }
 
 static void DefuseAnim_Start(uint32_t now, DefuseMode mode)
 {
-	uint32_t duration = (mode == DEFUSE_EXTERNAL) ? EXTERNAL_DEFUSE_MS : MANUAL_DEFUSE_MS;
-	uint32_t steps = PASSWORD_LEN * 11U;
+	uint32_t duration = (mode == DEFUSE_EXTERNAL) ? CONFIG_EXTERNAL_DEFUSE_MS : CONFIG_MANUAL_DEFUSE_MS;
+	uint32_t steps = CONFIG_PASSWORD_LEN * (CONFIG_DEFUSE_CYCLE_STEPS + 1U);
 	uint32_t step_ms = duration / steps;
 
+	DefuseAnim_Reset();
 	defuse_anim.active = 1;
 	defuse_anim.mode = mode;
 	defuse_anim.step_ms = (step_ms == 0U) ? 1U : step_ms;
@@ -332,7 +339,7 @@ static void DefuseAnim_Start(uint32_t now, DefuseMode mode)
 	LCD_ShowPassword(defuse_anim.display);
 }
 
-static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active)
+static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active, char hold)
 {
 	if (!defuse_anim.active)
 	{
@@ -340,7 +347,14 @@ static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active)
 	}
 	if (defuse_anim.mode == DEFUSE_EXTERNAL && !defuser_active)
 	{
-		defuse_anim.active = 0;
+		DefuseAnim_Reset();
+		defuse_mode = DEFUSE_NONE;
+		LCD_ShowScroll(scroll_pos);
+		return 0;
+	}
+	if (defuse_anim.mode == DEFUSE_MANUAL && hold != '#')
+	{
+		DefuseAnim_Reset();
 		defuse_mode = DEFUSE_NONE;
 		LCD_ShowScroll(scroll_pos);
 		return 0;
@@ -350,12 +364,12 @@ static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active)
 		return 0;
 	}
 	defuse_anim.next_step_ms = now + defuse_anim.step_ms;
-	if (defuse_anim.digit_index >= PASSWORD_LEN)
+	if (defuse_anim.digit_index >= CONFIG_PASSWORD_LEN)
 	{
-		defuse_anim.active = 0;
+		DefuseAnim_Reset();
 		return 1;
 	}
-	if (defuse_anim.cycle_step < 10)
+	if (defuse_anim.cycle_step < CONFIG_DEFUSE_CYCLE_STEPS)
 	{
 		defuse_anim.display[defuse_anim.digit_index] = (char)('0' + defuse_anim.cycle_step);
 		defuse_anim.cycle_step++;
@@ -372,15 +386,60 @@ static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active)
 
 static void Defuse_Success(uint32_t now)
 {
+	uint8_t i;
 	( void )now;
 	Buzzer_Off();
 	Relay_Off();
 	beep_active = 0;
-	defuse_anim.active = 0;
+	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
-	LED_SetGreen(LED_PWM_MAX);
-	LCD_ShowPassword(arm_code);
 	mp3_over();
+
+	LCD_Backlight_On();
+	LCD_ClearLine();
+	for (i = 0; i < CONFIG_DEFUSE_FLASH_TOGGLES; i++)
+	{
+		if (i & 1U)
+		{
+			LED_AllOff();
+		}
+		else
+		{
+			LED_SetRed(LED_PWM_MAX);
+		}
+		LCD_Backlight_Toggle();
+		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
+	}
+
+	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
+	Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
+	for (i = 0; i < CONFIG_DEFUSE_FLASH_TOGGLES; i++)
+	{
+		if (i & 1U)
+		{
+			LED_AllOff();
+		}
+		else
+		{
+			LED_SetRed(LED_PWM_MAX);
+		}
+		LCD_Backlight_Toggle();
+		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
+	}
+
+	LCD_ClearLine();
+	LCD_Backlight_Off();
+	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
+	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
+	LCD_Backlight_On();
+	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
+	LCD_ClearLine();
+	LCD_Backlight_Off();
+	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
+	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
+	LCD_Backlight_On();
+
+	LED_SetGreen(LED_PWM_MAX);
 	app_state = STATE_DEFUSE_SUCCESS;
 }
 
@@ -388,13 +447,14 @@ static void Explosion_Start(uint32_t now)
 {
 	Buzzer_Off();
 	beep_active = 0;
-	defuse_anim.active = 0;
+	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
 	Relay_On();
 	LED_SetYellow(LED_PWM_MAX);
 	LCD_ClearLine();
-	mp3_boom();
-	explosion_music_ms = now + 200U;
+	//mp3_boom();
+	mp3_boom_music();
+	explosion_music_ms = now + CONFIG_EXPLOSION_MUSIC_DELAY_MS;
 	app_state = STATE_EXPLODED;
 }
 
@@ -410,7 +470,7 @@ int main(void)
 	MatrixKey_Init();
 	mp3_Init();
 	Delay_ms(200);
-	MP3CMD(0x06, 25);
+	MP3CMD(0x06, CONFIG_MP3_VOLUME);
 
 	Password_Reset(arm_input);
 	Password_Reset(arm_code);
@@ -443,9 +503,9 @@ int main(void)
 					LCD_ShowPassword(arm_input);
 					arm_last_change_ms = now;
 				}
-				if (Password_IsComplete(arm_input) && (now - arm_last_change_ms) >= ARM_DELAY_MS)
+				if (Password_IsComplete(arm_input) && (now - arm_last_change_ms) >= CONFIG_ARM_DELAY_MS)
 				{
-					memcpy(arm_code, arm_input, PASSWORD_LEN + 1);
+					memcpy(arm_code, arm_input, CONFIG_PASSWORD_LEN + 1);
 					Countdown_Start(now);
 				}
 				break;
@@ -456,7 +516,7 @@ int main(void)
 					{
 						hash_hold_ms = now;
 					}
-					else if ((now - hash_hold_ms) >= LONG_PRESS_MS)
+					else if ((now - hash_hold_ms) >= CONFIG_LONG_PRESS_MS)
 					{
 						DefuseAnim_Start(now, DEFUSE_MANUAL);
 						hash_hold_ms = 0;
@@ -472,7 +532,7 @@ int main(void)
 					DefuseAnim_Start(now, DEFUSE_EXTERNAL);
 				}
 
-				if (DefuseAnim_Update(now, defuser_active))
+				if (DefuseAnim_Update(now, defuser_active, hold))
 				{
 					Defuse_Success(now);
 					break;
@@ -487,7 +547,7 @@ int main(void)
 						last_defuse_input_ms = now;
 					}
 
-					if (defuse_pos >= PASSWORD_LEN)
+					if (defuse_pos >= CONFIG_PASSWORD_LEN)
 					{
 						if (Password_Match(arm_code, defuse_input))
 						{
@@ -498,21 +558,21 @@ int main(void)
 						defuse_pos = 0;
 						LCD_ShowPassword(defuse_input);
 					}
-					if (defuse_pos == 0 && (now - last_defuse_input_ms) > DEFUSE_DISPLAY_HOLD_MS)
+					if (defuse_pos == 0 && (now - last_defuse_input_ms) > CONFIG_DEFUSE_DISPLAY_HOLD_MS)
 					{
 						Countdown_UpdateScroll(now);
 					}
 				}
 
 				Countdown_UpdateBeep(now);
-			if (beep_active)
-			{
-				LED_SetColor(LED_PWM_MAX, 0);
-			}
-			else
-			{
-				LED_AllOff();
-			}
+				if (beep_active)
+				{
+					LED_SetColor(LED_PWM_MAX, 0);
+				}
+				else
+				{
+					LED_AllOff();
+				}
 
 				if (now >= countdown_end_ms)
 				{

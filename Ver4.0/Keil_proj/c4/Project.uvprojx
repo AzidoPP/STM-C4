@@ -676,14 +676,14 @@
           <GroupName>hardware</GroupName>
           <Files>
             <File>
-              <FileName>1602a.c</FileName>
+              <FileName>1601a.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\hardware\1602a.c</FilePath>
+              <FilePath>.\hardware\1601a.c</FilePath>
             </File>
             <File>
-              <FileName>1602a.h</FileName>
+              <FileName>1601a.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\hardware\1602a.h</FilePath>
+              <FilePath>.\hardware\1601a.h</FilePath>
             </File>
             <File>
               <FileName>MatrixKey.c</FileName>
@@ -734,6 +734,11 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\config.h</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_conf.h</FileName>

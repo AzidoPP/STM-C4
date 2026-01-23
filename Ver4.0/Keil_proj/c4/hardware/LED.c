@@ -91,7 +91,7 @@ void LED_SetGreen(uint16_t green)
 
 void LED_SetYellow(uint16_t level)
 {
-	uint16_t red = (uint16_t)((level * 70U) / 100U);
+	uint16_t red = (uint16_t)((level * CONFIG_LED_YELLOW_RED_PCT) / 100U);
 	LED_SetColor(red, level);
 }
 
@@ -129,7 +129,7 @@ void Buzzer_Init(void)
 
 	timer_clk = TimerClockPclk1();
 	prescaler = (uint16_t)(timer_clk / 1000000U) - 1U;
-	period = (1000000U / 4250U);
+	period = (1000000U / CONFIG_BUZZER_FREQ_HZ);
 	if (period == 0U) { period = 1U; }
 
 	tim.TIM_Period = (uint16_t)(period - 1U);

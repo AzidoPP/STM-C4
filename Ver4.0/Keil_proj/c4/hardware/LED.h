@@ -2,9 +2,10 @@
 #define LED_H
 
 #include "stm32f10x.h"
+#include "config.h"
 #include <stdint.h>
 
-#define LED_PWM_MAX 1000
+#define LED_PWM_MAX CONFIG_LED_PWM_MAX
 
 void LED_Init(void);
 void LED_SetColor(uint16_t red, uint16_t green);

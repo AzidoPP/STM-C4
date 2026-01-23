@@ -26,21 +26,25 @@ void mp3_Init(void)
 
 void mp3_start(void)
 {
+	/* 0x12 + 100: power-on cue */
 	MP3CMD(0x12, 100);
 }
 
 void mp3_over(void)
 {
+	/* 0x12 + 101: defuse success */
 	MP3CMD(0x12, 101);
 }
 
 void mp3_boom(void)
 {
+	/* 0x12 + 102: explosion effect */
 	MP3CMD(0x12, 102);
 }
 
 void mp3_boom_music(void)
 {
+	/* 0x0F + 0x0200: folder 02 track 000 (T victory music box) */
 	send_buf[0] = 0x7e;
 	send_buf[1] = 0xff;
 	send_buf[2] = 0x06;

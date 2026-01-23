@@ -887,8 +887,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\hardware\1602a.c</PathWithFileName>
-      <FilenameWithoutPath>1602a.c</FilenameWithoutPath>
+      <PathWithFileName>.\hardware\1601a.c</PathWithFileName>
+      <FilenameWithoutPath>1601a.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -899,8 +899,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\hardware\1602a.h</PathWithFileName>
-      <FilenameWithoutPath>1602a.h</FilenameWithoutPath>
+      <PathWithFileName>.\hardware\1601a.h</PathWithFileName>
+      <FilenameWithoutPath>1601a.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1027,6 +1027,18 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
+      <PathWithFileName>.\user\config.h</PathWithFileName>
+      <FilenameWithoutPath>config.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>69</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
       <PathWithFileName>.\user\stm32f10x_conf.h</PathWithFileName>
       <FilenameWithoutPath>stm32f10x_conf.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -1034,7 +1046,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>69</FileNumber>
+      <FileNumber>70</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1046,7 +1058,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>70</FileNumber>
+      <FileNumber>71</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

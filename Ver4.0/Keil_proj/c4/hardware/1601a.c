@@ -1,4 +1,4 @@
-#include "1602a.h"
+#include "1601a.h"
 #include "Delay.h"
 
 #define LCD_COLS 16
@@ -238,4 +238,26 @@ void LCD_Clear(void)
 {
 	LCD_WRITE_CMD(0x01);
 	Delay_ms(2);
+}
+
+void LCD_Backlight_On(void)
+{
+	GPIO_SetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+}
+
+void LCD_Backlight_Off(void)
+{
+	GPIO_ResetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+}
+
+void LCD_Backlight_Toggle(void)
+{
+	if (GPIO_ReadOutputDataBit(LCD_BLED_PORT, LCD_BLED_PIN))
+	{
+		GPIO_ResetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+	}
+	else
+	{
+		GPIO_SetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+	}
 }

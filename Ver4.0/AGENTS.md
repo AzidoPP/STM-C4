@@ -4,10 +4,11 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
-- Rebuilt LCD driver for 1601A 4-bit mode with reversed columns and custom glyph cache for digits/*.
-- Added TIM4 1ms timebase, non-blocking keypad debounce, LED PWM (PA1/PA2), buzzer PWM (PB0), relay (PB1), defuser input (PB3).
-- Rewrote main state machine for idle/arm/countdown/defuse/explosion, beep pattern timing, scroll star, and defuse animations.
-- Added Serial/mp3 drivers and OLED/1602a4 stubs; updated Keil project file lists.
+- Renamed LCD driver to 1601a.c/1601a.h, added backlight control, updated Keil project references.
+- Added config constants in user/config.h and wired timing/ratios (buzzer 3600 Hz, scroll speed, beep formula, LED yellow ratio).
+- Updated countdown scroll to "***" with faster sweep and adjusted beep timing logic.
+- Manual/external defuse now cancels on release and resets animation; success effect flashes LED + LCD backlight and shows code.
+- Clarified MP3 command mapping for power-on, defuse success, explosion effect, and music box track.
 
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.
