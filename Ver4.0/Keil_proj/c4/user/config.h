@@ -23,7 +23,7 @@
 #define CONFIG_ARM_DELAY_MS 800U
 
 /* LCD 背光 */
-/* CONFIG_LCD_BACKLIGHT_PCT: LCD背光亮度（百分比）
+/* CONFIG_LCD_BACKLIGHT_PCT: LCD背光板亮度（百分比）
    最小: 0     最大: 100    典型: 50 */
 #define CONFIG_LCD_BACKLIGHT_PCT 50U
 
@@ -50,10 +50,10 @@
 #define CONFIG_LED_PWM_MAX 1000U
 /* CONFIG_LED_BREATH_PERIOD_MS: 闲置呼吸周期（毫秒）
    最小: 100   最大: 5000   典型: 500 */
-#define CONFIG_LED_BREATH_PERIOD_MS 600U
-/* CONFIG_LED_YELLOW_RED_PCT: 黄灯/红灯 比例（百分比）
+#define CONFIG_LED_BREATH_PERIOD_MS 500U
+/* CONFIG_LED_YELLOW_RED_PCT: 黄色中 红/绿 灯 比例（百分比）
    最小: 0     最大: 100    典型: 70 */
-#define CONFIG_LED_YELLOW_RED_PCT 0U
+#define CONFIG_LED_YELLOW_RED_PCT 70U
 
 /* 倒计时 LCD 滚动 */
 /* CONFIG_SCROLL_INTERVAL_MS: 滚动更新间隔（毫秒）
@@ -70,7 +70,7 @@
 /* CONFIG_MANUAL_DEFUSE_MS: 手动拆弹时间（毫秒）
    最小: 1000  最大: 无     典型: 10000 */
 #define CONFIG_MANUAL_DEFUSE_MS 10000U
-/* CONFIG_EXTERNAL_DEFUSE_MS: 拆弹器时间（毫秒）
+/* CONFIG_EXTERNAL_DEFUSE_MS: 拆弹器拆弹时间（毫秒）
    最小: 1000  最大: 无     典型: 5000 */
 #define CONFIG_EXTERNAL_DEFUSE_MS 5000U
 /* CONFIG_DEFUSE_DISPLAY_HOLD_MS: 输入保持显示切换前的时间（毫秒）
@@ -80,14 +80,14 @@
    最小: 1     最大: 20     典型: 10 */
 #define CONFIG_DEFUSE_CYCLE_STEPS 10U
 
-/* 成功效果 */
-/* CONFIG_DEFUSE_FLASH_TOGGLE_MS: 闪烁切换时间（毫秒）
+/* 拆弹成功效果 */
+/* CONFIG_DEFUSE_FLASH_TOGGLE_MS: 拆弹成功动画闪烁切换时间（毫秒）
    最小: 10    最大: 200    典型: 50 */
 #define CONFIG_DEFUSE_FLASH_TOGGLE_MS 50U
-/* CONFIG_DEFUSE_FLASH_TOGGLES: 闪烁次数
+/* CONFIG_DEFUSE_FLASH_TOGGLES: 拆弹成功动画闪烁次数
    最小: 1     最大: 20     典型: 8 */
 #define CONFIG_DEFUSE_FLASH_TOGGLES 8U
-/* CONFIG_DEFUSE_BLINK_MS: 闪屏时长（毫秒）
+/* CONFIG_DEFUSE_BLINK_MS: 拆弹成功动画闪屏时长（毫秒）
    最小: 100   最大: 1000   典型: 400 */
 #define CONFIG_DEFUSE_BLINK_MS 400U
 
@@ -98,13 +98,13 @@
 /* CONFIG_BUZZER_COUNTDOWN_FREQ_HZ: 倒计时频率（Hz）
    最小: 100   最大: 10000  典型: 3600 */
 #define CONFIG_BUZZER_COUNTDOWN_FREQ_HZ 3600U
-/* CONFIG_BUZZER_DUTY_PCT: 蜂鸣占空比（0-50）
+/* CONFIG_BUZZER_DUTY_PCT: 蜂鸣占空比或音量（0-50）
    最小: 0     最大: 50     典型: 50 */
 #define CONFIG_BUZZER_DUTY_PCT 50U
-/* CONFIG_STARTUP_BEEP_ON_MS: 启动蜂鸣时长（毫秒）
+/* CONFIG_STARTUP_BEEP_ON_MS: 上电蜂鸣时长（毫秒）
    最小: 10    最大: 500    典型: 60 */
 #define CONFIG_STARTUP_BEEP_ON_MS 60U
-/* CONFIG_STARTUP_BEEP_GAP_MS: 启动蜂鸣间隔（毫秒）
+/* CONFIG_STARTUP_BEEP_GAP_MS: 上电蜂鸣间隔（毫秒）
    最小: 10    最大: 500    典型: 80 */
 #define CONFIG_STARTUP_BEEP_GAP_MS 80U
 
@@ -112,11 +112,11 @@
 /* CONFIG_MP3_VOLUME: MP3 音量（0-30）
    最小: 0     最大: 30     典型: 25 */
 #define CONFIG_MP3_VOLUME 25U
-/* CONFIG_MP3_ARM_SUCCESS_ENABLE: 布防成功时播放 MP3（0/1） */
+/* CONFIG_MP3_ARM_SUCCESS_ENABLE: 下包成功时播放音效（0/1） */
 #define CONFIG_MP3_ARM_SUCCESS_ENABLE 1U
 /* CONFIG_MP3_EXPLOSION_ENABLE: 爆炸时播放 MP3（0/1） */
 #define CONFIG_MP3_EXPLOSION_ENABLE 1U
-/* CONFIG_MP3_EXPLOSION_USE_MUSIC: 爆炸样式选择（0/1） */
+/* CONFIG_MP3_EXPLOSION_USE_MUSIC: 爆炸音效是否启用音乐盒 1为启用（0/1） */
 #define CONFIG_MP3_EXPLOSION_USE_MUSIC 1U
 
 #include "config_range.h"
