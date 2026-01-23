@@ -10,6 +10,8 @@ Updates:
 - Manual/external defuse now cancels on release and resets animation; success effect flashes LED + LCD backlight and shows code.
 - Clarified MP3 command mapping for power-on, defuse success, explosion effect, and music box track.
 
+- Split startup vs countdown buzzer frequencies, added PWM backlight level, and added MP3 enable/selection config; mp3_over now plays on arming and explosion audio is single-choice.
+
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.
 - Confirm countdown duration and timing constants on device.

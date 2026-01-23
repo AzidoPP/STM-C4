@@ -3,6 +3,7 @@
 static uint16_t led_red = 0;
 static uint16_t led_green = 0;
 static uint16_t buzzer_pulse = 0;
+static uint32_t buzzer_base_hz = 1000000U;
 
 static uint32_t TimerClockPclk1(void)
 {
@@ -129,8 +130,9 @@ void Buzzer_Init(void)
 
 	timer_clk = TimerClockPclk1();
 	prescaler = (uint16_t)(timer_clk / 1000000U) - 1U;
-	period = (1000000U / CONFIG_BUZZER_FREQ_HZ);
+	period = (1000000U / CONFIG_BUZZER_STARTUP_FREQ_HZ);
 	if (period == 0U) { period = 1U; }
+	buzzer_base_hz = 1000000U;
 
 	tim.TIM_Period = (uint16_t)(period - 1U);
 	tim.TIM_Prescaler = prescaler;
@@ -150,6 +152,29 @@ void Buzzer_Init(void)
 	TIM_Cmd(TIM3, ENABLE);
 
 	Buzzer_Off();
+}
+
+void Buzzer_SetFreq(uint32_t freq_hz)
+{
+	uint32_t period;
+	uint16_t current;
+
+	if (freq_hz == 0U)
+	{
+		freq_hz = 1U;
+	}
+	period = buzzer_base_hz / freq_hz;
+	if (period == 0U)
+	{
+		period = 1U;
+	}
+	TIM_SetAutoreload(TIM3, (uint16_t)(period - 1U));
+	buzzer_pulse = (uint16_t)((period - 1U) / 2U);
+	current = TIM_GetCapture3(TIM3);
+	if (current != 0U)
+	{
+		TIM_SetCompare3(TIM3, buzzer_pulse);
+	}
 }
 
 void Buzzer_On(void)

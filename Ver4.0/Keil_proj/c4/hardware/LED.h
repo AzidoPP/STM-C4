@@ -18,6 +18,7 @@ void Relay_On(void);
 void Relay_Off(void);
 
 void Buzzer_Init(void);
+void Buzzer_SetFreq(uint32_t freq_hz);
 void Buzzer_On(void);
 void Buzzer_Off(void);
 

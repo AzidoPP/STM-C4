@@ -1,5 +1,7 @@
 #include "1601a.h"
 #include "Delay.h"
+#include "config.h"
+#include "stm32f10x_tim.h"
 
 #define LCD_COLS 16
 
@@ -40,6 +42,8 @@ static const uint8_t lcd_glyphs[][8] = {
 
 static char lcd_slots[8] = {0};
 static uint8_t lcd_slot_next = 0;
+static uint16_t lcd_backlight_default = 0;
+static uint16_t lcd_backlight_saved = 0;
 
 static void LCD_SetDataNibble(uint8_t data)
 {
@@ -72,9 +76,11 @@ static void LCD_Write8Bits(uint8_t value)
 static void LCD_GPIO_Init(void)
 {
 	GPIO_InitTypeDef gpio;
+	TIM_OCInitTypeDef oc;
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
 
 	gpio.GPIO_Pin = LCD_RS_PIN | LCD_EN_PIN;
 	gpio.GPIO_Mode = GPIO_Mode_Out_OD;
@@ -87,10 +93,16 @@ static void LCD_GPIO_Init(void)
 	GPIO_Init(GPIOA, &gpio);
 
 	gpio.GPIO_Pin = LCD_BLED_PIN;
-	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
+	gpio.GPIO_Mode = GPIO_Mode_AF_PP;
 	gpio.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &gpio);
-	GPIO_SetBits(GPIOA, LCD_BLED_PIN);
+
+	oc.TIM_OCMode = TIM_OCMode_PWM1;
+	oc.TIM_OutputState = TIM_OutputState_Enable;
+	oc.TIM_Pulse = 0;
+	oc.TIM_OCPolarity = TIM_OCPolarity_High;
+	TIM_OC4Init(TIM2, &oc);
+	TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
 }
 
 static void LCD_SetCursorPhysical(uint8_t col)
@@ -192,6 +204,14 @@ void LCD_INIT(void)
 	Delay_ms(2);
 	LCD_WRITE_CMD(0x06);
 	LCD_WRITE_CMD(0x0C);
+
+	lcd_backlight_default = (uint16_t)((CONFIG_LED_PWM_MAX * CONFIG_LCD_BACKLIGHT_PCT) / 100U);
+	if (lcd_backlight_default > CONFIG_LED_PWM_MAX)
+	{
+		lcd_backlight_default = CONFIG_LED_PWM_MAX;
+	}
+	lcd_backlight_saved = lcd_backlight_default;
+	LCD_Backlight_Set(lcd_backlight_default);
 }
 
 void LCD_WRITE_CMD(unsigned char cmd)
@@ -240,24 +260,41 @@ void LCD_Clear(void)
 	Delay_ms(2);
 }
 
+void LCD_Backlight_Set(uint16_t level)
+{
+	if (level > CONFIG_LED_PWM_MAX)
+	{
+		level = CONFIG_LED_PWM_MAX;
+	}
+	if (level > 0U)
+	{
+		lcd_backlight_saved = level;
+	}
+	TIM_SetCompare4(TIM2, level);
+}
+
 void LCD_Backlight_On(void)
 {
-	GPIO_SetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+	LCD_Backlight_Set(lcd_backlight_saved);
 }
 
 void LCD_Backlight_Off(void)
 {
-	GPIO_ResetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+	TIM_SetCompare4(TIM2, 0);
 }
 
 void LCD_Backlight_Toggle(void)
 {
-	if (GPIO_ReadOutputDataBit(LCD_BLED_PORT, LCD_BLED_PIN))
+	if (TIM_GetCapture4(TIM2) != 0U)
 	{
-		GPIO_ResetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+		TIM_SetCompare4(TIM2, 0);
 	}
 	else
 	{
-		GPIO_SetBits(LCD_BLED_PORT, LCD_BLED_PIN);
+		if (lcd_backlight_saved == 0U)
+		{
+			lcd_backlight_saved = lcd_backlight_default;
+		}
+		LCD_Backlight_Set(lcd_backlight_saved);
 	}
 }

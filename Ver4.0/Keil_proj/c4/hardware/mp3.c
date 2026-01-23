@@ -32,7 +32,7 @@ void mp3_start(void)
 
 void mp3_over(void)
 {
-	/* 0x12 + 101: defuse success */
+	/* 0x12 + 101: arm success (bomb planted) */
 	MP3CMD(0x12, 101);
 }
 

@@ -60,8 +60,6 @@ static uint32_t hash_hold_ms = 0;
 static uint8_t startup_beep_state = 0;
 static uint32_t startup_beep_next_ms = 0;
 
-static uint32_t explosion_music_ms = 0;
-
 static DefuseAnim defuse_anim;
 
 static void DefuserInput_Init(void)
@@ -243,6 +241,10 @@ static void Countdown_Start(uint32_t now)
 	last_defuse_input_ms = 0;
 	app_state = STATE_COUNTDOWN;
 	LCD_ShowScroll(scroll_pos);
+	Buzzer_SetFreq(CONFIG_BUZZER_COUNTDOWN_FREQ_HZ);
+#if CONFIG_MP3_ARM_SUCCESS_ENABLE
+	mp3_over();
+#endif
 }
 
 static void Countdown_UpdateBeep(uint32_t now)
@@ -393,7 +395,6 @@ static void Defuse_Success(uint32_t now)
 	beep_active = 0;
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
-	mp3_over();
 
 	LCD_Backlight_On();
 	LCD_ClearLine();
@@ -445,6 +446,7 @@ static void Defuse_Success(uint32_t now)
 
 static void Explosion_Start(uint32_t now)
 {
+	( void )now;
 	Buzzer_Off();
 	beep_active = 0;
 	DefuseAnim_Reset();
@@ -452,9 +454,13 @@ static void Explosion_Start(uint32_t now)
 	Relay_On();
 	LED_SetYellow(LED_PWM_MAX);
 	LCD_ClearLine();
-	//mp3_boom();
+#if CONFIG_MP3_EXPLOSION_ENABLE
+#if CONFIG_MP3_EXPLOSION_USE_MUSIC
 	mp3_boom_music();
-	explosion_music_ms = now + CONFIG_EXPLOSION_MUSIC_DELAY_MS;
+#else
+	mp3_boom();
+#endif
+#endif
 	app_state = STATE_EXPLODED;
 }
 
@@ -465,6 +471,7 @@ int main(void)
 	Timebase_Init();
 	LED_Init();
 	Buzzer_Init();
+	Buzzer_SetFreq(CONFIG_BUZZER_STARTUP_FREQ_HZ);
 	DefuserInput_Init();
 	LCD_INIT();
 	MatrixKey_Init();
@@ -583,11 +590,6 @@ int main(void)
 				LED_SetGreen(LED_PWM_MAX);
 				break;
 			case STATE_EXPLODED:
-				if (explosion_music_ms != 0 && now >= explosion_music_ms)
-				{
-					mp3_boom_music();
-					explosion_music_ms = 0;
-				}
 				LED_SetYellow(LED_PWM_MAX);
 				break;
 		default:
