@@ -77,13 +77,19 @@ static DefuseAnim defuse_anim;
 
 static void DefuserInput_Init(void)
 {
-	GPIO_InitTypeDef gpio;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    GPIO_InitTypeDef gpio;
 
-	gpio.GPIO_Pin = GPIO_Pin_3;
-	gpio.GPIO_Mode = GPIO_Mode_IPU;
-	gpio.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &gpio);
+    // 1. 开启 GPIOB 和 AFIO 时钟 (必须开启 AFIO)
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
+
+    // 2. 执行重映射，关闭 JTAG，保留 SWD (这样 PB3, PB4, PA15 才能当 GPIO 用)
+    GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+
+    // 3. 正常配置 GPIO
+    gpio.GPIO_Pin = GPIO_Pin_3;
+    gpio.GPIO_Mode = GPIO_Mode_IPU; // 上拉输入
+    gpio.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB, &gpio);
 }
 
 static uint8_t Defuser_IsActive(void)

@@ -676,21 +676,6 @@
           <GroupName>hardware</GroupName>
           <Files>
             <File>
-              <FileName>OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\hardware\OLED.c</FilePath>
-            </File>
-            <File>
-              <FileName>OLED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\hardware\OLED.h</FilePath>
-            </File>
-            <File>
-              <FileName>OLED_Font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\hardware\OLED_Font.h</FilePath>
-            </File>
-            <File>
               <FileName>1602a.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hardware\1602a.c</FilePath>
@@ -739,16 +724,6 @@
               <FileName>mp3.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\hardware\mp3.h</FilePath>
-            </File>
-            <File>
-              <FileName>1602a4.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\hardware\1602a4.c</FilePath>
-            </File>
-            <File>
-              <FileName>1602a4.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\hardware\1602a4.h</FilePath>
             </File>
           </Files>
         </Group>
