@@ -1,9 +1,11 @@
 #include "LED.h"
+#include "stm32f10x_tim.h"
 
 static uint16_t led_red = 0;
 static uint16_t led_green = 0;
 static uint16_t buzzer_pulse = 0;
 static uint32_t buzzer_base_hz = 1000000U;
+static uint8_t buzzer_duty_pct = 50U;
 
 static uint32_t TimerClockPclk1(void)
 {
@@ -133,6 +135,7 @@ void Buzzer_Init(void)
 	period = (1000000U / CONFIG_BUZZER_STARTUP_FREQ_HZ);
 	if (period == 0U) { period = 1U; }
 	buzzer_base_hz = 1000000U;
+	buzzer_duty_pct = CONFIG_BUZZER_DUTY_PCT;
 
 	tim.TIM_Period = (uint16_t)(period - 1U);
 	tim.TIM_Prescaler = prescaler;
@@ -140,7 +143,7 @@ void Buzzer_Init(void)
 	tim.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM3, &tim);
 
-	buzzer_pulse = (uint16_t)((period - 1U) / 2U);
+	buzzer_pulse = (uint16_t)(((period - 1U) * buzzer_duty_pct) / 100U);
 
 	oc.TIM_OCMode = TIM_OCMode_PWM1;
 	oc.TIM_OutputState = TIM_OutputState_Enable;
@@ -169,7 +172,25 @@ void Buzzer_SetFreq(uint32_t freq_hz)
 		period = 1U;
 	}
 	TIM_SetAutoreload(TIM3, (uint16_t)(period - 1U));
-	buzzer_pulse = (uint16_t)((period - 1U) / 2U);
+	buzzer_pulse = (uint16_t)(((period - 1U) * buzzer_duty_pct) / 100U);
+	current = TIM_GetCapture3(TIM3);
+	if (current != 0U)
+	{
+		TIM_SetCompare3(TIM3, buzzer_pulse);
+	}
+}
+
+void Buzzer_SetDuty(uint8_t duty_pct)
+{
+	uint16_t current;
+	uint16_t arr = TIM3->ARR;
+
+	if (duty_pct > 50U)
+	{
+		duty_pct = 50U;
+	}
+	buzzer_duty_pct = duty_pct;
+	buzzer_pulse = (uint16_t)((arr * buzzer_duty_pct) / 100U);
 	current = TIM_GetCapture3(TIM3);
 	if (current != 0U)
 	{

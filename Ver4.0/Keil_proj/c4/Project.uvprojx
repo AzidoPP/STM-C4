@@ -755,6 +755,16 @@
               <FileType>5</FileType>
               <FilePath>.\user\stm32f10x_it.h</FilePath>
             </File>
+            <File>
+              <FileName>config_range.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\config_range.h</FilePath>
+            </File>
+            <File>
+              <FileName>default_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\default_config.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

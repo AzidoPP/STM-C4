@@ -1,4 +1,4 @@
-#ifndef CONFIG_H
+﻿#ifndef CONFIG_H
 #define CONFIG_H
 
 /* Range check / ???? */
@@ -100,7 +100,7 @@
 #define CONFIG_BUZZER_COUNTDOWN_FREQ_HZ 3600U
 /* CONFIG_BUZZER_DUTY_PCT: buzzer volume (0-50) / ?????(0-50)
    Min: 0     Max: 50     Typical: 50 */
-#define CONFIG_BUZZER_DUTY_PCT 10U
+#define CONFIG_BUZZER_DUTY_PCT 50U
 /* CONFIG_STARTUP_BEEP_ON_MS: startup beep length (ms) / ??????(??)
    Min: 10    Max: 500    Typical: 60 */
 #define CONFIG_STARTUP_BEEP_ON_MS 60U
@@ -111,16 +111,16 @@
 /* MP3 */
 /* CONFIG_MP3_VOLUME: MP3 volume (0-30) / MP3??(0-30)
    Min: 0     Max: 30     Typical: 25 */
-#define CONFIG_MP3_VOLUME 5U
+#define CONFIG_MP3_VOLUME 25U
 /* CONFIG_MP3_ARM_SUCCESS_ENABLE: arm success MP3 / ????????
    Min: 0     Max: 1      Typical: 1 */
-#define CONFIG_MP3_ARM_SUCCESS_ENABLE 0U
+#define CONFIG_MP3_ARM_SUCCESS_ENABLE 1U
 /* CONFIG_MP3_EXPLOSION_ENABLE: explosion MP3 / ??????
    Min: 0     Max: 1      Typical: 1 */
-#define CONFIG_MP3_EXPLOSION_ENABLE 0U
+#define CONFIG_MP3_EXPLOSION_ENABLE 1U
 /* CONFIG_MP3_EXPLOSION_USE_MUSIC: explosion style / ??????
    Min: 0     Max: 1      Typical: 1 */
-#define CONFIG_MP3_EXPLOSION_USE_MUSIC 0U
+#define CONFIG_MP3_EXPLOSION_USE_MUSIC 1U
 
 #include "config_range.h"
 

@@ -12,6 +12,16 @@ Updates:
 
 - Split startup vs countdown buzzer frequencies, added PWM backlight level, and added MP3 enable/selection config; mp3_over now plays on arming and explosion audio is single-choice.
 
+- Added buzzer duty control, synchronized defuse-success buzzer flashing, and expanded config documentation with min/max/typical values.
+
+- Switched buzzer duty calculation to use TIM3->ARR to avoid missing TIM_GetAutoreload symbol.
+
+- Rewrote config comments as bilingual, aligned min/max/typical formatting, and added compile-time range checks with CONFIG_IGNORE_RANGE.
+
+- Converted beep interval config to millisecond integers, fixed countdown timing math, and rewrote config comments in GBK for readable Chinese.
+
+- Moved range checks to config_range.h, switched configs to UTF-8 BOM for readable Chinese, and removed max limits where not required.
+
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.
 - Confirm countdown duration and timing constants on device.

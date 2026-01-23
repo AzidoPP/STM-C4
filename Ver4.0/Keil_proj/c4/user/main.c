@@ -258,19 +258,19 @@ static void Countdown_UpdateBeep(uint32_t now)
 	{
 		uint32_t time_left = 0;
 		float f_complete;
-		float interval;
+		float interval_ms;
 
 		if (now < countdown_end_ms)
 		{
 			time_left = countdown_end_ms - now;
 		}
 		f_complete = (float)time_left / (float)CONFIG_COUNTDOWN_MS;
-		interval = CONFIG_BEEP_INTERVAL_BASE_S + (CONFIG_BEEP_INTERVAL_SCALE_S * f_complete);
-		if (interval < CONFIG_BEEP_INTERVAL_MIN_S)
+		interval_ms = (float)CONFIG_BEEP_INTERVAL_BASE_MS + ((float)CONFIG_BEEP_INTERVAL_SCALE_MS * f_complete);
+		if (interval_ms < (float)CONFIG_BEEP_INTERVAL_MIN_MS)
 		{
-			interval = CONFIG_BEEP_INTERVAL_MIN_S;
+			interval_ms = (float)CONFIG_BEEP_INTERVAL_MIN_MS;
 		}
-		next_beep_ms = now + (uint32_t)(interval * 1000.0f);
+		next_beep_ms = now + (uint32_t)(interval_ms);
 		beep_active = 1;
 		beep_off_ms = now + CONFIG_BEEP_LEN_MS;
 		Buzzer_On();
@@ -395,6 +395,7 @@ static void Defuse_Success(uint32_t now)
 	beep_active = 0;
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
+	Buzzer_SetFreq(CONFIG_BUZZER_STARTUP_FREQ_HZ);
 
 	LCD_Backlight_On();
 	LCD_ClearLine();
@@ -403,10 +404,12 @@ static void Defuse_Success(uint32_t now)
 		if (i & 1U)
 		{
 			LED_AllOff();
+			Buzzer_Off();
 		}
 		else
 		{
 			LED_SetRed(LED_PWM_MAX);
+			Buzzer_On();
 		}
 		LCD_Backlight_Toggle();
 		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
@@ -419,14 +422,17 @@ static void Defuse_Success(uint32_t now)
 		if (i & 1U)
 		{
 			LED_AllOff();
+			Buzzer_Off();
 		}
 		else
 		{
 			LED_SetRed(LED_PWM_MAX);
+			Buzzer_On();
 		}
 		LCD_Backlight_Toggle();
 		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
 	}
+	Buzzer_Off();
 
 	LCD_ClearLine();
 	LCD_Backlight_Off();
@@ -472,6 +478,7 @@ int main(void)
 	LED_Init();
 	Buzzer_Init();
 	Buzzer_SetFreq(CONFIG_BUZZER_STARTUP_FREQ_HZ);
+	Buzzer_SetDuty(CONFIG_BUZZER_DUTY_PCT);
 	DefuserInput_Init();
 	LCD_INIT();
 	MatrixKey_Init();
