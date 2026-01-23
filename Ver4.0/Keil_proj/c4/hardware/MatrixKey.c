@@ -1,113 +1,130 @@
-#include "stm32f10x.h"                  // Device header
-#include "Delay.h"
-uint8_t MatrixKey_determine();
+#include "stm32f10x.h"
+#include "MatrixKey.h"
+#include "Systick.h"
 
-void MatrixKey_Init()
+#define COL_PORT GPIOB
+#define ROW_PORT GPIOB
+
+#define COL1_PIN GPIO_Pin_5
+#define COL2_PIN GPIO_Pin_15
+#define COL3_PIN GPIO_Pin_7
+
+#define ROW1_PIN GPIO_Pin_4
+#define ROW2_PIN GPIO_Pin_9
+#define ROW3_PIN GPIO_Pin_8
+#define ROW4_PIN GPIO_Pin_6
+
+static char key_event = ' ';
+static char key_stable = ' ';
+static char key_sample = ' ';
+static uint32_t key_change_ms = 0;
+
+void MatrixKey_Init(void)
 {
+	GPIO_InitTypeDef gpio;
+
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-		
-	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO_InitStructure.GPIO_Pin =GPIO_Pin_7 | GPIO_Pin_5 | GPIO_Pin_15;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_4 | GPIO_Pin_9 | GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	
+	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
+	gpio.GPIO_Pin = COL1_PIN | COL2_PIN | COL3_PIN;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &gpio);
+
+	gpio.GPIO_Mode = GPIO_Mode_IPU;
+	gpio.GPIO_Pin = ROW1_PIN | ROW2_PIN | ROW3_PIN | ROW4_PIN;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &gpio);
+
+	GPIO_SetBits(COL_PORT, COL1_PIN | COL2_PIN | COL3_PIN);
 }
 
-uint8_t MatrixKey_GetValue()
+static uint8_t MatrixKey_ReadRows(void)
 {
-	uint8_t Key=0;
-	
-	GPIO_ResetBits(GPIOB, GPIO_Pin_5);
-	GPIO_SetBits(GPIOB, GPIO_Pin_7);
-	GPIO_SetBits(GPIOB, GPIO_Pin_15);
-
-	if(MatrixKey_determine())
-	{
-		Key = MatrixKey_determine();
-	}
-	
-	GPIO_ResetBits(GPIOB, GPIO_Pin_15);
-	GPIO_SetBits(GPIOB, GPIO_Pin_5);
-	GPIO_SetBits(GPIOB, GPIO_Pin_7);
-	
-
-	if(MatrixKey_determine())
-	{
-		Key = MatrixKey_determine() + 4;
-	}
-	
-	
-	GPIO_ResetBits(GPIOB, GPIO_Pin_7); 
-	GPIO_SetBits(GPIOB, GPIO_Pin_5);
-	GPIO_SetBits(GPIOB, GPIO_Pin_15);
-	
-	if(MatrixKey_determine())
-	{
-		Key = MatrixKey_determine() + 8;
-	}
-	
-	switch(Key){
-		case 1: Key='1';
-				break;
-		case 2: Key='4';
-				break;
-		case 3: Key='7';
-				break;
-		case 4: Key='*';
-				break;
-		case 5: Key='2';
-				break;
-		case 6: Key='5';
-				break;
-		case 7: Key='8';
-				break;
-		case 8: Key='0';
-				break;
-		case 9: Key='3';
-				break;
-		case 10: Key='6';
-				break;
-		case 11: Key='9';
-				break;
-		case 12: Key='#';
-				break;
-		default: Key=' ';
-	}
-	return Key;
+	if (GPIO_ReadInputDataBit(ROW_PORT, ROW1_PIN) == 0) { return 1; }
+	if (GPIO_ReadInputDataBit(ROW_PORT, ROW4_PIN) == 0) { return 4; }
+	if (GPIO_ReadInputDataBit(ROW_PORT, ROW2_PIN) == 0) { return 2; }
+	if (GPIO_ReadInputDataBit(ROW_PORT, ROW3_PIN) == 0) { return 3; }
+	return 0;
 }
 
-uint8_t MatrixKey_determine()
+static char MatrixKey_ScanRaw(void)
 {
-	uint8_t Key = 0;
-	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_4) == 0)
+	uint8_t key = 0;
+	uint8_t row = 0;
+
+	GPIO_SetBits(COL_PORT, COL1_PIN | COL2_PIN | COL3_PIN);
+	GPIO_ResetBits(COL_PORT, COL1_PIN);
+	row = MatrixKey_ReadRows();
+	if (row != 0) { key = row; }
+
+	GPIO_SetBits(COL_PORT, COL1_PIN | COL2_PIN | COL3_PIN);
+	GPIO_ResetBits(COL_PORT, COL2_PIN);
+	if (key == 0)
 	{
-		Delay_ms(10);
-		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_4) == 0){Key = 1;}
+		row = MatrixKey_ReadRows();
+		if (row != 0) { key = (uint8_t)(row + 4); }
 	}
-	
-	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_6) == 0)
+
+	GPIO_SetBits(COL_PORT, COL1_PIN | COL2_PIN | COL3_PIN);
+	GPIO_ResetBits(COL_PORT, COL3_PIN);
+	if (key == 0)
 	{
-		Delay_ms(10);
-		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_6) == 0){Key = 4;}
+		row = MatrixKey_ReadRows();
+		if (row != 0) { key = (uint8_t)(row + 8); }
 	}
-	
-	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9) == 0)
+
+	GPIO_SetBits(COL_PORT, COL1_PIN | COL2_PIN | COL3_PIN);
+
+	switch (key)
 	{
-		Delay_ms(10);
-		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9) == 0){Key = 2;}
+		case 1: return '1';
+		case 2: return '4';
+		case 3: return '7';
+		case 4: return '*';
+		case 5: return '2';
+		case 6: return '5';
+		case 7: return '8';
+		case 8: return '0';
+		case 9: return '3';
+		case 10: return '6';
+		case 11: return '9';
+		case 12: return '#';
+		default: return ' ';
 	}
-	
-	if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_8) == 0)
+}
+
+void MatrixKey_Update(void)
+{
+	uint32_t now = Timebase_Millis();
+	char sample = MatrixKey_ScanRaw();
+
+	if (sample != key_sample)
 	{
-		Delay_ms(10);
-		if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_8) == 0){Key = 3;}
+		key_sample = sample;
+		key_change_ms = now;
 	}
-	return Key;
+
+	if ((now - key_change_ms) >= 20)
+	{
+		if (key_stable != key_sample)
+		{
+			key_stable = key_sample;
+			if (key_stable != ' ')
+			{
+				key_event = key_stable;
+			}
+		}
+	}
+}
+
+char MatrixKey_GetValue(void)
+{
+	char key = key_event;
+	key_event = ' ';
+	return key;
+}
+
+char MatrixKey_GetHold(void)
+{
+	return key_stable;
 }

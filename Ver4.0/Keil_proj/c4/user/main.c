@@ -1,365 +1,532 @@
 #include "stm32f10x.h"
-#include "matrixkey.h"
+#include "MatrixKey.h"
 #include "1602a.h"
-#include "delay.h"
-#include "LED.H"
-#include "math.h"
-#include "TIMER.h"
+#include "Delay.h"
+#include "LED.h"
+#include "Systick.h"
 #include "Serial.h"
 #include "mp3.h"
+#include <string.h>
 
+#define PASSWORD_LEN 7
+#define LCD_COLS 16
 
-unsigned char tem[] = {0x1C,0x14,0x1F,0x09,0x08,0x08,0x09,0x0F};	//摄氏度符号“℃”的字模
+#define COUNTDOWN_MS 40000U
+#define ARM_DELAY_MS 800U
+#define BEEP_LEN_MS 125U
+#define BREATH_PERIOD_MS 500U
+#define SCROLL_INTERVAL_MS 200U
+#define LONG_PRESS_MS 1000U
+#define MANUAL_DEFUSE_MS 10000U
+#define EXTERNAL_DEFUSE_MS 5000U
+#define DEFUSE_DISPLAY_HOLD_MS 1200U
 
-char areArraysEqual(unsigned char arr1[], unsigned char arr2[], int size) 
+typedef enum
 {
-    for (int i = 0; i < size; i++)
+	STATE_IDLE = 0,
+	STATE_COUNTDOWN,
+	STATE_DEFUSE_SUCCESS,
+	STATE_EXPLODED
+} AppState;
+
+typedef enum
+{
+	DEFUSE_NONE = 0,
+	DEFUSE_MANUAL,
+	DEFUSE_EXTERNAL
+} DefuseMode;
+
+typedef struct
+{
+	uint8_t active;
+	DefuseMode mode;
+	uint32_t step_ms;
+	uint32_t next_step_ms;
+	uint8_t digit_index;
+	uint8_t cycle_step;
+	char display[PASSWORD_LEN + 1];
+} DefuseAnim;
+
+static AppState app_state = STATE_IDLE;
+static DefuseMode defuse_mode = DEFUSE_NONE;
+
+static char arm_input[PASSWORD_LEN + 1];
+static char arm_code[PASSWORD_LEN + 1];
+static char defuse_input[PASSWORD_LEN + 1];
+static uint8_t defuse_pos = 0;
+
+static uint32_t arm_last_change_ms = 0;
+static uint32_t countdown_end_ms = 0;
+static uint32_t next_beep_ms = 0;
+static uint32_t beep_off_ms = 0;
+static uint8_t beep_active = 0;
+
+static uint32_t scroll_next_ms = 0;
+static uint8_t scroll_pos = 0;
+static int8_t scroll_dir = 1;
+
+static uint32_t last_defuse_input_ms = 0;
+static uint32_t hash_hold_ms = 0;
+
+static uint8_t startup_beep_state = 0;
+static uint32_t startup_beep_next_ms = 0;
+
+static uint32_t explosion_music_ms = 0;
+
+static DefuseAnim defuse_anim;
+
+static void DefuserInput_Init(void)
+{
+	GPIO_InitTypeDef gpio;
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+
+	gpio.GPIO_Pin = GPIO_Pin_3;
+	gpio.GPIO_Mode = GPIO_Mode_IPU;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &gpio);
+}
+
+static uint8_t Defuser_IsActive(void)
+{
+	return (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_3) == 0) ? 1U : 0U;
+}
+
+static void Password_Reset(char *buf)
+{
+	uint8_t i;
+	for (i = 0; i < PASSWORD_LEN; i++)
 	{
-        if (arr1[i] != arr2[i])
-				{
-            return 0; // 如果发现有不相等的元素，返回false
-        }
-    }
-    return 1; // 所有元素都相等，返回true
-}
-
-void rightShiftArray(unsigned char arr[], int size)
-{
-    if (size > 0)
-		{
-//        char last = arr[size - 1]; // 保存最后一个元素的值
-        for (int i = size - 1; i > 0; i--)
-			  {
-            arr[i] = arr[i - 1]; // 将每个元素向右移动
-        }
-        arr[0] = '*'; // 将第一个元素设置为*
-    }
-}
-
-
-void leftShiftArray(unsigned char arr[], int size)
-{
-    if (size > 0) 
-		{
-//        int first = arr[0]; // 保存第一个元素的值
-        for (int i = 0; i < size - 1; i++) 
-			  {
-            arr[i] = arr[i + 1]; // 将每个元素向左移动
-        }
-        arr[7] = 0; // 将最后一个元素设置为0
-    }
-}
-
-char KeyNum,sign;
-char ispressed=0;
-uint16_t Num = 0,Num_sign = 0;			//定义在定时器中断里自增的变量
-unsigned char password[8]={'*','*','*','*','*','*','*'};	//锁定密码
-unsigned char password1[8]={'*','*','*','*','*','*','*'};	//解锁密码
-
-
-void keyscan(unsigned char pass[])//扫描键盘，更新锁定密码数组并更新显示
-{
-	KeyNum = MatrixKey_GetValue();//默认被置为' '                                         
-	if((KeyNum!=' ')&&(KeyNum!='*')&&(KeyNum!='#')&&(ispressed==0))//若数字0~9被按下   //所有的ispressed==0应该是为了只检测上升沿（按下动作 
-	{                                                                                                      //而不是检测上升结果（按下状态 
-		Delay_ms(50);
-		LED1_Turn();
-		Delay_ms(50);
-		LED1_Turn();
-		leftShiftArray(pass,8);//形参数组左移一位
-		pass[6]=KeyNum;//"最后一位"为按下的键
-		LCD_WRITE_StrDATA("                ",0);
-		LCD_WRITE_StrDATA(pass,3 );//同下，从第3格写字符串
+		buf[i] = '*';
 	}
-	else if(KeyNum=='*'&&(ispressed==0))//按*则退格
+	buf[PASSWORD_LEN] = '\0';
+}
+
+static uint8_t Password_IsComplete(const char *buf)
+{
+	return (buf[0] != '*') ? 1U : 0U;
+}
+
+static void Password_InputRight(char *buf, char key)
+{
+	uint8_t i;
+	if (key >= '0' && key <= '9')
 	{
-		Delay_ms(50);
-		LED1_Turn();
-		Delay_ms(50);
-		LED1_Turn();
-		rightShiftArray(pass,7);
-		LCD_WRITE_StrDATA("                ",0);
-		LCD_WRITE_StrDATA(pass,3 );
-	}
-	else if(KeyNum=='#'&&(ispressed==0))//按#则全删
-	{
-		Delay_ms(50);
-		LED1_Turn();
-		Delay_ms(50);
-		LED1_Turn();
-		for (int i = 0; i < 7; i++) 
-	  { // 注意：size - 1是为了保留字符串的null终止符
-			pass[i] = '*';
+		for (i = 0; i < PASSWORD_LEN - 1; i++)
+		{
+			buf[i] = buf[i + 1];
 		}
-		LCD_WRITE_StrDATA("                ",0);
-		LCD_WRITE_StrDATA(pass,3 );
+		buf[PASSWORD_LEN - 1] = key;
 	}
-	if(KeyNum!=' ')//键盘一旦按下，ispressed同时置1，一旦松开，同时置0
+	else if (key == '*')
 	{
-		ispressed=1;//按下
+		for (i = PASSWORD_LEN - 1; i > 0; i--)
+		{
+			buf[i] = buf[i - 1];
+		}
+		buf[0] = '*';
+	}
+	else if (key == '#')
+	{
+		Password_Reset(buf);
+	}
+}
+
+static void Password_InputLeft(char *buf, uint8_t *pos, char key)
+{
+	if (key >= '0' && key <= '9')
+	{
+		if (*pos < PASSWORD_LEN)
+		{
+			buf[*pos] = key;
+			(*pos)++;
+		}
+	}
+	else if (key == '*')
+	{
+		if (*pos > 0)
+		{
+			(*pos)--;
+			buf[*pos] = '*';
+		}
+	}
+	else if (key == '#')
+	{
+		Password_Reset(buf);
+		*pos = 0;
+	}
+}
+
+static uint8_t Password_Match(const char *a, const char *b)
+{
+	return (memcmp(a, b, PASSWORD_LEN) == 0) ? 1U : 0U;
+}
+
+static void LCD_ClearLine(void)
+{
+	static unsigned char spaces[] = "                ";
+	LCD_WRITE_StrDATA(spaces, 0);
+}
+
+static void LCD_ShowPassword(const char *buf)
+{
+	LCD_ClearLine();
+	LCD_WRITE_StrDATA((unsigned char *)buf, 3);
+}
+
+static void LCD_ShowScroll(uint8_t pos)
+{
+	char line[LCD_COLS + 1];
+	uint8_t i;
+	for (i = 0; i < LCD_COLS; i++)
+	{
+		line[i] = ' ';
+	}
+	line[LCD_COLS] = '\0';
+	if (pos < LCD_COLS)
+	{
+		line[pos] = '*';
+	}
+	LCD_WRITE_StrDATA((unsigned char *)line, 0);
+}
+
+static void LED_Breath(uint32_t now)
+{
+	uint32_t half = BREATH_PERIOD_MS / 2U;
+	uint32_t phase = now % BREATH_PERIOD_MS;
+	uint16_t level;
+
+	if (phase < half)
+	{
+		level = (uint16_t)((phase * LED_PWM_MAX) / half);
 	}
 	else
 	{
-		ispressed=0;//未按
+		level = (uint16_t)(((BREATH_PERIOD_MS - phase) * LED_PWM_MAX) / half);
+	}
+	LED_SetYellow(level);
+}
+
+static void StartupBeep_Update(uint32_t now)
+{
+	if (startup_beep_state >= 4)
+	{
+		return;
+	}
+	if (now < startup_beep_next_ms)
+	{
+		return;
+	}
+	switch (startup_beep_state)
+	{
+		case 0:
+			Buzzer_On();
+			startup_beep_next_ms = now + 60U;
+			startup_beep_state = 1;
+			break;
+		case 1:
+			Buzzer_Off();
+			startup_beep_next_ms = now + 80U;
+			startup_beep_state = 2;
+			break;
+		case 2:
+			Buzzer_On();
+			startup_beep_next_ms = now + 60U;
+			startup_beep_state = 3;
+			break;
+		case 3:
+			Buzzer_Off();
+			startup_beep_state = 4;
+			break;
+		default:
+			break;
 	}
 }
 
-
-
-
-
-
-int ar=0;
-void keyscan1(unsigned char pass[])//扫描键盘，更新解锁密码数组并更新显示
+static void Countdown_Start(uint32_t now)
 {
-	KeyNum = MatrixKey_GetValue();
-	if(ispressed==0)
-	{ 	
-		if((KeyNum!=' ')&&(KeyNum!='*')&&(KeyNum!='#')&&(ispressed==0))//若数字0~9被按下
-		{
-//			Delay_ms(50);
-//			LED1_Turn();
-//			Delay_ms(50);
-//			LED1_Turn();
-			pass[ar]=KeyNum;//第一位为按下的键
-			ar++;
-			if(ar>=7)ar=0;
-			LCD_WRITE_StrDATA("                ",0);
-			LCD_WRITE_StrDATA(pass,3 );
-		}
-		else if(KeyNum=='*'&&(ispressed==0))//退格
-		{
-//			Delay_ms(50);
-//			LED1_Turn();
-//			Delay_ms(50);
-//			LED1_Turn();
-			ar--;
-			pass[ar]='*';
-			LCD_WRITE_StrDATA("                ",0);
-			LCD_WRITE_StrDATA(pass,3 );
-		}
-		else if(KeyNum=='#'&&(ispressed==0))//全删
-		{
-//			Delay_ms(50);
-//			LED1_Turn();
-//			Delay_ms(50);
-//			LED1_Turn();
-			for (int i = 0; i < 7; i++) 
-			{ // 注意：size - 1是为了保留字符串的null终止符
-				pass[i] = '*';
-			}
-			ar=0;
-			LCD_WRITE_StrDATA("                ",0);
-			LCD_WRITE_StrDATA(pass,3 );
-		}
-	}
-	if(KeyNum!=' ')
+	countdown_end_ms = now + COUNTDOWN_MS;
+	next_beep_ms = now + 1000U;
+	beep_off_ms = 0;
+	beep_active = 0;
+	hash_hold_ms = 0;
+	scroll_pos = 0;
+	scroll_dir = 1;
+	scroll_next_ms = now;
+	defuse_mode = DEFUSE_NONE;
+	Password_Reset(defuse_input);
+	defuse_pos = 0;
+	last_defuse_input_ms = 0;
+	app_state = STATE_COUNTDOWN;
+	LCD_ShowScroll(scroll_pos);
+}
+
+static void Countdown_UpdateBeep(uint32_t now)
+{
+	if (beep_active && now >= beep_off_ms)
 	{
-		ispressed=1;//按下
-		Delay_ms(20);
+		beep_active = 0;
+		Buzzer_Off();
+	}
+	if (now >= next_beep_ms)
+	{
+		uint32_t time_left = 0;
+		float f_complete;
+		float interval;
+
+		if (now < countdown_end_ms)
+		{
+			time_left = countdown_end_ms - now;
+		}
+		f_complete = (float)time_left / (float)COUNTDOWN_MS;
+		interval = 0.1f + 0.9f * f_complete;
+		if (interval < 0.15f)
+		{
+			interval = 0.15f;
+		}
+		next_beep_ms = now + (uint32_t)(interval * 1000.0f);
+		beep_active = 1;
+		beep_off_ms = now + BEEP_LEN_MS;
+		Buzzer_On();
+	}
+}
+
+static void Countdown_UpdateScroll(uint32_t now)
+{
+	if (now < scroll_next_ms)
+	{
+		return;
+	}
+	scroll_next_ms = now + SCROLL_INTERVAL_MS;
+	if (scroll_pos == 0)
+	{
+		scroll_dir = 1;
+	}
+	else if (scroll_pos >= (LCD_COLS - 1))
+	{
+		scroll_dir = -1;
+	}
+	scroll_pos = (uint8_t)(scroll_pos + scroll_dir);
+	LCD_ShowScroll(scroll_pos);
+}
+
+static void DefuseAnim_Start(uint32_t now, DefuseMode mode)
+{
+	uint32_t duration = (mode == DEFUSE_EXTERNAL) ? EXTERNAL_DEFUSE_MS : MANUAL_DEFUSE_MS;
+	uint32_t steps = PASSWORD_LEN * 11U;
+	uint32_t step_ms = duration / steps;
+
+	defuse_anim.active = 1;
+	defuse_anim.mode = mode;
+	defuse_anim.step_ms = (step_ms == 0U) ? 1U : step_ms;
+	defuse_anim.next_step_ms = now;
+	defuse_anim.digit_index = 0;
+	defuse_anim.cycle_step = 0;
+	Password_Reset(defuse_anim.display);
+	defuse_mode = mode;
+	LCD_ShowPassword(defuse_anim.display);
+}
+
+static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active)
+{
+	if (!defuse_anim.active)
+	{
+		return 0;
+	}
+	if (defuse_anim.mode == DEFUSE_EXTERNAL && !defuser_active)
+	{
+		defuse_anim.active = 0;
+		defuse_mode = DEFUSE_NONE;
+		LCD_ShowScroll(scroll_pos);
+		return 0;
+	}
+	if (now < defuse_anim.next_step_ms)
+	{
+		return 0;
+	}
+	defuse_anim.next_step_ms = now + defuse_anim.step_ms;
+	if (defuse_anim.digit_index >= PASSWORD_LEN)
+	{
+		defuse_anim.active = 0;
+		return 1;
+	}
+	if (defuse_anim.cycle_step < 10)
+	{
+		defuse_anim.display[defuse_anim.digit_index] = (char)('0' + defuse_anim.cycle_step);
+		defuse_anim.cycle_step++;
 	}
 	else
 	{
-		ispressed=0;
-		Delay_ms(20);
+		defuse_anim.display[defuse_anim.digit_index] = arm_code[defuse_anim.digit_index];
+		defuse_anim.digit_index++;
+		defuse_anim.cycle_step = 0;
 	}
+	LCD_ShowPassword(defuse_anim.display);
+	return 0;
 }
 
-
-
-unsigned char xing[3]={'*','*','*'};
-void LCD_xing(void)
+static void Defuse_Success(uint32_t now)
 {
-	LCD_WRITE_StrDATA("                ",0);
-	LCD_WRITE_StrDATA(xing,Num);		
-	Delay_ms(20);
+	( void )now;
+	Buzzer_Off();
+	Relay_Off();
+	beep_active = 0;
+	defuse_anim.active = 0;
+	defuse_mode = DEFUSE_NONE;
+	LED_SetGreen(LED_PWM_MAX);
+	LCD_ShowPassword(arm_code);
+	mp3_over();
+	app_state = STATE_DEFUSE_SUCCESS;
 }
 
-
-
-
-
-
-
-int main()
+static void Explosion_Start(uint32_t now)
 {
-		
-	
-	Timer_Init();//定时器初始化
-	LED_Init();//led 蜂鸣器 继电器io口初始化
-	LCD_INIT();		//LCD1601初始化
-	MatrixKey_Init();//矩阵键盘初始化
+	Buzzer_Off();
+	beep_active = 0;
+	defuse_anim.active = 0;
+	defuse_mode = DEFUSE_NONE;
+	Relay_On();
+	LED_SetYellow(LED_PWM_MAX);
+	LCD_ClearLine();
+	mp3_boom();
+	explosion_music_ms = now + 200U;
+	app_state = STATE_EXPLODED;
+}
 
-	LCD_WRITE_StrDATA("   *******      ",0 );	
-	Delay_ms(50);	
-	mp3_Init();//mp3初始化
-	Delay_ms(50);	
-	MP3CMD(0x06,25); //设置音量	  建议音量：8欧1瓦；25 若音质下降请调小音量！！
+int main(void)
+{
+	uint32_t now;
 
-	
-	//	mp3_start();//由于市面上mini mp3模块质量参差不齐，导致上电后无法立刻检测到指令，需等段时间才能检测到
-					//如果你想启用上电音效，可以尝试取消此注释，尝试是否有上电音效
-	while(1)
+	Timebase_Init();
+	LED_Init();
+	Buzzer_Init();
+	DefuserInput_Init();
+	LCD_INIT();
+	MatrixKey_Init();
+	mp3_Init();
+	Delay_ms(200);
+	MP3CMD(0x06, 25);
+
+	Password_Reset(arm_input);
+	Password_Reset(arm_code);
+	Password_Reset(defuse_input);
+	LCD_ShowPassword(arm_input);
+
+	startup_beep_next_ms = Timebase_Millis();
+
+	while (1)
 	{
-		keyscan(password);//扫描键盘，更新锁定密码数组并更新显示
-		if(password[0]!='*')//若输完密码，                   
+		char key;
+		char hold;
+		uint8_t defuser_active;
+
+		now = Timebase_Millis();
+		MatrixKey_Update();
+		key = MatrixKey_GetValue();
+		hold = MatrixKey_GetHold();
+		defuser_active = Defuser_IsActive();
+
+		StartupBeep_Update(now);
+
+		switch (app_state)
 		{
-
-			for(long i=0; i<50000; i++)//防止设置密码后立即被检测到，其实就是延时的意思啦
-			{
-				keyscan(password);
-			}
-			if(password[0]!='*')//若成功设置密码
-			{
-				LED2_ON();//继电器
-				mp3_over();
-		
-				for(int j=0; j<100; j++)//倒计时提示
+			case STATE_IDLE:
+				LED_Breath(now);
+				if (key != ' ')
 				{
-					LED1_ON();//蜂鸣器和led
-					for(int i=0; i<2; i++)//蜂鸣器和亮起时间
+					Password_InputRight(arm_input, key);
+					LCD_ShowPassword(arm_input);
+					arm_last_change_ms = now;
+				}
+				if (Password_IsComplete(arm_input) && (now - arm_last_change_ms) >= ARM_DELAY_MS)
+				{
+					memcpy(arm_code, arm_input, PASSWORD_LEN + 1);
+					Countdown_Start(now);
+				}
+				break;
+			case STATE_COUNTDOWN:
+				if (defuse_mode == DEFUSE_NONE && hold == '#')
+				{
+					if (hash_hold_ms == 0)
 					{
-						  KeyNum = MatrixKey_GetValue();
-							if(KeyNum!=' '){sign=1;}
-							if(sign==0)
-							{
-								Delay_ms(20);					
-							}
-							else
-							{
-								keyscan1(password1);							
-							}
+						hash_hold_ms = now;
 					}
-					LED1_OFF();
-					
-					
-					for(int i=0; i<((int)((pow(((double)0.978),((double)j)))*50)-2); i++)//j增大，此for循环随时间增大而执行次数变少，所占用时间变短，即LED1_ON()被执行间隔的越来越短			
+					else if ((now - hash_hold_ms) >= LONG_PRESS_MS)
 					{
-						  KeyNum = MatrixKey_GetValue();
-							if(KeyNum!=' '){sign=1;}
-							if(sign==0)
-							{
-									LCD_xing();							
-							}
-							else
-							{
-									keyscan1(password1);							
-							}
-					}
-					
-					
-					if(password1[6]!='*')//若输完解锁密码，则开始检测是否正确
-					{
-						if(areArraysEqual(password,password1,8))//若正确
-						{
-							
-							LCD_WRITE_StrDATA("                ",0);
-							Delay_ms(50);//拆弹成功提示音
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							LCD_WRITE_StrDATA(password1,3 );
-							Delay_ms(50);//拆弹成功提示音
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							Delay_ms(50);
-							LED1_Turn();
-							LCD_WRITE_StrDATA("                ",0);
-							Delay_ms(400);
-							LCD_WRITE_StrDATA(password1,3 );
-							Delay_ms(400);
-							LCD_WRITE_StrDATA("                ",0);
-							Delay_ms(400);
-							LCD_WRITE_StrDATA(password1,3 );
-
-							
-
-							return 0;
-						}
-						else//若不正确，密码不一致，全删
-						{
-							for (int i = 0; i < 7; i++) 
-							{
-								password1[i] = '*';
-							}
-							ar=0;
-							LCD_WRITE_StrDATA(password1,3 );
-							sign=0;
-						}
+						DefuseAnim_Start(now, DEFUSE_MANUAL);
+						hash_hold_ms = 0;
 					}
 				}
-				
-				
-				LED1_ON();//40s倒计时结束，蜂鸣器和led常亮1.3s
-				LCD_WRITE_StrDATA("                ",0);
-				mp3_boom_music();
-				Delay_ms(1300);
-				LED1_OFF();
-				
-				
-				while(1)//所有程序执行完毕，自动进入while死循环
+				else
 				{
-					LED2_OFF();
+					hash_hold_ms = 0;
 				}
-			}
-		
-		
-			if(KeyNum!=' ')
+
+				if (defuse_mode == DEFUSE_NONE && defuser_active)
+				{
+					DefuseAnim_Start(now, DEFUSE_EXTERNAL);
+				}
+
+				if (DefuseAnim_Update(now, defuser_active))
+				{
+					Defuse_Success(now);
+					break;
+				}
+
+				if (defuse_mode == DEFUSE_NONE)
+				{
+					if (key != ' ')
+					{
+						Password_InputLeft(defuse_input, &defuse_pos, key);
+						LCD_ShowPassword(defuse_input);
+						last_defuse_input_ms = now;
+					}
+
+					if (defuse_pos >= PASSWORD_LEN)
+					{
+						if (Password_Match(arm_code, defuse_input))
+						{
+							Defuse_Success(now);
+							break;
+						}
+						Password_Reset(defuse_input);
+						defuse_pos = 0;
+						LCD_ShowPassword(defuse_input);
+					}
+					if (defuse_pos == 0 && (now - last_defuse_input_ms) > DEFUSE_DISPLAY_HOLD_MS)
+					{
+						Countdown_UpdateScroll(now);
+					}
+				}
+
+				Countdown_UpdateBeep(now);
+			if (beep_active)
 			{
-				ispressed=1;
+				LED_SetColor(LED_PWM_MAX, 0);
 			}
 			else
 			{
-				ispressed=0;
+				LED_AllOff();
 			}
-		}
-  }
 
-
-}
-
-void TIM2_IRQHandler(void)//中断函数，每秒执行20次
-{
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)		//判断是否是TIM2的更新事件触发的中断
-	{
-		if(Num_sign == 0)
-		{
-			Num ++;											
-			TIM_ClearITPendingBit(TIM2, TIM_IT_Update);	
-			if(Num>=13){Num_sign=1;}
-		}
-		else
-		{
-			Num --;											
-			TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-			if(Num<=0){Num_sign=0;}
+				if (now >= countdown_end_ms)
+				{
+					Explosion_Start(now);
+				}
+				break;
+			case STATE_DEFUSE_SUCCESS:
+				LED_SetGreen(LED_PWM_MAX);
+				break;
+			case STATE_EXPLODED:
+				if (explosion_music_ms != 0 && now >= explosion_music_ms)
+				{
+					mp3_boom_music();
+					explosion_music_ms = 0;
+				}
+				LED_SetYellow(LED_PWM_MAX);
+				break;
+		default:
+			LED_Breath(now);
+			break;
 		}
 	}
 }
-
-
-
-

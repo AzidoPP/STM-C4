@@ -721,6 +721,26 @@
               <FilePath>.\hardware\LED.c</FilePath>
             </File>
             <File>
+              <FileName>Serial.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\Serial.c</FilePath>
+            </File>
+            <File>
+              <FileName>Serial.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\Serial.h</FilePath>
+            </File>
+            <File>
+              <FileName>mp3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hardware\mp3.c</FilePath>
+            </File>
+            <File>
+              <FileName>mp3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hardware\mp3.h</FilePath>
+            </File>
+            <File>
               <FileName>1602a4.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\hardware\1602a4.c</FilePath>
