@@ -23,17 +23,17 @@
 #define CONFIG_ARM_DELAY_MS 800U
 
 /* Arm preset password */
-/* CONFIG_ARM_PRESET_ENABLE: require preset password to arm (0/1) */
+/* CONFIG_ARM_PRESET_ENABLE: require preset password to arm, 1 = enable (0/1) */
 #define CONFIG_ARM_PRESET_ENABLE 0U
 /* CONFIG_ARM_PRESET_PASSWORD: preset password (length must equal CONFIG_PASSWORD_LEN) */
 #define CONFIG_ARM_PRESET_PASSWORD "1234567"
 
 /* Defuse mode enable (0/1) */
-/* CONFIG_DEFUSE_ENABLE_PASSWORD: allow password input defuse */
+/* CONFIG_DEFUSE_ENABLE_PASSWORD: allow password input defuse, 1 = enable (0/1) */
 #define CONFIG_DEFUSE_ENABLE_PASSWORD 1U
-/* CONFIG_DEFUSE_ENABLE_MANUAL: allow long-press # manual defuse */
+/* CONFIG_DEFUSE_ENABLE_MANUAL: allow long-press # manual defuse, 1 = enable (0/1) */
 #define CONFIG_DEFUSE_ENABLE_MANUAL 1U
-/* CONFIG_DEFUSE_ENABLE_EXTERNAL: allow external defuser defuse */
+/* CONFIG_DEFUSE_ENABLE_EXTERNAL: allow external defuser defuse, 1 = enable (0/1) */
 #define CONFIG_DEFUSE_ENABLE_EXTERNAL 1U
 
 /* LCD backlight */

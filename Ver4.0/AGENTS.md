@@ -23,6 +23,8 @@ Updates:
 - Moved range checks to config_range.h, switched configs to UTF-8 BOM for readable Chinese, and removed max limits where not required.
 
 - Added config toggles for password/manual/external defuse modes, plus optional preset password requirement for arming.
+- When preset arm password is enabled, a wrong entry now clears the input back to stars.
+- Normalized config toggle comments (explicit 1=enable) and kept preset password length check as a typedef guard for Keil compatibility.
 
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.

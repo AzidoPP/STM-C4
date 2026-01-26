@@ -525,6 +525,12 @@ int main(void)
 						memcpy(arm_code, CONFIG_ARM_PRESET_PASSWORD, CONFIG_PASSWORD_LEN + 1);
 						Countdown_Start(now);
 					}
+					else
+					{
+						Password_Reset(arm_input);
+						LCD_ShowPassword(arm_input);
+						arm_last_change_ms = now;
+					}
 					#else
 					memcpy(arm_code, arm_input, CONFIG_PASSWORD_LEN + 1);
 					Countdown_Start(now);
