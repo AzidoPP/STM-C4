@@ -22,6 +22,20 @@
    最小: 0     最大: 5000   典型: 800 */
 #define CONFIG_ARM_DELAY_MS 800U
 
+/* 下包预设密码 */
+/* CONFIG_ARM_PRESET_ENABLE: 下包时必须使用预设密码（0/1） */
+#define CONFIG_ARM_PRESET_ENABLE 0U
+/* CONFIG_ARM_PRESET_PASSWORD: 预设密码（长度必须等于 CONFIG_PASSWORD_LEN） */
+#define CONFIG_ARM_PRESET_PASSWORD "1234567"
+
+/* 拆弹模式开关（0/1） */
+/* CONFIG_DEFUSE_ENABLE_PASSWORD: 允许输入密码拆弹 */
+#define CONFIG_DEFUSE_ENABLE_PASSWORD 1U
+/* CONFIG_DEFUSE_ENABLE_MANUAL: 允许长按 # 手动拆弹 */
+#define CONFIG_DEFUSE_ENABLE_MANUAL 1U
+/* CONFIG_DEFUSE_ENABLE_EXTERNAL: 允许外部拆弹器拆弹 */
+#define CONFIG_DEFUSE_ENABLE_EXTERNAL 1U
+
 /* LCD 背光 */
 /* CONFIG_LCD_BACKLIGHT_PCT: LCD背光板亮度（百分比）
    最小: 0     最大: 100    典型: 50 */

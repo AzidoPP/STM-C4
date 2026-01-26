@@ -101,6 +101,21 @@
 #if (CONFIG_MP3_EXPLOSION_USE_MUSIC > 1)
 #error "CONFIG_MP3_EXPLOSION_USE_MUSIC out of range"
 #endif
+#if (CONFIG_DEFUSE_ENABLE_PASSWORD > 1)
+#error "CONFIG_DEFUSE_ENABLE_PASSWORD out of range"
+#endif
+#if (CONFIG_DEFUSE_ENABLE_MANUAL > 1)
+#error "CONFIG_DEFUSE_ENABLE_MANUAL out of range"
+#endif
+#if (CONFIG_DEFUSE_ENABLE_EXTERNAL > 1)
+#error "CONFIG_DEFUSE_ENABLE_EXTERNAL out of range"
+#endif
+#if (CONFIG_ARM_PRESET_ENABLE > 1)
+#error "CONFIG_ARM_PRESET_ENABLE out of range"
+#endif
+#if CONFIG_ARM_PRESET_ENABLE
+typedef char config_arm_preset_password_len_check[(sizeof(CONFIG_ARM_PRESET_PASSWORD) - 1U) == CONFIG_PASSWORD_LEN ? 1 : -1];
+#endif
 #endif
 
 #endif

@@ -27,12 +27,19 @@ Project File Date:  01/23/2026
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\apps\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling LED.c...
 compiling 1601a.c...
+compiling LED.c...
 compiling main.c...
+user\main.c(44): warning:  #550-D: variable "defuse_pos"  was set but never used
+  static uint8_t defuse_pos = 0;
+user\main.c(127): warning:  #177-D: function "Password_InputLeft"  was declared but never referenced
+  static void Password_InputLeft(char *buf, uint8_t *pos, char key)
+user\main.c(152): warning:  #177-D: function "Password_Match"  was declared but never referenced
+  static uint8_t Password_Match(const char *a, const char *b)
+user\main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=9422 RO-data=370 RW-data=160 ZI-data=1672  
-".\Objects\Project.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=9154 RO-data=370 RW-data=160 ZI-data=1672  
+".\Objects\Project.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

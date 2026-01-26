@@ -519,11 +519,20 @@ int main(void)
 				}
 				if (Password_IsComplete(arm_input) && (now - arm_last_change_ms) >= CONFIG_ARM_DELAY_MS)
 				{
+					#if CONFIG_ARM_PRESET_ENABLE
+					if (Password_Match(arm_input, CONFIG_ARM_PRESET_PASSWORD))
+					{
+						memcpy(arm_code, CONFIG_ARM_PRESET_PASSWORD, CONFIG_PASSWORD_LEN + 1);
+						Countdown_Start(now);
+					}
+					#else
 					memcpy(arm_code, arm_input, CONFIG_PASSWORD_LEN + 1);
 					Countdown_Start(now);
+					#endif
 				}
 				break;
 			case STATE_COUNTDOWN:
+				#if CONFIG_DEFUSE_ENABLE_MANUAL
 				if (defuse_mode == DEFUSE_NONE && hold == '#')
 				{
 					if (hash_hold_ms == 0)
@@ -540,11 +549,16 @@ int main(void)
 				{
 					hash_hold_ms = 0;
 				}
+				#else
+				hash_hold_ms = 0;
+				#endif
 
+				#if CONFIG_DEFUSE_ENABLE_EXTERNAL
 				if (defuse_mode == DEFUSE_NONE && defuser_active)
 				{
 					DefuseAnim_Start(now, DEFUSE_EXTERNAL);
 				}
+				#endif
 
 				if (DefuseAnim_Update(now, defuser_active, hold))
 				{
@@ -552,6 +566,7 @@ int main(void)
 					break;
 				}
 
+				#if CONFIG_DEFUSE_ENABLE_PASSWORD
 				if (defuse_mode == DEFUSE_NONE)
 				{
 					if (key != ' ')
@@ -577,6 +592,15 @@ int main(void)
 						Countdown_UpdateScroll(now);
 					}
 				}
+				#else
+				if (defuse_mode == DEFUSE_NONE)
+				{
+					if ((now - last_defuse_input_ms) > CONFIG_DEFUSE_DISPLAY_HOLD_MS)
+					{
+						Countdown_UpdateScroll(now);
+					}
+				}
+				#endif
 
 				Countdown_UpdateBeep(now);
 				if (beep_active)

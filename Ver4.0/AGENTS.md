@@ -22,6 +22,8 @@ Updates:
 
 - Moved range checks to config_range.h, switched configs to UTF-8 BOM for readable Chinese, and removed max limits where not required.
 
+- Added config toggles for password/manual/external defuse modes, plus optional preset password requirement for arming.
+
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.
 - Confirm countdown duration and timing constants on device.
