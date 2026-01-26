@@ -1824,7 +1824,7 @@
       </Doc>
       <Doc>
         <Name>.\user\config.h</Name>
-        <ColumnNumber>28</ColumnNumber>
+        <ColumnNumber>4</ColumnNumber>
         <TopLine>93</TopLine>
         <CurrentLine>113</CurrentLine>
         <Folding>1</Folding>
@@ -1833,9 +1833,9 @@
       </Doc>
       <Doc>
         <Name>.\hardware\LED.c</Name>
-        <ColumnNumber>0</ColumnNumber>
+        <ColumnNumber>1</ColumnNumber>
         <TopLine>74</TopLine>
-        <CurrentLine>94</CurrentLine>
+        <CurrentLine>96</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

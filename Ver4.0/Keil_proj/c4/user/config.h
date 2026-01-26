@@ -50,10 +50,10 @@
 #define CONFIG_LED_PWM_MAX 1000U
 /* CONFIG_LED_BREATH_PERIOD_MS: 闲置呼吸周期（毫秒）
    最小: 100   最大: 5000   典型: 500 */
-#define CONFIG_LED_BREATH_PERIOD_MS 500U
+#define CONFIG_LED_BREATH_PERIOD_MS 700U
 /* CONFIG_LED_YELLOW_RED_PCT: 黄色中 红/绿 灯 比例（百分比）
    最小: 0     最大: 100    典型: 70 */
-#define CONFIG_LED_YELLOW_RED_PCT 70U
+#define CONFIG_LED_YELLOW_RED_PCT 40U
 
 /* 倒计时 LCD 滚动 */
 /* CONFIG_SCROLL_INTERVAL_MS: 滚动更新间隔（毫秒）
@@ -103,10 +103,10 @@
 #define CONFIG_BUZZER_DUTY_PCT 50U
 /* CONFIG_STARTUP_BEEP_ON_MS: 上电蜂鸣时长（毫秒）
    最小: 10    最大: 500    典型: 60 */
-#define CONFIG_STARTUP_BEEP_ON_MS 60U
+#define CONFIG_STARTUP_BEEP_ON_MS 50U
 /* CONFIG_STARTUP_BEEP_GAP_MS: 上电蜂鸣间隔（毫秒）
    最小: 10    最大: 500    典型: 80 */
-#define CONFIG_STARTUP_BEEP_GAP_MS 80U
+#define CONFIG_STARTUP_BEEP_GAP_MS 50U
 
 /* MP3 */
 /* CONFIG_MP3_VOLUME: MP3 音量（0-30）
