@@ -4,6 +4,7 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
+- Rewrote Ver4.0/README.md to fully include V4说明.md content with normalized language, condensed code, and a clear architecture overview.
 - Renamed LCD driver to 1601a.c/1601a.h, added backlight control, updated Keil project references.
 - Added config constants in user/config.h and wired timing/ratios (buzzer 3600 Hz, scroll speed, beep formula, LED yellow ratio).
 - Updated countdown scroll to "***" with faster sweep and adjusted beep timing logic.
