@@ -24,7 +24,7 @@
 
 /* 下包预设密码 */
 /* CONFIG_ARM_PRESET_ENABLE: 下包时必须使用预设密码 1为启用（0/1） */
-#define CONFIG_ARM_PRESET_ENABLE 1U
+#define CONFIG_ARM_PRESET_ENABLE 0U
 /* CONFIG_ARM_PRESET_PASSWORD: 预设密码（长度必须等于 CONFIG_PASSWORD_LEN） */
 #define CONFIG_ARM_PRESET_PASSWORD "1234567"
 
@@ -80,7 +80,7 @@
 /* 拆弹时间设置 */
 /* CONFIG_LONG_PRESS_MS: 长按阈值（毫秒）
    最小: 200   最大: 3000   典型: 1000 */
-#define CONFIG_LONG_PRESS_MS 1000U
+#define CONFIG_LONG_PRESS_MS 200U
 /* CONFIG_MANUAL_DEFUSE_MS: 手动拆弹时间（毫秒）
    最小: 1000  最大: 无     典型: 10000 */
 #define CONFIG_MANUAL_DEFUSE_MS 10000U

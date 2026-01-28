@@ -312,12 +312,12 @@ Section Cross References
     main.o(i.main) refers to main.o(i.LED_Breath) for LED_Breath
     main.o(i.main) refers to main.o(i.Password_InputRight) for Password_InputRight
     main.o(i.main) refers to main.o(i.Password_IsComplete) for Password_IsComplete
-    main.o(i.main) refers to main.o(i.Password_Match) for Password_Match
     main.o(i.main) refers to main.o(i.Countdown_Start) for Countdown_Start
     main.o(i.main) refers to main.o(i.DefuseAnim_Start) for DefuseAnim_Start
     main.o(i.main) refers to main.o(i.DefuseAnim_Update) for DefuseAnim_Update
     main.o(i.main) refers to main.o(i.Defuse_Success) for Defuse_Success
     main.o(i.main) refers to main.o(i.Password_InputLeft) for Password_InputLeft
+    main.o(i.main) refers to main.o(i.Password_Match) for Password_Match
     main.o(i.main) refers to main.o(i.Countdown_UpdateScroll) for Countdown_UpdateScroll
     main.o(i.main) refers to main.o(i.Countdown_UpdateBeep) for Countdown_UpdateBeep
     main.o(i.main) refers to led.o(i.LED_SetColor) for LED_SetColor
@@ -1224,26 +1224,26 @@ Image Symbol Table
     i.USART_SendData                         0x08001d94   Section        0  stm32f10x_usart.o(i.USART_SendData)
     i.UsageFault_Handler                     0x08001d9c   Section        0  stm32f10x_it.o(i.UsageFault_Handler)
     i.main                                   0x08001da0   Section        0  main.o(i.main)
-    i.mp3_Init                               0x08001fd8   Section        0  mp3.o(i.mp3_Init)
-    i.mp3_boom_music                         0x08001fe0   Section        0  mp3.o(i.mp3_boom_music)
-    i.mp3_over                               0x0800201c   Section        0  mp3.o(i.mp3_over)
-    x$fpl$fadd                               0x08002028   Section      196  faddsub_clz.o(x$fpl$fadd)
-    _fadd1                                   0x08002037   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    x$fpl$fcmpinf                            0x080020ec   Section       24  fcmpi.o(x$fpl$fcmpinf)
-    x$fpl$fdiv                               0x08002104   Section      388  fdiv.o(x$fpl$fdiv)
-    _fdiv1                                   0x08002105   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    x$fpl$ffixu                              0x08002288   Section       62  ffixu.o(x$fpl$ffixu)
-    x$fpl$ffltu                              0x080022c8   Section       38  fflt_clz.o(x$fpl$ffltu)
-    x$fpl$fleqf                              0x080022f0   Section      104  fleqf.o(x$fpl$fleqf)
-    x$fpl$fmul                               0x08002358   Section      258  fmul.o(x$fpl$fmul)
-    x$fpl$fnaninf                            0x0800245a   Section      140  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fretinf                            0x080024e6   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$fsub                               0x080024f0   Section      234  faddsub_clz.o(x$fpl$fsub)
-    _fsub1                                   0x080024ff   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    .constdata                               0x080025da   Section      100  1601a.o(.constdata)
-    x$fpl$usenofp                            0x080025da   Section        0  usenofp.o(x$fpl$usenofp)
-    lcd_glyph_chars                          0x080025da   Data          12  1601a.o(.constdata)
-    lcd_glyphs                               0x080025e6   Data          88  1601a.o(.constdata)
+    i.mp3_Init                               0x08001fb8   Section        0  mp3.o(i.mp3_Init)
+    i.mp3_boom_music                         0x08001fc0   Section        0  mp3.o(i.mp3_boom_music)
+    i.mp3_over                               0x08001ffc   Section        0  mp3.o(i.mp3_over)
+    x$fpl$fadd                               0x08002008   Section      196  faddsub_clz.o(x$fpl$fadd)
+    _fadd1                                   0x08002017   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    x$fpl$fcmpinf                            0x080020cc   Section       24  fcmpi.o(x$fpl$fcmpinf)
+    x$fpl$fdiv                               0x080020e4   Section      388  fdiv.o(x$fpl$fdiv)
+    _fdiv1                                   0x080020e5   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    x$fpl$ffixu                              0x08002268   Section       62  ffixu.o(x$fpl$ffixu)
+    x$fpl$ffltu                              0x080022a8   Section       38  fflt_clz.o(x$fpl$ffltu)
+    x$fpl$fleqf                              0x080022d0   Section      104  fleqf.o(x$fpl$fleqf)
+    x$fpl$fmul                               0x08002338   Section      258  fmul.o(x$fpl$fmul)
+    x$fpl$fnaninf                            0x0800243a   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x080024c6   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$fsub                               0x080024d0   Section      234  faddsub_clz.o(x$fpl$fsub)
+    _fsub1                                   0x080024df   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    .constdata                               0x080025ba   Section      100  1601a.o(.constdata)
+    x$fpl$usenofp                            0x080025ba   Section        0  usenofp.o(x$fpl$usenofp)
+    lcd_glyph_chars                          0x080025ba   Data          12  1601a.o(.constdata)
+    lcd_glyphs                               0x080025c6   Data          88  1601a.o(.constdata)
     .data                                    0x20000000   Section       20  stm32f10x_rcc.o(.data)
     APBAHBPrescTable                         0x20000000   Data          16  stm32f10x_rcc.o(.data)
     ADCPrescTable                            0x20000010   Data           4  stm32f10x_rcc.o(.data)
@@ -1514,31 +1514,31 @@ Image Symbol Table
     USART_Init                               0x08001cbd   Thumb Code   210  stm32f10x_usart.o(i.USART_Init)
     USART_SendData                           0x08001d95   Thumb Code     8  stm32f10x_usart.o(i.USART_SendData)
     UsageFault_Handler                       0x08001d9d   Thumb Code     4  stm32f10x_it.o(i.UsageFault_Handler)
-    main                                     0x08001da1   Thumb Code   512  main.o(i.main)
-    mp3_Init                                 0x08001fd9   Thumb Code     8  mp3.o(i.mp3_Init)
-    mp3_boom_music                           0x08001fe1   Thumb Code    54  mp3.o(i.mp3_boom_music)
-    mp3_over                                 0x0800201d   Thumb Code    12  mp3.o(i.mp3_over)
-    __aeabi_fadd                             0x08002029   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    _fadd                                    0x08002029   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
-    __fpl_fcmp_Inf                           0x080020ed   Thumb Code    24  fcmpi.o(x$fpl$fcmpinf)
-    __aeabi_fdiv                             0x08002105   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    _fdiv                                    0x08002105   Thumb Code   384  fdiv.o(x$fpl$fdiv)
-    __aeabi_f2uiz                            0x08002289   Thumb Code     0  ffixu.o(x$fpl$ffixu)
-    _ffixu                                   0x08002289   Thumb Code    62  ffixu.o(x$fpl$ffixu)
-    __aeabi_ui2f                             0x080022c9   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
-    _ffltu                                   0x080022c9   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
-    __aeabi_cfcmple                          0x080022f1   Thumb Code     0  fleqf.o(x$fpl$fleqf)
-    _fcmple                                  0x080022f1   Thumb Code   104  fleqf.o(x$fpl$fleqf)
-    __fpl_fcmple_InfNaN                      0x08002343   Thumb Code     0  fleqf.o(x$fpl$fleqf)
-    __aeabi_fmul                             0x08002359   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x08002359   Thumb Code   258  fmul.o(x$fpl$fmul)
-    __fpl_fnaninf                            0x0800245b   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    __fpl_fretinf                            0x080024e7   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    __aeabi_fsub                             0x080024f1   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    _fsub                                    0x080024f1   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
-    __I$use$fp                               0x080025da   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08002640   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08002660   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08001da1   Thumb Code   486  main.o(i.main)
+    mp3_Init                                 0x08001fb9   Thumb Code     8  mp3.o(i.mp3_Init)
+    mp3_boom_music                           0x08001fc1   Thumb Code    54  mp3.o(i.mp3_boom_music)
+    mp3_over                                 0x08001ffd   Thumb Code    12  mp3.o(i.mp3_over)
+    __aeabi_fadd                             0x08002009   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    _fadd                                    0x08002009   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
+    __fpl_fcmp_Inf                           0x080020cd   Thumb Code    24  fcmpi.o(x$fpl$fcmpinf)
+    __aeabi_fdiv                             0x080020e5   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    _fdiv                                    0x080020e5   Thumb Code   384  fdiv.o(x$fpl$fdiv)
+    __aeabi_f2uiz                            0x08002269   Thumb Code     0  ffixu.o(x$fpl$ffixu)
+    _ffixu                                   0x08002269   Thumb Code    62  ffixu.o(x$fpl$ffixu)
+    __aeabi_ui2f                             0x080022a9   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
+    _ffltu                                   0x080022a9   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
+    __aeabi_cfcmple                          0x080022d1   Thumb Code     0  fleqf.o(x$fpl$fleqf)
+    _fcmple                                  0x080022d1   Thumb Code   104  fleqf.o(x$fpl$fleqf)
+    __fpl_fcmple_InfNaN                      0x08002323   Thumb Code     0  fleqf.o(x$fpl$fleqf)
+    __aeabi_fmul                             0x08002339   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08002339   Thumb Code   258  fmul.o(x$fpl$fmul)
+    __fpl_fnaninf                            0x0800243b   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x080024c7   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    __aeabi_fsub                             0x080024d1   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    _fsub                                    0x080024d1   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
+    __I$use$fp                               0x080025ba   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08002620   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08002640   Number         0  anon$$obj.o(Region$$Table)
     g_time_ms                                0x20000014   Data           4  systick.o(.data)
     __libspace_start                         0x200000c4   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x20000124   Data           0  libspace.o(.bss)
@@ -1551,9 +1551,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002700, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000026e0, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00002660, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00002640, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1742,46 +1742,46 @@ Memory Map of the image
     0x08001cbc   0x08001cbc   0x000000d8   Code   RO         2967    i.USART_Init        stm32f10x_usart.o
     0x08001d94   0x08001d94   0x00000008   Code   RO         2977    i.USART_SendData    stm32f10x_usart.o
     0x08001d9c   0x08001d9c   0x00000004   Code   RO         3744    i.UsageFault_Handler  stm32f10x_it.o
-    0x08001da0   0x08001da0   0x00000238   Code   RO         3622    i.main              main.o
-    0x08001fd8   0x08001fd8   0x00000008   Code   RO         3556    i.mp3_Init          mp3.o
-    0x08001fe0   0x08001fe0   0x0000003c   Code   RO         3558    i.mp3_boom_music    mp3.o
-    0x0800201c   0x0800201c   0x0000000c   Code   RO         3559    i.mp3_over          mp3.o
-    0x08002028   0x08002028   0x000000c4   Code   RO         3812    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
-    0x080020ec   0x080020ec   0x00000018   Code   RO         3837    x$fpl$fcmpinf       fz_ws.l(fcmpi.o)
-    0x08002104   0x08002104   0x00000184   Code   RO         3819    x$fpl$fdiv          fz_ws.l(fdiv.o)
-    0x08002288   0x08002288   0x0000003e   Code   RO         3822    x$fpl$ffixu         fz_ws.l(ffixu.o)
-    0x080022c6   0x080022c6   0x00000002   PAD
-    0x080022c8   0x080022c8   0x00000026   Code   RO         3826    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
-    0x080022ee   0x080022ee   0x00000002   PAD
-    0x080022f0   0x080022f0   0x00000068   Code   RO         3832    x$fpl$fleqf         fz_ws.l(fleqf.o)
-    0x08002358   0x08002358   0x00000102   Code   RO         3834    x$fpl$fmul          fz_ws.l(fmul.o)
-    0x0800245a   0x0800245a   0x0000008c   Code   RO         3839    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
-    0x080024e6   0x080024e6   0x0000000a   Code   RO         3841    x$fpl$fretinf       fz_ws.l(fretinf.o)
-    0x080024f0   0x080024f0   0x000000ea   Code   RO         3814    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
-    0x080025da   0x080025da   0x00000000   Code   RO         3843    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x080025da   0x080025da   0x00000064   Data   RO         3280    .constdata          1601a.o
-    0x0800263e   0x0800263e   0x00000002   PAD
-    0x08002640   0x08002640   0x00000020   Data   RO         3996    Region$$Table       anon$$obj.o
+    0x08001da0   0x08001da0   0x00000218   Code   RO         3622    i.main              main.o
+    0x08001fb8   0x08001fb8   0x00000008   Code   RO         3556    i.mp3_Init          mp3.o
+    0x08001fc0   0x08001fc0   0x0000003c   Code   RO         3558    i.mp3_boom_music    mp3.o
+    0x08001ffc   0x08001ffc   0x0000000c   Code   RO         3559    i.mp3_over          mp3.o
+    0x08002008   0x08002008   0x000000c4   Code   RO         3812    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
+    0x080020cc   0x080020cc   0x00000018   Code   RO         3837    x$fpl$fcmpinf       fz_ws.l(fcmpi.o)
+    0x080020e4   0x080020e4   0x00000184   Code   RO         3819    x$fpl$fdiv          fz_ws.l(fdiv.o)
+    0x08002268   0x08002268   0x0000003e   Code   RO         3822    x$fpl$ffixu         fz_ws.l(ffixu.o)
+    0x080022a6   0x080022a6   0x00000002   PAD
+    0x080022a8   0x080022a8   0x00000026   Code   RO         3826    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
+    0x080022ce   0x080022ce   0x00000002   PAD
+    0x080022d0   0x080022d0   0x00000068   Code   RO         3832    x$fpl$fleqf         fz_ws.l(fleqf.o)
+    0x08002338   0x08002338   0x00000102   Code   RO         3834    x$fpl$fmul          fz_ws.l(fmul.o)
+    0x0800243a   0x0800243a   0x0000008c   Code   RO         3839    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x080024c6   0x080024c6   0x0000000a   Code   RO         3841    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x080024d0   0x080024d0   0x000000ea   Code   RO         3814    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
+    0x080025ba   0x080025ba   0x00000000   Code   RO         3843    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x080025ba   0x080025ba   0x00000064   Data   RO         3280    .constdata          1601a.o
+    0x0800261e   0x0800261e   0x00000002   PAD
+    0x08002620   0x08002620   0x00000020   Data   RO         3996    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08002660, Size: 0x00000728, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08002640, Size: 0x00000728, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08002660   0x00000014   Data   RW         1805    .data               stm32f10x_rcc.o
-    0x20000014   0x08002674   0x00000004   Data   RW         3230    .data               systick.o
-    0x20000018   0x08002678   0x0000000e   Data   RW         3281    .data               1601a.o
-    0x20000026   0x08002686   0x00000002   PAD
-    0x20000028   0x08002688   0x00000008   Data   RW         3392    .data               matrixkey.o
-    0x20000030   0x08002690   0x0000000d   Data   RW         3448    .data               led.o
-    0x2000003d   0x0800269d   0x00000003   PAD
-    0x20000040   0x080026a0   0x0000005d   Data   RW         3624    .data               main.o
-    0x2000009d   0x080026fd   0x00000003   PAD
+    0x20000000   0x08002640   0x00000014   Data   RW         1805    .data               stm32f10x_rcc.o
+    0x20000014   0x08002654   0x00000004   Data   RW         3230    .data               systick.o
+    0x20000018   0x08002658   0x0000000e   Data   RW         3281    .data               1601a.o
+    0x20000026   0x08002666   0x00000002   PAD
+    0x20000028   0x08002668   0x00000008   Data   RW         3392    .data               matrixkey.o
+    0x20000030   0x08002670   0x0000000d   Data   RW         3448    .data               led.o
+    0x2000003d   0x0800267d   0x00000003   PAD
+    0x20000040   0x08002680   0x0000005d   Data   RW         3624    .data               main.o
+    0x2000009d   0x080026dd   0x00000003   PAD
     0x200000a0        -       0x0000000a   Zero   RW         3561    .bss                mp3.o
-    0x200000aa   0x080026fd   0x00000002   PAD
+    0x200000aa   0x080026dd   0x00000002   PAD
     0x200000ac        -       0x00000018   Zero   RW         3623    .bss                main.o
     0x200000c4        -       0x00000060   Zero   RW         3870    .bss                c_w.l(libspace.o)
-    0x20000124   0x080026fd   0x00000004   PAD
+    0x20000124   0x080026dd   0x00000004   PAD
     0x20000128        -       0x00000200   Zero   RW            2    HEAP                startup_stm32f10x_md.o
     0x20000328        -       0x00000400   Zero   RW            1    STACK               startup_stm32f10x_md.o
 
@@ -1797,7 +1797,7 @@ Image component sizes
          0          0          0          0          0       4508   core_cm3.o
         70          0          0          0          0        874   delay.o
        896        116          0         13          0       7095   led.o
-      2228        248          0         93         24      12531   main.o
+      2196        242          0         93         24      12511   main.o
        472         60          0          8          0       3269   matrixkey.o
        112         12          0          0          0     204180   misc.o
        156         10          0          0         10       2184   mp3.o
@@ -1813,7 +1813,7 @@ Image component sizes
        176         24          0          4          0       2266   systick.o
 
     ----------------------------------------------------------------------
-      7630        740        370        160       1572     365475   Object Totals
+      7598        734        370        160       1572     365455   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         30          0          2          8          2          0   (incl. Padding)
 
@@ -1874,15 +1874,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      9454        856        370        160       1672     360435   Grand Totals
-      9454        856        370        160       1672     360435   ELF Image Totals
-      9454        856        370        160          0          0   ROM Totals
+      9422        850        370        160       1672     360415   Grand Totals
+      9422        850        370        160       1672     360415   ELF Image Totals
+      9422        850        370        160          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 9824 (   9.59kB)
+    Total RO  Size (Code + RO Data)                 9792 (   9.56kB)
     Total RW  Size (RW Data + ZI Data)              1832 (   1.79kB)
-    Total ROM Size (Code + RO Data + RW Data)       9984 (   9.75kB)
+    Total ROM Size (Code + RO Data + RW Data)       9952 (   9.72kB)
 
 ==============================================================================
 
