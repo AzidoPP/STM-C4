@@ -52,13 +52,19 @@ static uint8_t beep_active = 0;
 static uint32_t scroll_next_ms = 0;
 static uint16_t scroll_pos = 0;
 static uint8_t scroll_dir = 0;
-static unsigned char scroll_pattern[CONFIG_SCROLL_PATTERN_LEN + 1] = "***";
+static unsigned char scroll_line[CONFIG_LCD_COLS + 1];
 
 static uint32_t last_defuse_input_ms = 0;
 static uint32_t hash_hold_ms = 0;
 
+static char success_stars[CONFIG_PASSWORD_LEN + 1];
+static uint8_t success_show_code = 0;
+static uint32_t success_next_ms = 0;
+
 static uint8_t startup_beep_state = 0;
 static uint32_t startup_beep_next_ms = 0;
+static uint8_t success_beep_state = 0;
+static uint32_t success_beep_next_ms = 0;
 
 static DefuseAnim defuse_anim;
 
@@ -163,14 +169,36 @@ static void LCD_ClearLine(void)
 static void LCD_ShowPassword(const char *buf)
 {
 	LCD_ClearLine();
-	LCD_WRITE_StrDATA((unsigned char *)buf, CONFIG_PASSWORD_COL);
+	LCD_WRITE_StrDATA_Password((unsigned char *)buf, CONFIG_PASSWORD_COL, CONFIG_PASSWORD_LEN);
 }
 
 static void LCD_ShowScroll(uint16_t pos)
 {
-	LCD_ClearLine();
-	LCD_WRITE_StrDATA(scroll_pattern, (unsigned char)pos);
+	uint16_t max_pos = (uint16_t)((CONFIG_LCD_COLS - 1U) / 2U);
+	uint16_t i;
+
+	if (pos > max_pos)
+	{
+		pos = max_pos;
+	}
+	for (i = 0; i < CONFIG_LCD_COLS; i++)
+	{
+		scroll_line[i] = ' ';
+	}
+	scroll_line[CONFIG_LCD_COLS] = '\0';
+	if (pos > 0U)
+	{
+		scroll_line[pos - 1U] = '*';
+	}
+	scroll_line[pos] = '*';
+	if (pos < max_pos)
+	{
+		scroll_line[pos + 1U] = '*';
+	}
+	LCD_WRITE_StrDATA(scroll_line, 0);
 }
+
+
 
 static void LED_Breath(uint32_t now)
 {
@@ -225,6 +253,58 @@ static void StartupBeep_Update(uint32_t now)
 	}
 }
 
+static void SuccessBeep_Start(uint32_t now)
+{
+	success_beep_state = 0;
+	success_beep_next_ms = now;
+	Buzzer_SetFreq(CONFIG_BUZZER_STARTUP_FREQ_HZ);
+}
+
+static void SuccessBeep_Update(uint32_t now)
+{
+	if (success_beep_state >= 6)
+	{
+		return;
+	}
+	if (now < success_beep_next_ms)
+	{
+		return;
+	}
+	switch (success_beep_state)
+	{
+		case 0:
+			Buzzer_On();
+			success_beep_next_ms = now + CONFIG_STARTUP_BEEP_ON_MS;
+			success_beep_state = 1;
+			break;
+		case 1:
+			Buzzer_Off();
+			success_beep_next_ms = now + CONFIG_STARTUP_BEEP_GAP_MS;
+			success_beep_state = 2;
+			break;
+		case 2:
+			Buzzer_On();
+			success_beep_next_ms = now + CONFIG_STARTUP_BEEP_ON_MS;
+			success_beep_state = 3;
+			break;
+		case 3:
+			Buzzer_Off();
+			success_beep_next_ms = now + CONFIG_STARTUP_BEEP_GAP_MS;
+			success_beep_state = 4;
+			break;
+		case 4:
+			Buzzer_On();
+			success_beep_next_ms = now + CONFIG_STARTUP_BEEP_ON_MS;
+			success_beep_state = 5;
+			break;
+		case 5:
+			Buzzer_Off();
+			success_beep_state = 6;
+			break;
+		default:
+			break;
+	}
+}
 static void Countdown_Start(uint32_t now)
 {
 	countdown_end_ms = now + CONFIG_COUNTDOWN_MS;
@@ -286,14 +366,14 @@ static void Countdown_UpdateScroll(uint32_t now)
 		return;
 	}
 	scroll_next_ms = now + CONFIG_SCROLL_INTERVAL_MS;
-	max_pos = (uint16_t)(CONFIG_LCD_COLS - CONFIG_SCROLL_PATTERN_LEN);
+	max_pos = (uint16_t)((CONFIG_LCD_COLS - 1U) / 2U);
 	if (scroll_dir == 0)
 	{
 		if (scroll_pos < max_pos)
 		{
 			scroll_pos++;
 		}
-		if (scroll_pos >= max_pos)
+		else
 		{
 			scroll_dir = 1;
 		}
@@ -304,7 +384,7 @@ static void Countdown_UpdateScroll(uint32_t now)
 		{
 			scroll_pos--;
 		}
-		if (scroll_pos == 0)
+		else
 		{
 			scroll_dir = 0;
 		}
@@ -388,65 +468,20 @@ static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active, char hold
 
 static void Defuse_Success(uint32_t now)
 {
-	uint8_t i;
-	( void )now;
 	Buzzer_Off();
 	Relay_Off();
 	beep_active = 0;
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
-	Buzzer_SetFreq(CONFIG_BUZZER_STARTUP_FREQ_HZ);
 
+	Password_Reset(success_stars);
+	success_show_code = 0;
+	success_next_ms = now + CONFIG_DEFUSE_BLINK_MS;
 	LCD_Backlight_On();
-	LCD_ClearLine();
-	for (i = 0; i < CONFIG_DEFUSE_FLASH_TOGGLES; i++)
-	{
-		if (i & 1U)
-		{
-			LED_AllOff();
-			Buzzer_Off();
-		}
-		else
-		{
-			LED_SetRed(LED_PWM_MAX);
-			Buzzer_On();
-		}
-		LCD_Backlight_Toggle();
-		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
-	}
-
-	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
-	Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
-	for (i = 0; i < CONFIG_DEFUSE_FLASH_TOGGLES; i++)
-	{
-		if (i & 1U)
-		{
-			LED_AllOff();
-			Buzzer_Off();
-		}
-		else
-		{
-			LED_SetRed(LED_PWM_MAX);
-			Buzzer_On();
-		}
-		LCD_Backlight_Toggle();
-		Delay_ms(CONFIG_DEFUSE_FLASH_TOGGLE_MS);
-	}
-	Buzzer_Off();
-
-	LCD_ClearLine();
-	LCD_Backlight_Off();
-	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
-	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
-	LCD_Backlight_On();
-	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
-	LCD_ClearLine();
-	LCD_Backlight_Off();
-	Delay_ms(CONFIG_DEFUSE_BLINK_MS);
-	LCD_WRITE_StrDATA((unsigned char *)arm_code, CONFIG_PASSWORD_COL);
-	LCD_Backlight_On();
+	LCD_ShowPassword(success_stars);
 
 	LED_SetGreen(LED_PWM_MAX);
+	SuccessBeep_Start(now);
 	app_state = STATE_DEFUSE_SUCCESS;
 }
 
@@ -623,12 +658,26 @@ int main(void)
 					Explosion_Start(now);
 				}
 				break;
-			case STATE_DEFUSE_SUCCESS:
-				LED_SetGreen(LED_PWM_MAX);
-				break;
-			case STATE_EXPLODED:
-				LED_SetYellow(LED_PWM_MAX);
-				break;
+		case STATE_DEFUSE_SUCCESS:
+			LED_SetGreen(LED_PWM_MAX);
+			SuccessBeep_Update(now);
+			if (now >= success_next_ms)
+			{
+				success_show_code = (uint8_t)(!success_show_code);
+				success_next_ms = now + CONFIG_DEFUSE_BLINK_MS;
+				if (success_show_code)
+				{
+					LCD_ShowPassword(arm_code);
+				}
+				else
+				{
+					LCD_ShowPassword(success_stars);
+				}
+			}
+			break;
+		case STATE_EXPLODED:
+			LED_SetYellow(LED_PWM_MAX);
+			break;
 		default:
 			LED_Breath(now);
 			break;

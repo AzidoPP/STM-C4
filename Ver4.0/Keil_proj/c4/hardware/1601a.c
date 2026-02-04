@@ -254,6 +254,64 @@ void LCD_WRITE_StrDATA(unsigned char *str, unsigned char col)
 	}
 }
 
+void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned char max_len)
+{
+	unsigned char i;
+	for (i = 0; i < max_len && str[i] != '\0'; i++)
+	{
+		unsigned char user_col = (unsigned char)(col + i);
+		uint8_t phys_col;
+		char ch;
+		int idx;
+		uint8_t slot;
+
+		if (user_col >= LCD_COLS)
+		{
+			break;
+		}
+
+		phys_col = (uint8_t)((LCD_COLS - 1) - user_col);
+		ch = (char)str[i];
+		if (ch == ' ')
+		{
+			LCD_SetCursorPhysical(phys_col);
+			LCD_WRITE_ByteDATA(' ');
+			continue;
+		}
+
+		idx = LCD_GlyphIndex(ch);
+		if (idx >= 0)
+		{
+			slot = (uint8_t)(i % 8U);
+			if (lcd_slots[slot] != ch)
+			{
+				LCD_LoadGlyph(slot, lcd_glyphs[idx]);
+				lcd_slots[slot] = ch;
+			}
+			LCD_SetCursorPhysical(phys_col);
+			LCD_WRITE_ByteDATA(slot);
+		}
+		else
+		{
+			LCD_SetCursorPhysical(phys_col);
+			LCD_WRITE_ByteDATA(' ');
+		}
+	}
+
+	for (; i < max_len; i++)
+	{
+		unsigned char user_col = (unsigned char)(col + i);
+		uint8_t phys_col;
+		if (user_col >= LCD_COLS)
+		{
+			break;
+		}
+		phys_col = (uint8_t)((LCD_COLS - 1) - user_col);
+		LCD_SetCursorPhysical(phys_col);
+		LCD_WRITE_ByteDATA(' ');
+	}
+}
+
 void LCD_Clear(void)
 {
 	LCD_WRITE_CMD(0x01);

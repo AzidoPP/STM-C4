@@ -7,6 +7,7 @@ void LCD_INIT(void);
 void LCD_WRITE_CMD(unsigned char cmd);
 void LCD_WRITE_ByteDATA(unsigned char data);
 void LCD_WRITE_StrDATA(unsigned char *str, unsigned char col);
+void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned char max_len);
 void LCD_Clear(void);
 void LCD_Backlight_Set(uint16_t level);
 void LCD_Backlight_On(void);

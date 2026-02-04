@@ -97,7 +97,7 @@
 /* 拆弹成功效果 */
 /* CONFIG_DEFUSE_FLASH_TOGGLE_MS: 拆弹成功动画闪烁切换时间（毫秒）
    最小: 10    最大: 200    典型: 50 */
-#define CONFIG_DEFUSE_FLASH_TOGGLE_MS 50U
+#define CONFIG_DEFUSE_FLASH_TOGGLE_MS 10U
 /* CONFIG_DEFUSE_FLASH_TOGGLES: 拆弹成功动画闪烁次数
    最小: 1     最大: 20     典型: 8 */
 #define CONFIG_DEFUSE_FLASH_TOGGLES 8U
@@ -131,7 +131,7 @@
 /* CONFIG_MP3_EXPLOSION_ENABLE: 爆炸时播放 MP3（0/1） */
 #define CONFIG_MP3_EXPLOSION_ENABLE 1U
 /* CONFIG_MP3_EXPLOSION_USE_MUSIC: 爆炸音效是否启用音乐盒 1为启用（0/1） */
-#define CONFIG_MP3_EXPLOSION_USE_MUSIC 1U
+#define CONFIG_MP3_EXPLOSION_USE_MUSIC 0U
 
 #include "config_range.h"
 
