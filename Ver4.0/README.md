@@ -1,4 +1,4 @@
-# STM-C4 Ver4.0
+﻿# STM-C4 Ver4.0
 
 [![GitHub](https://img.shields.io/badge/GitHub-azidopp-181717?style=flat&logo=github&logoColor=white)](https://github.com/AzidoPP/STM-C4)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?logo=opensourceinitiative&logoColor=white)](https://github.com/AzidoPP/STM-C4/blob/main/LICENSE)
@@ -14,7 +14,7 @@ OSHWHUB 硬件开源地址：待补充
 [English](#english)
 ### 实物图：
 
-![Picture](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/model-V4-pic.png)
+![Picture](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/model-V4-pic.png)
 
 ### 快速开始
 1. PCB 打样
@@ -26,15 +26,15 @@ OSHWHUB 硬件开源地址：待补充
    - 9V 电池建议使用碱性电池（输出电流更稳定）
 3. 焊接与装配
    - LCD1601 转接板焊接示例：
-     ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic1.png)
-     ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic2.png)
+     ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic1.png)
+     ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic2.png)
    - 3D 打印外壳/填充件（可选）：见 [3DP_Models](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/3DP_Models)
    - 完整组装：
-     ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic4.png)
+     ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic4.png)
 4. 烧录固件
    - Keil 工程：[Keil_proj/c4](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/Keil_proj/c4)
    - ST-Link V2 接口位置：
-     ![ST-Link header pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic3.png)
+     ![ST-Link header pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic3.png)
    - 引脚顺序：3.3V / SWDIO / SWCLK / GND
 5. MP3 音效（可选）
    - 将 [TFCard_Files/](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files) 内容拷贝到 TF 卡根目录
@@ -83,7 +83,7 @@ OSHWHUB hardware page: TBD
 
 ### Real Picture：
 
-![Picture](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/model-V4-pic.png)
+![Picture](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/model-V4-pic.png)
 
 ### Quick Start
 1. PCB fabrication
@@ -95,15 +95,15 @@ OSHWHUB hardware page: TBD
    - 9V alkaline batteries are recommended for more stable current output
 3. Soldering & assembly
    - LCD1601 adapter soldering example:
-     ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic1.png)
-     ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic2.png)
+     ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic1.png)
+     ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic2.png)
    - 3D printed shell/fillers (optional): see [3DP_Models](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/3DP_Models)
    - Fully assembled board:
-     ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic4.png)
+     ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic4.png)
 4. Flash firmware
    - Keil project: [Keil_proj/c4](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/Keil_proj/c4)
    - ST-Link V2 header location:
-     ![ST-Link header pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/Ver4.0/pic/pic3.png)
+     ![ST-Link header pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic3.png)
    - Pin order: 3.3V / SWDIO / SWCLK / GND
 5. MP3 audio (optional)
    - Copy [TFCard_Files/](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files) contents to the TF card root
@@ -139,3 +139,4 @@ For deeper details and theory, see the Chinese document: [V4说明.md](https://g
 ### Disclaimer
 This project is a visual/electronic replica and does not have any real functionality or danger.  
 Any modification, misuse, or illegal use is not associated with the author, and the author assumes no liability.
+

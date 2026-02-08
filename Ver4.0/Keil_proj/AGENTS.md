@@ -4,6 +4,7 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
+- Converted all README image links to full GitHub raw URLs (root, Ver4.0, and V1.0 purchase record gallery).
 - Added a full English section to `Ver4.0/README.md` and converted all file/image links to absolute GitHub URLs.
 - Refined Ver4.0/README.md with clean CN/EN formatting and direct folder links in the soldering/assembly section.
 - Updated Ver4.0/README.md with in-section images, direct config links, quick-start tuning items, and MIT badge logo.
