@@ -20,6 +20,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
 1. PCB 打样
    - 主板 Gerber：[PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD 转接板 Gerber：[PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
+   - 立创EDA 原始工程文件（本仓库）：[EasyEDA_proj](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/EasyEDA_proj)
    - 详情工程请参考OSHWHUB开源硬件平台[工程](https://oshwhub.com/azidopp/CS2-C4)
 2. 采购 BOM
    - BOM 文件：[BOM/BOM.xlsx](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/BOM/BOM.xlsx)
@@ -89,6 +90,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
 1. PCB fabrication
    - Main board Gerber: [PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD adapter Gerber: [PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
+   - EasyEDA original project files (this repo): [EasyEDA_proj](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/EasyEDA_proj)
    - See OSHWHUB for the full hardware [project files](https://oshwhub.com/azidopp/CS2-C4)
 2. BOM purchase
    - BOM file: [BOM/BOM.xlsx](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/BOM/BOM.xlsx)
@@ -139,4 +141,3 @@ For deeper details and theory, go to [Github repo](https://github.com/AzidoPP/ST
 ### Disclaimer
 This project is a visual/electronic replica and does not have any real functionality or danger.  
 Any modification, misuse, or illegal use is not associated with the author, and the author assumes no liability.
-
