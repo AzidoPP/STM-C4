@@ -8,6 +8,9 @@
 #if (CONFIG_LCD_COLS < 8) || (CONFIG_LCD_COLS > 16)
 #error "CONFIG_LCD_COLS out of range"
 #endif
+#if (CONFIG_LCD_NORMAL_MOUNT > 1)
+#error "CONFIG_LCD_NORMAL_MOUNT out of range"
+#endif
 #if (CONFIG_PASSWORD_COL > (CONFIG_LCD_COLS - CONFIG_PASSWORD_LEN))
 #error "CONFIG_PASSWORD_COL out of range"
 #endif

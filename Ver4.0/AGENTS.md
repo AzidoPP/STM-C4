@@ -4,6 +4,7 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
+- Added LCD normal-mount config and moved orientation handling (column mapping + glyph rotation) into the 1601a driver so app logic stays logical-only.
 - Reworked countdown scroll rendering to draw stars at i-1/i/i+1 within bounds using a single moving position.
 - Added symmetric scroll blur ramping at both edges and a 3-beep defuse-success tone using the startup frequency.
 - Adjusted countdown scroll range to 0..mid screen with edge-length ramping (* / ** / ***) and reworked defuse-success to blink stars vs code without backlight flashing.

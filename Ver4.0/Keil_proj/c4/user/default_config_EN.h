@@ -12,6 +12,8 @@
 /* CONFIG_LCD_COLS: LCD columns
    Min: 8     Max: 16     Typical: 16 */
 #define CONFIG_LCD_COLS 16U
+/* CONFIG_LCD_NORMAL_MOUNT: LCD mount orientation, 1 = normal (0 = inverted) */
+#define CONFIG_LCD_NORMAL_MOUNT 0U
 /* CONFIG_PASSWORD_COL: password start column
    Min: 0     Max: (LCD_COLS - PASSWORD_LEN)     Typical: 3 */
 #define CONFIG_PASSWORD_COL 3U

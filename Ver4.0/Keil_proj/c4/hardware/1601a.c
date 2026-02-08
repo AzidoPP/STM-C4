@@ -3,7 +3,7 @@
 #include "config.h"
 #include "stm32f10x_tim.h"
 
-#define LCD_COLS 16
+#define LCD_COLS CONFIG_LCD_COLS
 
 #define LCD_RS_PORT GPIOB
 #define LCD_RS_PIN GPIO_Pin_12
@@ -44,6 +44,35 @@ static char lcd_slots[8] = {0};
 static uint8_t lcd_slot_next = 0;
 static uint16_t lcd_backlight_default = 0;
 static uint16_t lcd_backlight_saved = 0;
+
+static uint8_t LCD_Reverse5(uint8_t row)
+{
+	row &= 0x1FU;
+	row = (uint8_t)(((row & 0x01U) << 4)
+		| ((row & 0x02U) << 2)
+		| (row & 0x04U)
+		| ((row & 0x08U) >> 2)
+		| ((row & 0x10U) >> 4));
+	return row;
+}
+
+static uint8_t LCD_GlyphRow(const uint8_t *pattern, uint8_t row)
+{
+#if CONFIG_LCD_NORMAL_MOUNT
+	return LCD_Reverse5(pattern[(uint8_t)(7U - row)]);
+#else
+	return pattern[row];
+#endif
+}
+
+static uint8_t LCD_MapCol(uint8_t user_col)
+{
+#if CONFIG_LCD_NORMAL_MOUNT
+	return user_col;
+#else
+	return (uint8_t)((LCD_COLS - 1U) - user_col);
+#endif
+}
 
 static void LCD_SetDataNibble(uint8_t data)
 {
@@ -136,7 +165,7 @@ static void LCD_LoadGlyph(uint8_t slot, const uint8_t *pattern)
 	LCD_WRITE_CMD(0x40 | (slot << 3));
 	for (i = 0; i < 8; i++)
 	{
-		LCD_WRITE_ByteDATA(pattern[i]);
+		LCD_WRITE_ByteDATA(LCD_GlyphRow(pattern, i));
 	}
 }
 
@@ -247,7 +276,7 @@ void LCD_WRITE_StrDATA(unsigned char *str, unsigned char col)
 		{
 			break;
 		}
-		phys_col = (uint8_t)((LCD_COLS - 1) - user_col);
+		phys_col = LCD_MapCol(user_col);
 		data = LCD_EncodeChar((char)str[i]);
 		LCD_SetCursorPhysical(phys_col);
 		LCD_WRITE_ByteDATA(data);
@@ -270,7 +299,7 @@ void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned 
 			break;
 		}
 
-		phys_col = (uint8_t)((LCD_COLS - 1) - user_col);
+		phys_col = LCD_MapCol(user_col);
 		ch = (char)str[i];
 		if (ch == ' ')
 		{
@@ -306,7 +335,7 @@ void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned 
 		{
 			break;
 		}
-		phys_col = (uint8_t)((LCD_COLS - 1) - user_col);
+		phys_col = LCD_MapCol(user_col);
 		LCD_SetCursorPhysical(phys_col);
 		LCD_WRITE_ByteDATA(' ');
 	}
