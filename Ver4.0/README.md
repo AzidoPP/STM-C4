@@ -14,7 +14,7 @@ A CSGO game C4 bomb model based on STM32.
 引脚定义（硬件连接）：
 - RS: PB12
 - EN: PB14
-- D4~D7: PA4~PA7
+- D4 ~ D7: PA4 ~ PA7
 - 背光：PA3（高电平点亮，推挽，PWM 控制）
 
 电平/驱动：
