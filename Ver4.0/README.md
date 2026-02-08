@@ -65,7 +65,7 @@ OSHWHUB 硬件开源地址：待补充
 - LCD 正装/倒装：`CONFIG_LCD_NORMAL_MOUNT`
 
 ### 详细说明
-更多细节与原理说明请移步[github仓库](https://github.com/AzidoPP/STM-C4)查看：[V4说明.md](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4说明.md)
+更多细节与原理说明请移步[Github仓库](https://github.com/AzidoPP/STM-C4)查看：[V4说明.md](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4说明.md)
 
 ### 免责声明
 本项目为外观光电复刻模型，不具备任何真实功能或危险性。  
@@ -134,7 +134,7 @@ Common parameters:
 - LCD normal/inverted mount: `CONFIG_LCD_NORMAL_MOUNT`
 
 ### Detailed Docs
-For deeper details and theory, go to [github repo](https://github.com/AzidoPP/STM-C4) and see the Chinese document: [V4说明.md](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4说明.md)
+For deeper details and theory, go to [Github repo](https://github.com/AzidoPP/STM-C4) and see the Chinese document: [V4说明.md](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4说明.md)
 
 ### Disclaimer
 This project is a visual/electronic replica and does not have any real functionality or danger.  
