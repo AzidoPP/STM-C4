@@ -5,10 +5,6 @@
 [![YouTube](https://img.shields.io/badge/YouTube-@lyyontop-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/@lyyontop)
 [![bilibili](https://img.shields.io/badge/bilibili-1084866085-00A1D6?style=flat&logo=bilibili&logoColor=white)](https://space.bilibili.com/1084866085)
 
-![pic1](./pic/pic1.png)
-![pic2](./pic/pic2.png)
-![pic3](./pic/pic3.png)
-
 ## 中文
 基于 STM32F103C8T6 的 CS2 C4 外观模型（V4.0）。
 
@@ -25,10 +21,13 @@ OSHWHUB 硬件开源地址：待补充
    - BOM 文件：[BOM/BOM.xlsx](BOM/BOM.xlsx)（或 `BOM/` 中最新版本）
    - 9V 电池建议使用碱性电池（输出电流更稳定）
 3. 焊接与装配
-   - LCD1601 转接板焊接示例：[pic/pic1.png](pic/pic1.png)、[pic/pic2.png](pic/pic2.png)
+   - LCD1601 转接板焊接示例：
+     ![LCD1601 adapter pic1](./pic/pic1.png)
+     ![LCD1601 adapter pic2](./pic/pic2.png)
 4. 烧录固件
    - Keil 工程：[Keil_proj/c4/Project.uvprojx](Keil_proj/c4/Project.uvprojx)
-   - ST-Link V2 接口位置：[pic/pic3.png](pic/pic3.png)
+   - ST-Link V2 接口位置：
+     ![ST-Link header pic3](./pic/pic3.png)
    - 引脚顺序：3.3V / SWDIO / SWCLK / GND
 5. MP3 音效（可选）
    - 将 [TFCard_Files/](TFCard_Files/) 内容拷贝到 TF 卡根目录
@@ -61,10 +60,13 @@ OSHWHUB hardware link: TBD
    - BOM file: [BOM/BOM.xlsx](BOM/BOM.xlsx) (or the latest file in `BOM/`)
    - Use an alkaline 9V battery for stable output current
 3. Soldering & assembly
-   - LCD1601 adapter examples: [pic/pic1.png](pic/pic1.png), [pic/pic2.png](pic/pic2.png)
+   - LCD1601 adapter examples:
+     ![LCD1601 adapter pic1](./pic/pic1.png)
+     ![LCD1601 adapter pic2](./pic/pic2.png)
 4. Firmware flashing
    - Keil project: [Keil_proj/c4/Project.uvprojx](Keil_proj/c4/Project.uvprojx)
-   - ST-Link V2 header location: [pic/pic3.png](pic/pic3.png)
+   - ST-Link V2 header location:
+     ![ST-Link header pic3](./pic/pic3.png)
    - Pin order: 3.3V / SWDIO / SWCLK / GND
 5. MP3 audio (optional)
    - Copy [TFCard_Files/](TFCard_Files/) to the TF card root
