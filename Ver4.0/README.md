@@ -18,15 +18,16 @@ OSHWHUB 硬件开源地址：待补充
    - 主板 Gerber：[PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD 转接板 Gerber：[PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
 2. 采购 BOM
-   - BOM 文件：[BOM/BOM.xlsx](BOM/BOM.xlsx)（或 `BOM/` 中最新版本）
+   - BOM 文件：[BOM/BOM.xlsx](BOM/BOM.xlsx)（或打开 [BOM/](BOM/) 选择最新）
    - 9V 电池建议使用碱性电池（输出电流更稳定）
 3. 焊接与装配
-   - LCD1601 转接板焊接示例：
+   - LCD1601 转接板焊接示例（图片在 [pic/](pic/)）：
      ![LCD1601 adapter pic1](./pic/pic1.png)
      ![LCD1601 adapter pic2](./pic/pic2.png)
+   - 3D 打印外壳/填充件：见 [3DP_Models/](3DP_Models) 与 [3DP_Models/README.md](3DP_Models/README.md)
 4. 烧录固件
    - Keil 工程：[Keil_proj/c4/Project.uvprojx](Keil_proj/c4/Project.uvprojx)
-   - ST-Link V2 接口位置：
+   - ST-Link V2 接口位置（图片在 [pic/](pic/)）：
      ![ST-Link header pic3](./pic/pic3.png)
    - 引脚顺序：3.3V / SWDIO / SWCLK / GND
 5. MP3 音效（可选）
@@ -60,13 +61,6 @@ OSHWHUB 硬件开源地址：待补充
 ### 详细说明
 更多细节与原理说明请查看：[V4说明.md](V4说明.md)
 
-### 资源与文件夹
-- 源码工程：[Keil_proj/c4](Keil_proj/c4)
-- 3D 模型：[3DP_Models](3DP_Models)
-- PCB Gerber：[PCB_Gerber](PCB_Gerber)
-- BOM：[BOM](BOM)
-- 图片：[pic](pic)
-
 ### 免责声明
 本项目为外观复刻模型，不具备任何真实功能或危险性。  
 任何改装、滥用或非法使用与原作者无关，原作者不承担责任。
@@ -84,15 +78,16 @@ OSHWHUB hardware link: TBD
    - Main board Gerber: [PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD adapter Gerber: [PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
 2. BOM
-   - BOM file: [BOM/BOM.xlsx](BOM/BOM.xlsx) (or the latest file in `BOM/`)
+   - BOM file: [BOM/BOM.xlsx](BOM/BOM.xlsx) (or open [BOM/](BOM/) and pick the latest)
    - Use an alkaline 9V battery for stable output current
 3. Soldering & assembly
-   - LCD1601 adapter examples:
+   - LCD1601 adapter examples (images in [pic/](pic/)):
      ![LCD1601 adapter pic1](./pic/pic1.png)
      ![LCD1601 adapter pic2](./pic/pic2.png)
+   - 3D printed shell/filler: see [3DP_Models/](3DP_Models) and [3DP_Models/README.md](3DP_Models/README.md)
 4. Firmware flashing
    - Keil project: [Keil_proj/c4/Project.uvprojx](Keil_proj/c4/Project.uvprojx)
-   - ST-Link V2 header location:
+   - ST-Link V2 header location (images in [pic/](pic/)):
      ![ST-Link header pic3](./pic/pic3.png)
    - Pin order: 3.3V / SWDIO / SWCLK / GND
 5. MP3 audio (optional)
@@ -125,13 +120,6 @@ Common settings:
 
 ### Detailed Docs
 For full details, see: [V4说明.md](V4说明.md)
-
-### Resources
-- Source: [Keil_proj/c4](Keil_proj/c4)
-- 3D models: [3DP_Models](3DP_Models)
-- PCB Gerbers: [PCB_Gerber](PCB_Gerber)
-- BOM: [BOM](BOM)
-- Images: [pic](pic)
 
 ### Disclaimer
 This project is a replica appearance model and has no real functionality or hazardous capability.  
