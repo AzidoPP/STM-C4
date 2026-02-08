@@ -11,7 +11,7 @@
 
 模型来源：
 - Bilibili 博主「下界石嘤」提供
-- 链接：`https://space.bilibili.com/318570767`(https://space.bilibili.com/318570767)
+- 链接：[https://space.bilibili.com/318570767](https://space.bilibili.com/318570767)
 
 ---
 
@@ -26,4 +26,4 @@
 
 Model credit:
 - Provided by Bilibili creator “下界石嘤”
-- Link: `https://space.bilibili.com/318570767`(https://space.bilibili.com/318570767)
+- Link: [https://space.bilibili.com/318570767](https://space.bilibili.com/318570767)
