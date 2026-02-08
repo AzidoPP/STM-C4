@@ -33,6 +33,30 @@ OSHWHUB 硬件开源地址：待补充
    - 将 [TFCard_Files/](TFCard_Files/) 内容拷贝到 TF 卡根目录
    - 详细说明见：[TFCard_Files/README.md](TFCard_Files/README.md)
 
+### 基础玩法
+- 上电后输入 7 位密码（默认长度由配置决定），作为“下包密码”。
+- 输入完成后会进入倒计时与滚动提示。
+- 三种拆弹方式（均为非阻塞）：
+  - 输入拆弹：再次输入与下包一致的密码即可拆弹成功。
+  - 手动拆弹：长按 `#` 进入手动拆弹动画，持续到完成即成功。
+  - 外部拆弹器：外部拆弹输入有效时，进入外部拆弹动画，完成即成功。
+- 拆弹成功会进入成功提示与蜂鸣/灯效；倒计时结束未拆弹则触发爆炸效果。
+
+### 配置说明（Config）
+- 主要配置文件：`Ver4.0/Keil_proj/c4/user/config.h`
+- 中英文模板：`Ver4.0/Keil_proj/c4/user/default_config_CH.h`、`Ver4.0/Keil_proj/c4/user/default_config_EN.h`
+- 范围校验：`Ver4.0/Keil_proj/c4/user/config_range.h`
+
+可调内容示例：
+- 密码长度、倒计时总时长、蜂鸣器频率与节奏
+- 拆弹模式开关（密码/手动/外部）
+- LCD 背光亮度、LED 黄色比例
+- MP3 音量与音效开关
+- LCD 正装/倒装开关：`CONFIG_LCD_NORMAL_MOUNT`
+
+### 详细说明
+更多细节与原理说明请查看：[V4说明.md](V4说明.md)
+
 ### 资源与文件夹
 - 源码工程：[Keil_proj/c4](Keil_proj/c4)
 - 3D 模型：[3DP_Models](3DP_Models)
@@ -71,6 +95,30 @@ OSHWHUB hardware link: TBD
 5. MP3 audio (optional)
    - Copy [TFCard_Files/](TFCard_Files/) to the TF card root
    - See: [TFCard_Files/README.md](TFCard_Files/README.md)
+
+### Basic Gameplay
+- Power on and enter the 7-digit password (length is configurable) as the arming code.
+- After input completes, the countdown and LCD scroll start.
+- Three defuse methods (non-blocking):
+  - Password defuse: enter the same code again to defuse.
+  - Manual defuse: long-press `#` to start the manual defuse animation until completion.
+  - External defuser: when the external defuser input is active, the external defuse animation runs until completion.
+- Defuse success triggers success effects; if time runs out, the explosion effect is triggered.
+
+### Config Notes
+- Main config: `Ver4.0/Keil_proj/c4/user/config.h`
+- CN/EN templates: `Ver4.0/Keil_proj/c4/user/default_config_CH.h`, `Ver4.0/Keil_proj/c4/user/default_config_EN.h`
+- Range checks: `Ver4.0/Keil_proj/c4/user/config_range.h`
+
+Examples of configurable items:
+- Password length, countdown duration, buzzer frequency/timing
+- Defuse mode toggles (password/manual/external)
+- LCD backlight, LED yellow ratio
+- MP3 volume and effect toggles
+- LCD mount orientation: `CONFIG_LCD_NORMAL_MOUNT`
+
+### Detailed Docs
+For full details, see: [V4说明.md](V4说明.md)
 
 ### Resources
 - Source: [Keil_proj/c4](Keil_proj/c4)
