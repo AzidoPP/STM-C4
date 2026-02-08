@@ -9,7 +9,7 @@
 基于 STM32F103C8T6 的 CS2 C4 光电模型，第4版。还原度约95%，相较于先前版本，优化了显示屏排线宽度，使用多色LED，使用无源蜂鸣器（可以发出不同音调），添加了“拆弹器”支持。硬件方面使用了集成的电源电路，以及集成在PCB上的控制器取代原先的整个开发板。软件方面改进：倒计时使用了更还原的公式，修改了更好的动画，添加了更多可配置选项，使用了更还原的显示屏动画。
 
 GitHub 仓库（程序/文档）：https://github.com/AzidoPP/STM-C4  
-OSHWHUB 硬件开源地址：待补充
+OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
 
 [English](#english)
 ### 实物图：
@@ -20,7 +20,7 @@ OSHWHUB 硬件开源地址：待补充
 1. PCB 打样
    - 主板 Gerber：[PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD 转接板 Gerber：[PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
-   - 详情工程请参考OSHWHUB开源硬件平台
+   - 详情工程请参考OSHWHUB开源硬件平台[工程](https://oshwhub.com/azidopp/CS2-C4)
 2. 采购 BOM
    - BOM 文件：[BOM/BOM.xlsx](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/BOM/BOM.xlsx)
    - 9V 电池建议使用碱性电池（输出电流更稳定）
@@ -77,7 +77,7 @@ OSHWHUB 硬件开源地址：待补充
 An STM32F103C8T6-based CS2 C4 appearance model (V4.0). About 95% visual accuracy. Compared to the previous version, this revision optimizes the LCD ribbon width, uses multi-color LEDs, adds a passive buzzer for distinct tones, and introduces an external defuser option. The hardware integrates the power circuit and uses a PCB-mounted controller instead of a full dev board. On the software side, the countdown uses a more accurate formula, smoother animations, and more configurable options with a more authentic LCD effect.
 
 GitHub repo (firmware/docs): https://github.com/AzidoPP/STM-C4  
-OSHWHUB hardware page: TBD
+OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
 
 [中文](#中文)
 
@@ -89,7 +89,7 @@ OSHWHUB hardware page: TBD
 1. PCB fabrication
    - Main board Gerber: [PCB_Gerber/Gerber_C4_MainBoardV4.1.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_C4_MainBoardV4.1.zip)
    - LCD adapter Gerber: [PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/PCB_Gerber/Gerber_LCD1601_AdapterBoardV4.0.zip)
-   - See OSHWHUB for the full hardware project files
+   - See OSHWHUB for the full hardware [project files](https://oshwhub.com/azidopp/CS2-C4)
 2. BOM purchase
    - BOM file: [BOM/BOM.xlsx](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/BOM/BOM.xlsx)
    - 9V alkaline batteries are recommended for more stable current output
