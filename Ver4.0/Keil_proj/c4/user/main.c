@@ -7,6 +7,7 @@
 #include "Serial.h"
 #include "mp3.h"
 #include "config.h"
+#include <math.h>
 #include <string.h>
 
 typedef enum
@@ -336,20 +337,26 @@ static void Countdown_UpdateBeep(uint32_t now)
 	}
 	if (now >= next_beep_ms)
 	{
-		uint32_t time_left = 0;
-		float f_complete;
+		float elapsed_ratio;
+		float bps;
 		float interval_ms;
 
-		if (now < countdown_end_ms)
+		if (now >= countdown_end_ms)
 		{
-			time_left = countdown_end_ms - now;
+			elapsed_ratio = 1.0f;
 		}
-		f_complete = (float)time_left / (float)CONFIG_COUNTDOWN_MS;
-		interval_ms = (float)CONFIG_BEEP_INTERVAL_BASE_MS + ((float)CONFIG_BEEP_INTERVAL_SCALE_MS * f_complete);
-		if (interval_ms < (float)CONFIG_BEEP_INTERVAL_MIN_MS)
+		else
 		{
-			interval_ms = (float)CONFIG_BEEP_INTERVAL_MIN_MS;
+			elapsed_ratio = ((float)(CONFIG_COUNTDOWN_MS - (countdown_end_ms - now))) / (float)CONFIG_COUNTDOWN_MS;
 		}
+
+		/* g(p) = 1.049 * exp(0.244p + 1.764p^2), p in [0,1], output in BPS */
+		bps = 1.049f * (float)exp((0.244f * elapsed_ratio) + (1.764f * elapsed_ratio * elapsed_ratio));
+		if (bps < 0.001f)
+		{
+			bps = 0.001f;
+		}
+		interval_ms = 1000.0f / bps;
 		next_beep_ms = now + (uint32_t)(interval_ms);
 		beep_active = 1;
 		beep_off_ms = now + CONFIG_BEEP_LEN_MS;

@@ -20,7 +20,7 @@
 #define CONFIG_PASSWORD_COL 3U
 /* CONFIG_COUNTDOWN_MS: 倒计时（毫秒）
    最小: 1000  最大: 无     典型: 40000 */
-#define CONFIG_COUNTDOWN_MS 40000U
+#define CONFIG_COUNTDOWN_MS 100000U
 /* CONFIG_ARM_DELAY_MS: 最后按键后防误触延迟（毫秒）
    最小: 0     最大: 5000   典型: 800 */
 #define CONFIG_ARM_DELAY_MS 800U
