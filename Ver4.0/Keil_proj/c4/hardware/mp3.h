@@ -4,10 +4,7 @@
 #include <stdint.h>
 
 void mp3_Init(void);
-void MP3CMD(uint8_t cmd, uint16_t data);
-void mp3_start(void);
-void mp3_over(void);
-void mp3_boom(void);
-void mp3_boom_music(void);
+void mp3_SetVolume(uint8_t volume);
+void mp3_PlayMp3Track(uint16_t track);
 
 #endif

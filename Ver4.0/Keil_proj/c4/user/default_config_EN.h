@@ -1,4 +1,4 @@
-#ifndef CONFIG_H
+﻿#ifndef CONFIG_H
 #define CONFIG_H
 
 /* Range check */
@@ -123,17 +123,79 @@
 /* CONFIG_STARTUP_BEEP_GAP_MS: startup beep gap (ms)
    Min: 10    Max: 500    Typical: 80 */
 #define CONFIG_STARTUP_BEEP_GAP_MS 80U
+/* CONFIG_STARTUP_BEEP_ENABLE: startup buzzer enable (0/1) */
+#define CONFIG_STARTUP_BEEP_ENABLE 1U
 
 /* MP3 */
 /* CONFIG_MP3_VOLUME: MP3 volume (0-30)
    Min: 0     Max: 30     Typical: 25 */
 #define CONFIG_MP3_VOLUME 25U
-/* CONFIG_MP3_ARM_SUCCESS_ENABLE: play MP3 on arm success (0/1) */
+/* CONFIG_MP3_ARM_SUCCESS_ENABLE: play arm-success announcement (0/1)
+   Min: 0     Max: 1      Typical: 1 */
 #define CONFIG_MP3_ARM_SUCCESS_ENABLE 1U
-/* CONFIG_MP3_EXPLOSION_ENABLE: play MP3 on explosion (0/1) */
+/* CONFIG_MP3_DEFUSE_SUCCESS_ENABLE: play defuse-success announcement (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_DEFUSE_SUCCESS_ENABLE 1U
+
+/* Fixed announcement indexes in MP3 folder (0xxx)
+   CONFIG_MP3_TRACK_ARM_SUCCESS: arm-success announce id (maps to 0101)
+   Min: 1     Max: 999    Typical: 101 */
+#define CONFIG_MP3_TRACK_ARM_SUCCESS 101U
+/* CONFIG_MP3_TRACK_EXPLOSION: pure explosion id (maps to 0102)
+   Min: 1     Max: 999    Typical: 102 */
+#define CONFIG_MP3_TRACK_EXPLOSION 102U
+/* CONFIG_MP3_TRACK_DEFUSE_SUCCESS: defuse-success announce id (maps to 0103)
+   Min: 1     Max: 999    Typical: 103 */
+#define CONFIG_MP3_TRACK_DEFUSE_SUCCESS 103U
+/* CONFIG_MP3_TRACK_CTWIN: CT-win announce id (maps to 0104)
+   Min: 1     Max: 999    Typical: 104 */
+#define CONFIG_MP3_TRACK_CTWIN 104U
+/* CONFIG_MP3_TRACK_TERWIN: T-win announce id (maps to 0105)
+   Min: 1     Max: 999    Typical: 105 */
+#define CONFIG_MP3_TRACK_TERWIN 105U
+
+/* CONFIG_MP3_DEFUSE_STAGE_ENABLE: defuse-success stage MP3 master toggle (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_DEFUSE_STAGE_ENABLE 1U
+/* CONFIG_MP3_EXPLODED_STAGE_ENABLE: exploded stage MP3 master toggle (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_EXPLODED_STAGE_ENABLE 1U
+
+/* CONFIG_MP3_EXPLOSION_ENABLE: play explosion effect in exploded stage (0/1)
+   Min: 0     Max: 1      Typical: 1 */
 #define CONFIG_MP3_EXPLOSION_ENABLE 1U
-/* CONFIG_MP3_EXPLOSION_USE_MUSIC: explosion style selection (0/1) */
-#define CONFIG_MP3_EXPLOSION_USE_MUSIC 1U
+/* CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE: enable CT music-box stage after defuse (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE 1U
+/* CONFIG_MP3_T_WIN_MUSICBOX_ENABLE: enable T music-box stage after explosion (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_T_WIN_MUSICBOX_ENABLE 1U
+/* CONFIG_MP3_CTWIN_ENABLE: enable CT-win announcement (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_CTWIN_ENABLE 1U
+/* CONFIG_MP3_TERWIN_ENABLE: enable T-win announcement (0/1)
+   Min: 0     Max: 1      Typical: 1 */
+#define CONFIG_MP3_TERWIN_ENABLE 1U
+
+/* CONFIG_MP3_CT_WIN_MUSICBOX_TRACK: CT music-box index
+   Min: 0     Max: 999    Typical: 1 */
+#define CONFIG_MP3_CT_WIN_MUSICBOX_TRACK 1U
+/* CONFIG_MP3_T_WIN_MUSICBOX_TRACK: T music-box index
+   Min: 0     Max: 999    Typical: 1 */
+#define CONFIG_MP3_T_WIN_MUSICBOX_TRACK 1U
+
+/* CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS: wait after defuse-success announcement (ms)
+   Min: 0     Max: 20000  Typical: 2700 */
+#define CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS 2700U
+/* CONFIG_MP3_CT_MUSICBOX_WAIT_MS: wait after CT music-box playback (ms)
+   Min: 0     Max: 20000  Typical: 9000 */
+#define CONFIG_MP3_CT_MUSICBOX_WAIT_MS 9000U
+/* CONFIG_MP3_T_MUSICBOX_WAIT_MS: wait after T music-box playback (ms)
+   Min: 0     Max: 20000  Typical: 10000 */
+#define CONFIG_MP3_T_MUSICBOX_WAIT_MS 10000U
+/* CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS: wait after pure explosion playback (ms)
+   Min: 0     Max: 20000  Typical: 7000 */
+#define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
 #include "config_range.h"
 

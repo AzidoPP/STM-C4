@@ -1,4 +1,4 @@
-#ifndef CONFIG_H
+﻿#ifndef CONFIG_H
 #define CONFIG_H
 
 /* 范围检查 */
@@ -124,17 +124,79 @@
 /* CONFIG_STARTUP_BEEP_GAP_MS: 上电蜂鸣间隔（毫秒）
    最小: 10    最大: 500    典型: 80 */
 #define CONFIG_STARTUP_BEEP_GAP_MS 80U
+/* CONFIG_STARTUP_BEEP_ENABLE: 是否启用上电蜂鸣 1为启用（0/1） */
+#define CONFIG_STARTUP_BEEP_ENABLE 1U
 
 /* MP3 */
 /* CONFIG_MP3_VOLUME: MP3 音量（0-30）
    最小: 0     最大: 30     典型: 25 */
 #define CONFIG_MP3_VOLUME 25U
-/* CONFIG_MP3_ARM_SUCCESS_ENABLE: 下包成功时播放音效（0/1） */
+/* CONFIG_MP3_ARM_SUCCESS_ENABLE: 下包成功时播放播报音效（0/1）
+   最小: 0     最大: 1      典型: 1 */
 #define CONFIG_MP3_ARM_SUCCESS_ENABLE 1U
-/* CONFIG_MP3_EXPLOSION_ENABLE: 爆炸时播放 MP3（0/1） */
+/* CONFIG_MP3_DEFUSE_SUCCESS_ENABLE: 拆弹成功时播放播报音效（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_DEFUSE_SUCCESS_ENABLE 1U
+
+/* 固定播报编号（MP3 文件夹，0xxx）
+   CONFIG_MP3_TRACK_ARM_SUCCESS: 下包成功播报号（映射到 0101）
+   最小: 1     最大: 999    典型: 101 */
+#define CONFIG_MP3_TRACK_ARM_SUCCESS 101U
+/* CONFIG_MP3_TRACK_EXPLOSION: 纯爆炸音效号（映射到 0102）
+   最小: 1     最大: 999    典型: 102 */
+#define CONFIG_MP3_TRACK_EXPLOSION 102U
+/* CONFIG_MP3_TRACK_DEFUSE_SUCCESS: 拆弹成功播报号（映射到 0103）
+   最小: 1     最大: 999    典型: 103 */
+#define CONFIG_MP3_TRACK_DEFUSE_SUCCESS 103U
+/* CONFIG_MP3_TRACK_CTWIN: CT 胜利播报号（映射到 0104）
+   最小: 1     最大: 999    典型: 104 */
+#define CONFIG_MP3_TRACK_CTWIN 104U
+/* CONFIG_MP3_TRACK_TERWIN: T 胜利播报号（映射到 0105）
+   最小: 1     最大: 999    典型: 105 */
+#define CONFIG_MP3_TRACK_TERWIN 105U
+
+/* CONFIG_MP3_DEFUSE_STAGE_ENABLE: 拆弹成功阶段 MP3 总开关（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_DEFUSE_STAGE_ENABLE 1U
+/* CONFIG_MP3_EXPLODED_STAGE_ENABLE: 倒计时结束阶段 MP3 总开关（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_EXPLODED_STAGE_ENABLE 1U
+
+/* CONFIG_MP3_EXPLOSION_ENABLE: 倒计时结束时是否播放爆炸音效（0/1）
+   最小: 0     最大: 1      典型: 1 */
 #define CONFIG_MP3_EXPLOSION_ENABLE 1U
-/* CONFIG_MP3_EXPLOSION_USE_MUSIC: 爆炸音效是否启用音乐盒 1为启用（0/1） */
-#define CONFIG_MP3_EXPLOSION_USE_MUSIC 1U
+/* CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE: 拆弹成功后是否播放 CT 音乐盒（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE 1U
+/* CONFIG_MP3_T_WIN_MUSICBOX_ENABLE: 爆炸后是否播放 T 音乐盒（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_T_WIN_MUSICBOX_ENABLE 1U
+/* CONFIG_MP3_CTWIN_ENABLE: 是否播放 CT 胜利播报（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_CTWIN_ENABLE 1U
+/* CONFIG_MP3_TERWIN_ENABLE: 是否播放 T 胜利播报（0/1）
+   最小: 0     最大: 1      典型: 1 */
+#define CONFIG_MP3_TERWIN_ENABLE 1U
+
+/* CONFIG_MP3_CT_WIN_MUSICBOX_TRACK: CT 音乐盒编号
+   最小: 0     最大: 999    典型: 1 */
+#define CONFIG_MP3_CT_WIN_MUSICBOX_TRACK 1U
+/* CONFIG_MP3_T_WIN_MUSICBOX_TRACK: T 音乐盒编号
+   最小: 0     最大: 999    典型: 1 */
+#define CONFIG_MP3_T_WIN_MUSICBOX_TRACK 1U
+
+/* CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS: 拆弹成功播报后等待时长（毫秒）
+   最小: 0     最大: 20000  典型: 2700 */
+#define CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS 2700U
+/* CONFIG_MP3_CT_MUSICBOX_WAIT_MS: CT 音乐盒播放后等待时长（毫秒）
+   最小: 0     最大: 20000  典型: 9000 */
+#define CONFIG_MP3_CT_MUSICBOX_WAIT_MS 9000U
+/* CONFIG_MP3_T_MUSICBOX_WAIT_MS: T 音乐盒播放后等待时长（毫秒）
+   最小: 0     最大: 20000  典型: 10000 */
+#define CONFIG_MP3_T_MUSICBOX_WAIT_MS 10000U
+/* CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS: 纯爆炸音效后等待时长（毫秒）
+   最小: 0     最大: 20000  典型: 7000 */
+#define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
 #include "config_range.h"
 

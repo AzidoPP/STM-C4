@@ -4,7 +4,6 @@
 #include "Delay.h"
 #include "LED.h"
 #include "Systick.h"
-#include "Serial.h"
 #include "mp3.h"
 #include "config.h"
 #include <math.h>
@@ -35,6 +34,13 @@ typedef struct
 	uint8_t cycle_step;
 	char display[CONFIG_PASSWORD_LEN + 1];
 } DefuseAnim;
+
+typedef enum
+{
+	MP3_SEQ_NONE = 0,
+	MP3_SEQ_DEFUSE,
+	MP3_SEQ_EXPLOSION
+} Mp3Sequence;
 
 static AppState app_state = STATE_IDLE;
 static DefuseMode defuse_mode = DEFUSE_NONE;
@@ -68,20 +74,26 @@ static uint8_t success_beep_state = 0;
 static uint32_t success_beep_next_ms = 0;
 
 static DefuseAnim defuse_anim;
+static Mp3Sequence mp3_seq = MP3_SEQ_NONE;
+static uint8_t mp3_seq_step = 0;
+static uint32_t mp3_seq_next_ms = 0;
+
+#define MP3_CT_MUSICBOX_BASE 1000U
+#define MP3_T_MUSICBOX_BASE 2000U
 
 static void DefuserInput_Init(void)
 {
     GPIO_InitTypeDef gpio;
 
-    // 1. ¿ªÆô GPIOB ºÍ AFIO Ê±ÖÓ (±ØĞë¿ªÆô AFIO)
+    // 1. å¼€å¯ GPIOB å’Œ AFIO æ—¶é’Ÿ (å¿…é¡»å¼€å¯ AFIO)
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
 
-    // 2. Ö´ĞĞÖØÓ³Éä£¬¹Ø±Õ JTAG£¬±£Áô SWD (ÕâÑù PB3, PB4, PA15 ²ÅÄÜµ± GPIO ÓÃ)
+    // 2. æ‰§è¡Œé‡æ˜ å°„ï¼Œå…³é—­ JTAGï¼Œä¿ç•™ SWD (è¿™æ · PB3, PB4, PA15 æ‰èƒ½å½“ GPIO ç”¨)
     GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 
-    // 3. Õı³£ÅäÖÃ GPIO
+    // 3. æ­£å¸¸é…ç½® GPIO
     gpio.GPIO_Pin = GPIO_Pin_3;
-    gpio.GPIO_Mode = GPIO_Mode_IPU; // ÉÏÀ­ÊäÈë
+    gpio.GPIO_Mode = GPIO_Mode_IPU; // ä¸Šæ‹‰è¾“å…¥
     gpio.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOB, &gpio);
 }
@@ -306,6 +318,162 @@ static void SuccessBeep_Update(uint32_t now)
 			break;
 	}
 }
+
+static void MP3Sequence_Stop(void)
+{
+	mp3_seq = MP3_SEQ_NONE;
+	mp3_seq_step = 0;
+	mp3_seq_next_ms = 0;
+}
+
+static uint16_t MP3_TrackCtMusicbox(uint16_t track)
+{
+	return (uint16_t)(MP3_CT_MUSICBOX_BASE + track);
+}
+
+static uint16_t MP3_TrackTMusicbox(uint16_t track)
+{
+	return (uint16_t)(MP3_T_MUSICBOX_BASE + track);
+}
+
+static void MP3Sequence_Update(uint32_t now)
+{
+	if (mp3_seq == MP3_SEQ_NONE)
+	{
+		return;
+	}
+	if (now < mp3_seq_next_ms)
+	{
+		return;
+	}
+
+	if (mp3_seq == MP3_SEQ_DEFUSE)
+	{
+		if (mp3_seq_step == 0)
+		{
+			if (!CONFIG_MP3_DEFUSE_STAGE_ENABLE)
+			{
+				MP3Sequence_Stop();
+				return;
+			}
+			if (CONFIG_MP3_DEFUSE_SUCCESS_ENABLE)
+			{
+				mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_DEFUSE_SUCCESS);
+				mp3_seq_step = 1;
+				mp3_seq_next_ms = now + CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS;
+			}
+			else
+			{
+				mp3_seq_step = 1;
+				mp3_seq_next_ms = now;
+			}
+		}
+		else if (mp3_seq_step == 1)
+		{
+			if (CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE)
+			{
+				mp3_PlayMp3Track(MP3_TrackCtMusicbox((uint16_t)CONFIG_MP3_CT_WIN_MUSICBOX_TRACK));
+				if (CONFIG_MP3_CTWIN_ENABLE)
+				{
+					mp3_seq_step = 2;
+					mp3_seq_next_ms = now + CONFIG_MP3_CT_MUSICBOX_WAIT_MS;
+				}
+				else
+				{
+					MP3Sequence_Stop();
+				}
+			}
+			else
+			{
+				if (CONFIG_MP3_CTWIN_ENABLE)
+				{
+					mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_CTWIN);
+				}
+				MP3Sequence_Stop();
+			}
+		}
+		else
+		{
+			if (CONFIG_MP3_CTWIN_ENABLE)
+			{
+				mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_CTWIN);
+			}
+			MP3Sequence_Stop();
+		}
+	}
+	else
+	{
+		if (mp3_seq_step == 0)
+		{
+			if (!CONFIG_MP3_EXPLODED_STAGE_ENABLE)
+			{
+				MP3Sequence_Stop();
+				return;
+			}
+
+			if (!CONFIG_MP3_EXPLOSION_ENABLE)
+			{
+				if (CONFIG_MP3_TERWIN_ENABLE)
+				{
+					mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_TERWIN);
+				}
+				MP3Sequence_Stop();
+				return;
+			}
+
+			if (CONFIG_MP3_T_WIN_MUSICBOX_ENABLE)
+			{
+				mp3_PlayMp3Track(MP3_TrackTMusicbox((uint16_t)CONFIG_MP3_T_WIN_MUSICBOX_TRACK));
+				if (CONFIG_MP3_TERWIN_ENABLE)
+				{
+					mp3_seq_step = 1;
+					mp3_seq_next_ms = now + CONFIG_MP3_T_MUSICBOX_WAIT_MS;
+				}
+				else
+				{
+					MP3Sequence_Stop();
+				}
+			}
+			else
+			{
+				mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_EXPLOSION);
+				if (CONFIG_MP3_TERWIN_ENABLE)
+				{
+					mp3_seq_step = 1;
+					mp3_seq_next_ms = now + CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
+				}
+				else
+				{
+					MP3Sequence_Stop();
+				}
+			}
+		}
+		else
+		{
+			if (CONFIG_MP3_TERWIN_ENABLE)
+			{
+				mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_TERWIN);
+			}
+			MP3Sequence_Stop();
+		}
+	}
+}
+
+static void MP3Sequence_StartDefuse(uint32_t now)
+{
+	mp3_seq = MP3_SEQ_DEFUSE;
+	mp3_seq_step = 0;
+	mp3_seq_next_ms = now;
+	MP3Sequence_Update(now);
+}
+
+static void MP3Sequence_StartExplosion(uint32_t now)
+{
+	mp3_seq = MP3_SEQ_EXPLOSION;
+	mp3_seq_step = 0;
+	mp3_seq_next_ms = now;
+	MP3Sequence_Update(now);
+}
 static void Countdown_Start(uint32_t now)
 {
 	countdown_end_ms = now + CONFIG_COUNTDOWN_MS;
@@ -320,12 +488,14 @@ static void Countdown_Start(uint32_t now)
 	Password_Reset(defuse_input);
 	defuse_pos = 0;
 	last_defuse_input_ms = 0;
+	MP3Sequence_Stop();
 	app_state = STATE_COUNTDOWN;
 	LCD_ShowScroll(scroll_pos);
 	Buzzer_SetFreq(CONFIG_BUZZER_COUNTDOWN_FREQ_HZ);
-#if CONFIG_MP3_ARM_SUCCESS_ENABLE
-	mp3_over();
-#endif
+	if (CONFIG_MP3_ARM_SUCCESS_ENABLE)
+	{
+		mp3_PlayMp3Track((uint16_t)CONFIG_MP3_TRACK_ARM_SUCCESS);
+	}
 }
 
 static void Countdown_UpdateBeep(uint32_t now)
@@ -489,6 +659,7 @@ static void Defuse_Success(uint32_t now)
 
 	LED_SetGreen(LED_PWM_MAX);
 	SuccessBeep_Start(now);
+	MP3Sequence_StartDefuse(now);
 	app_state = STATE_DEFUSE_SUCCESS;
 }
 
@@ -502,19 +673,14 @@ static void Explosion_Start(uint32_t now)
 	Relay_On();
 	LED_SetYellow(LED_PWM_MAX);
 	LCD_ClearLine();
-#if CONFIG_MP3_EXPLOSION_ENABLE
-#if CONFIG_MP3_EXPLOSION_USE_MUSIC
-	mp3_boom_music();
-#else
-	mp3_boom();
-#endif
-#endif
+	MP3Sequence_StartExplosion(now);
 	app_state = STATE_EXPLODED;
 }
 
 int main(void)
 {
 	uint32_t now;
+	uint32_t init_now;
 
 	Timebase_Init();
 	LED_Init();
@@ -526,14 +692,23 @@ int main(void)
 	MatrixKey_Init();
 	mp3_Init();
 	Delay_ms(200);
-	MP3CMD(0x06, CONFIG_MP3_VOLUME);
+	mp3_SetVolume((uint8_t)CONFIG_MP3_VOLUME);
+	init_now = Timebase_Millis();
 
 	Password_Reset(arm_input);
 	Password_Reset(arm_code);
 	Password_Reset(defuse_input);
 	LCD_ShowPassword(arm_input);
 
-	startup_beep_next_ms = Timebase_Millis();
+	startup_beep_next_ms = init_now;
+	if (!CONFIG_STARTUP_BEEP_ENABLE)
+	{
+		startup_beep_state = 4U;
+	}
+	else
+	{
+		startup_beep_state = 0U;
+	}
 
 	while (1)
 	{
@@ -548,6 +723,7 @@ int main(void)
 		defuser_active = Defuser_IsActive();
 
 		StartupBeep_Update(now);
+		MP3Sequence_Update(now);
 
 		switch (app_state)
 		{

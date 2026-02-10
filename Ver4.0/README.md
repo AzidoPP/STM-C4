@@ -44,16 +44,21 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
    - 倒计时：`CONFIG_COUNTDOWN_MS`
    - 拆弹时间：`CONFIG_MANUAL_DEFUSE_MS` / `CONFIG_EXTERNAL_DEFUSE_MS`
    - 音量：`CONFIG_MP3_VOLUME`
+   - 事件音效：`CONFIG_MP3_TRACK_DEFUSE_SUCCESS` / `CONFIG_MP3_TRACK_CTWIN` / `CONFIG_MP3_TRACK_TERWIN`
+   - 音乐盒：`CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE` / `CONFIG_MP3_CT_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_T_WIN_MUSICBOX_ENABLE` / `CONFIG_MP3_T_WIN_MUSICBOX_TRACK`
 
 ### 基础玩法
-- 上电播放上电音效，LED为黄色呼吸灯模式。
+- 上电阶段仅蜂鸣器提示（不播放 MP3），LED为黄色呼吸灯模式。
 - 输入任意 7 位密码，作为“下包密码”。
 - 输入完成后进入40秒倒计时，期间LED和蜂鸣器会逐渐急迫。
 - 倒计时期间有三种拆弹方式：
   - 输入拆弹：再次输入与下包一致的密码即可拆弹成功。
   - 手动拆弹：长按 `#` 开始拆弹，持续10秒后成功。
   - 外部拆弹器：外部拆弹输入有效时开始拆弹，持续5秒即成功。
-- 拆弹成功会进入成功提示与蜂鸣/灯效；倒计时结束未拆弹则触发爆炸效果，播放爆炸音效。
+- 拆弹成功播放序列：拆弹成功音（可单独开关）→（可选）CT音乐盒→（可选）CT胜利播报。
+- 倒计时结束未拆弹播放序列：
+  - 启用T音乐盒：播放“爆炸+T音乐盒”整合音频→（可选）T胜利播报。
+  - 未启用T音乐盒：播放纯爆炸音效→（可选）T胜利播报。
 
 ### 配置
 - 配置文件：[Keil_proj/c4/user/config.h](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
@@ -63,6 +68,10 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
 - 倒计时：`CONFIG_COUNTDOWN_MS`
 - 拆弹时间：`CONFIG_MANUAL_DEFUSE_MS` / `CONFIG_EXTERNAL_DEFUSE_MS`
 - 音量：`CONFIG_MP3_VOLUME`
+- MP3 开关：`CONFIG_MP3_ARM_SUCCESS_ENABLE` / `CONFIG_MP3_DEFUSE_STAGE_ENABLE` / `CONFIG_MP3_DEFUSE_SUCCESS_ENABLE` / `CONFIG_MP3_EXPLODED_STAGE_ENABLE` / `CONFIG_MP3_EXPLOSION_ENABLE`
+- 播报开关：`CONFIG_MP3_CTWIN_ENABLE` / `CONFIG_MP3_TERWIN_ENABLE`
+- 事件编号：`CONFIG_MP3_TRACK_ARM_SUCCESS` / `CONFIG_MP3_TRACK_EXPLOSION` / `CONFIG_MP3_TRACK_DEFUSE_SUCCESS` / `CONFIG_MP3_TRACK_CTWIN` / `CONFIG_MP3_TRACK_TERWIN`
+- 音乐盒与时长：`CONFIG_MP3_CT_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_T_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS` / `CONFIG_MP3_CT_MUSICBOX_WAIT_MS` / `CONFIG_MP3_T_MUSICBOX_WAIT_MS` / `CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS`
 - LCD 正装/倒装：`CONFIG_LCD_NORMAL_MOUNT`
 
 ### 详细说明
@@ -114,16 +123,21 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
    - Countdown: `CONFIG_COUNTDOWN_MS`
    - Defuse time: `CONFIG_MANUAL_DEFUSE_MS` / `CONFIG_EXTERNAL_DEFUSE_MS`
    - Volume: `CONFIG_MP3_VOLUME`
+   - Event tracks: `CONFIG_MP3_TRACK_DEFUSE_SUCCESS` / `CONFIG_MP3_TRACK_CTWIN` / `CONFIG_MP3_TRACK_TERWIN`
+   - Music box: `CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE` / `CONFIG_MP3_CT_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_T_WIN_MUSICBOX_ENABLE` / `CONFIG_MP3_T_WIN_MUSICBOX_TRACK`
 
 ### Basic Gameplay
-- Power on plays the startup sound; the LED breathes in yellow.
+- Startup uses buzzer only (no MP3), while LED breathes in yellow.
 - Enter any 7-digit code as the “plant” password.
 - After entry, a 40-second countdown starts; the LED and buzzer become more urgent.
 - During the countdown, there are three defuse methods:
   - Password defuse: enter the same password again to defuse successfully.
   - Manual defuse: long press `#` to start; succeed after 10 seconds.
   - External defuser: when the external defuse input is active, hold for 5 seconds to succeed.
-- On success, a success animation with buzzer/LED plays; if time runs out, an explosion effect and audio are triggered.
+- Defuse-success sequence: defuse-success cue (separate toggle) -> (optional) CT music box -> (optional) CT win announcement.
+- Explosion sequence:
+  - With T music box enabled: play integrated explosion+music-box track -> (optional) T win announcement.
+  - Without T music box: play pure explosion track -> (optional) T win announcement.
 
 ### Configuration
 - Config file: [Keil_proj/c4/user/config.h](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
@@ -133,6 +147,10 @@ Common parameters:
 - Countdown: `CONFIG_COUNTDOWN_MS`
 - Defuse time: `CONFIG_MANUAL_DEFUSE_MS` / `CONFIG_EXTERNAL_DEFUSE_MS`
 - Volume: `CONFIG_MP3_VOLUME`
+- MP3 toggles: `CONFIG_MP3_ARM_SUCCESS_ENABLE` / `CONFIG_MP3_DEFUSE_STAGE_ENABLE` / `CONFIG_MP3_DEFUSE_SUCCESS_ENABLE` / `CONFIG_MP3_EXPLODED_STAGE_ENABLE` / `CONFIG_MP3_EXPLOSION_ENABLE`
+- Announcement toggles: `CONFIG_MP3_CTWIN_ENABLE` / `CONFIG_MP3_TERWIN_ENABLE`
+- Event IDs: `CONFIG_MP3_TRACK_ARM_SUCCESS` / `CONFIG_MP3_TRACK_EXPLOSION` / `CONFIG_MP3_TRACK_DEFUSE_SUCCESS` / `CONFIG_MP3_TRACK_CTWIN` / `CONFIG_MP3_TRACK_TERWIN`
+- Music box & waits: `CONFIG_MP3_CT_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_T_WIN_MUSICBOX_TRACK` / `CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS` / `CONFIG_MP3_CT_MUSICBOX_WAIT_MS` / `CONFIG_MP3_T_MUSICBOX_WAIT_MS` / `CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS`
 - LCD normal/inverted mount: `CONFIG_LCD_NORMAL_MOUNT`
 
 ### Detailed Docs
