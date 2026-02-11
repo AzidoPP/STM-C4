@@ -93,7 +93,8 @@ static const ConfigMeta g_config_meta[CONFIG_ID_COUNT] = {
 	{"CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS", CFG_TYPE_U32, CFG_OFF(mp3_defuse_success_wait_ms), 4U, 0U, 20000U},
 	{"CONFIG_MP3_CT_MUSICBOX_WAIT_MS", CFG_TYPE_U32, CFG_OFF(mp3_ct_musicbox_wait_ms), 4U, 0U, 20000U},
 	{"CONFIG_MP3_T_MUSICBOX_WAIT_MS", CFG_TYPE_U32, CFG_OFF(mp3_t_musicbox_wait_ms), 4U, 0U, 20000U},
-	{"CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS", CFG_TYPE_U32, CFG_OFF(mp3_explosion_only_wait_ms), 4U, 0U, 20000U}
+	{"CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS", CFG_TYPE_U32, CFG_OFF(mp3_explosion_only_wait_ms), 4U, 0U, 20000U},
+	{"CONFIG_EXPLOSION_BEEP_MS", CFG_TYPE_U32, CFG_OFF(explosion_beep_ms), 4U, 0U, 5000U}
 };
 
 static AppConfig g_cfg;
@@ -336,6 +337,7 @@ void ConfigManager_LoadDefaults(AppConfig *cfg)
 	cfg->mp3_ct_musicbox_wait_ms = CONFIG_MP3_CT_MUSICBOX_WAIT_MS;
 	cfg->mp3_t_musicbox_wait_ms = CONFIG_MP3_T_MUSICBOX_WAIT_MS;
 	cfg->mp3_explosion_only_wait_ms = CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
+	cfg->explosion_beep_ms = CONFIG_EXPLOSION_BEEP_MS;
 }
 
 void ConfigManager_CopyCurrent(AppConfig *cfg)

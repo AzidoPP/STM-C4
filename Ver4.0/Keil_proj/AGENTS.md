@@ -8,7 +8,10 @@ Updates:
 - Fixed LCD 7x5 glyph row mapping in `hardware/1601a.c` so both normal and inverted mount are top-aligned on 8-row LCD cells and no longer crop the glyph last row.
 - Fixed config-mode confirmation prompt rendering to avoid custom-glyph overflow artifacts (e.g., `RESTORE?`/`#=Y *=N`) by using compact in-font prompts.
 - Added custom LCD glyph support for `/` so prompts like `SAVE?#/*` render fully without missing slash.
+- Tuned `/` glyph stroke width for better visibility on LCD1601A so `SAVE?#/*` is readable under both mount orientations.
 - Added bilingual user-facing step-by-step config-mode tutorial (with example) at the top of `Ver4.0/config.md`.
+- Refined config tutorial wording (CN/EN) to clarify users can modify settings directly in config mode without re-uploading firmware.
+- Added configurable pre-explosion beep stage: on explosion entry, LED turns full yellow, buzzer sounds at 3600Hz for `CONFIG_EXPLOSION_BEEP_MS`, then continues original explosion flow.
 - Simplified config sources: removed `config_defaults.h` and switched runtime default loading to `config.h` as the single source of truth.
 - Simplified docs: merged CN/EN config explanations into `Ver4.0/config.md` with per-item config IDs beside each setting description.
 - Removed `default_config_CH.h` and `default_config_EN.h`, and updated README docs to point users to `config.md` + `config.h` only.

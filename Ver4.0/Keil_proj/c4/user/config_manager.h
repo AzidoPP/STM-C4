@@ -83,6 +83,7 @@ typedef struct
 	uint32_t mp3_ct_musicbox_wait_ms;
 	uint32_t mp3_t_musicbox_wait_ms;
 	uint32_t mp3_explosion_only_wait_ms;
+	uint32_t explosion_beep_ms;
 } AppConfig;
 
 typedef enum
@@ -146,6 +147,7 @@ typedef enum
 	CONFIG_ID_MP3_CT_MUSICBOX_WAIT_MS,
 	CONFIG_ID_MP3_T_MUSICBOX_WAIT_MS,
 	CONFIG_ID_MP3_EXPLOSION_ONLY_WAIT_MS,
+	CONFIG_ID_EXPLOSION_BEEP_MS,
 	CONFIG_ID_COUNT
 } ConfigId;
 

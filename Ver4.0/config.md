@@ -1,58 +1,32 @@
 ﻿# Ver4.0 配置说明 / Configuration Guide
 
-- 不用重新烧录，也可以直接改配置。
+## 中文（教程 + 完整配置）
 
-## 快速教程（中文）
-
-### 如何进入配置模式
+### 快速教程
 1. 先按住 `#` 不放。
 2. 在按住 `#` 的同时，按一下 `RESET`（或重新上电）。
 3. 继续按住 `#` 约 1 秒，直到屏幕进入配置界面。
 
-### 如何修改一个配置
+> 这样修改配置时，不需要重新下载程序；按步骤保存后即可按新设置运行。
+
+### 修改一个配置
 1. 输入配置编号（例如 `24`）。
 2. 按 `#` 确认编号。
 3. 输入新数值（例如 `500`）。
 4. 按 `#` 进入保存确认。
 5. 再按一次 `#` 保存。
-6. 屏幕出现 `STORED` 后，按 `RESET` 重新开始。
+6. 屏幕出现 `STORED` 后，按 `RESET`。
 
 ### 按键说明
 - `0~9`：输入数字
 - `*`：删掉最后一位
 - `#`：确认当前步骤
 
-### 示例：把长按时间改成 500ms
-- 目标配置：`CONFIG_LONG_PRESS_MS`，编号是 `[24]`
-- 操作顺序：进入配置模式 -> 输入 `24` -> 按 `#` -> 输入 `500` -> 按 `#` -> 再按 `#` 保存 -> 按 `RESET`
+### 恢复出厂设置
+- 输入 `090405`，再按 `#` 确认恢复。
 
----
-
-## Quick Tutorial (English)
-
-### Enter config mode
-1. Hold `#`.
-2. While holding `#`, press `RESET` (or power cycle).
-3. Keep holding `#` for about 1 second until config screen appears.
-
-### Change one config item
-1. Enter the config ID (example: `24`).
-2. Press `#` to confirm the ID.
-3. Enter the new value (example: `500`).
-4. Press `#` to go to save confirmation.
-5. Press `#` again to save.
-6. When `STORED` appears, press `RESET`.
-
-### Keys
-- `0~9`: input digits
-- `*`: delete last digit
-- `#`: confirm current step
-
-### Example: set long-press time to 500ms
-- Target: `CONFIG_LONG_PRESS_MS`, ID `[24]`
-- Steps: enter config mode -> input `24` -> press `#` -> input `500` -> press `#` -> press `#` to save -> press `RESET`
-
-## 中文说明（来自 default_config_CH.h）
+### 示例
+- 把 `CONFIG_LONG_PRESS_MS`（`[24]`）改成 `500`：进入配置模式 -> 输入 `24` -> `#` -> 输入 `500` -> `#` -> `#` 保存 -> `RESET`。
 
 /* 范围检查 */
 /* CONFIG_IGNORE_RANGE: 0 = 检查范围, 1 = 忽略范围 [0] */
@@ -255,16 +229,39 @@
    最小: 0     最大: 20000  典型: 7000 */
 #define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
-/* CONFIG_RESET_MAGIC: 配置模式“恢复默认”数值编号（内部兼容） [-] */
-#define CONFIG_RESET_MAGIC 90405U
-/* CONFIG_RESET_CODE: 配置模式“恢复默认”输入码（固定 6 位） [-] */
-#define CONFIG_RESET_CODE "090405"
-
-
+/* CONFIG_EXPLOSION_BEEP_MS: 爆炸开始前置蜂鸣时长（毫秒） [59]
+   最小: 0     最大: 5000   典型: 500 */
+#define CONFIG_EXPLOSION_BEEP_MS 500U
 
 ---
 
-## English Notes (from default_config_EN.h)
+## English (Tutorial + Full Config List)
+
+### Quick Tutorial
+1. Hold `#`.
+2. While holding `#`, press `RESET` (or power cycle).
+3. Keep holding `#` for about 1 second until config screen appears.
+
+### Change one config item
+1. Enter the config ID (example: `24`).
+2. Press `#` to confirm the ID.
+3. Enter the new value (example: `500`).
+4. Press `#` to go to save confirmation.
+5. Press `#` again to save.
+6. When `STORED` appears, press `RESET`.
+
+> This lets you change settings without uploading code again; after saving, the new setting is used directly.
+
+### Keys
+- `0~9`: input digits
+- `*`: delete last digit
+- `#`: confirm current step
+
+### Restore factory settings
+- Enter `090405`, then press `#` to confirm restore.
+
+### Example
+- Set `CONFIG_LONG_PRESS_MS` (`[24]`) to `500`: enter config mode -> `24` -> `#` -> `500` -> `#` -> `#` save -> `RESET`.
 
 /* Range check */
 /* CONFIG_IGNORE_RANGE: 0 = check ranges, 1 = ignore ranges [0] */
@@ -466,17 +463,9 @@
    Min: 0     Max: 20000  Typical: 7000 */
 #define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
-/* CONFIG_RESET_MAGIC: numeric restore id for internal compatibility [-] */
-#define CONFIG_RESET_MAGIC 90405U
-/* CONFIG_RESET_CODE: restore input code used in config mode (fixed 6 digits) [-] */
-#define CONFIG_RESET_CODE "090405"
-
-
+/* CONFIG_EXPLOSION_BEEP_MS: pre-explosion beep duration (ms) [59]
+   Min: 0     Max: 5000   Typical: 500 */
+#define CONFIG_EXPLOSION_BEEP_MS 500U
 
 ---
-
-### 说明 / Notes
-- 配置编号已写在每条配置说明后方（如 `[24]`）。
-- `CONFIG_RESET_CODE` 为 `090405`。
-- 重新烧录后，若固件默认配置与历史存储不一致，将自动采用本次固件默认配置。
 

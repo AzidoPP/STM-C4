@@ -84,6 +84,8 @@ static uint8_t startup_beep_state = 0;
 static uint32_t startup_beep_next_ms = 0;
 static uint8_t success_beep_state = 0;
 static uint32_t success_beep_next_ms = 0;
+static uint8_t explosion_stage = 0;
+static uint32_t explosion_stage_next_ms = 0;
 
 static DefuseAnim defuse_anim;
 static Mp3Sequence mp3_seq = MP3_SEQ_NONE;
@@ -168,9 +170,11 @@ uint32_t g_mp3_defuse_success_wait_ms = CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS;
 uint32_t g_mp3_ct_musicbox_wait_ms = CONFIG_MP3_CT_MUSICBOX_WAIT_MS;
 uint32_t g_mp3_t_musicbox_wait_ms = CONFIG_MP3_T_MUSICBOX_WAIT_MS;
 uint32_t g_mp3_explosion_only_wait_ms = CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
+uint32_t g_explosion_beep_ms = CONFIG_EXPLOSION_BEEP_MS;
 
 #define MP3_CT_MUSICBOX_BASE 1000U
 #define MP3_T_MUSICBOX_BASE 2000U
+#define EXPLOSION_BEEP_FREQ_HZ 3600U
 
 static void Runtime_Apply(const AppConfig *cfg)
 {
@@ -252,6 +256,7 @@ static void Runtime_Apply(const AppConfig *cfg)
 	g_mp3_ct_musicbox_wait_ms = cfg->mp3_ct_musicbox_wait_ms;
 	g_mp3_t_musicbox_wait_ms = cfg->mp3_t_musicbox_wait_ms;
 	g_mp3_explosion_only_wait_ms = cfg->mp3_explosion_only_wait_ms;
+	g_explosion_beep_ms = cfg->explosion_beep_ms;
 }
 
 static void DefuserInput_Init(void)
@@ -721,6 +726,8 @@ static void Countdown_Start(uint32_t now)
 	scroll_dir = 0U;
 	scroll_next_ms = now;
 	defuse_mode = DEFUSE_NONE;
+	explosion_stage = 0U;
+	explosion_stage_next_ms = 0U;
 	Password_Reset(defuse_input);
 	defuse_pos = 0U;
 	last_defuse_input_ms = 0U;
@@ -884,6 +891,8 @@ static void Defuse_Success(uint32_t now)
 	Buzzer_Off();
 	Relay_Off();
 	beep_active = 0U;
+	explosion_stage = 0U;
+	explosion_stage_next_ms = 0U;
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
 
@@ -906,10 +915,20 @@ static void Explosion_Start(uint32_t now)
 	beep_active = 0U;
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
-	Relay_On();
 	LED_SetYellow(max_pwm);
 	LCD_ClearLine();
-	MP3Sequence_StartExplosion(now);
+	Buzzer_SetFreq(EXPLOSION_BEEP_FREQ_HZ);
+	if (g_explosion_beep_ms > 0U)
+	{
+		Buzzer_On();
+		explosion_stage = 1U;
+		explosion_stage_next_ms = now + g_explosion_beep_ms;
+	}
+	else
+	{
+		explosion_stage = 2U;
+		explosion_stage_next_ms = now;
+	}
 	app_state = STATE_EXPLODED;
 }
 
@@ -1355,6 +1374,21 @@ int main(void)
 				break;
 			case STATE_EXPLODED:
 				LED_SetYellow(LED_GetPwmMax());
+				if (explosion_stage == 1U)
+				{
+					if (now >= explosion_stage_next_ms)
+					{
+						Buzzer_Off();
+						explosion_stage = 2U;
+						explosion_stage_next_ms = now;
+					}
+				}
+				if (explosion_stage == 2U)
+				{
+					Relay_On();
+					MP3Sequence_StartExplosion(now);
+					explosion_stage = 3U;
+				}
 				break;
 			default:
 				LED_Breath(now);
