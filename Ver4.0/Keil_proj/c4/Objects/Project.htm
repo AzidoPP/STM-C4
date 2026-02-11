@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Feb 11 14:58:38 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Feb 11 17:20:05 2026
 <BR><P>
-<H3>Maximum Stack Usage =        620 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        840 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+__rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 <P>
 <H3>
 Functions with no stack information
@@ -97,86 +97,86 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
 
-<P><STRONG><a name="[126]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[125]"></a>__scatterload_rt2_thumb_only</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[127]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
+<P><STRONG><a name="[126]"></a>__scatterload_null</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter), UNUSED)
 
-<P><STRONG><a name="[128]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[127]"></a>__decompress</STRONG> (Thumb, 90 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[129]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
+<P><STRONG><a name="[128]"></a>__decompress1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(!!dczerorl2), UNUSED)
 
-<P><STRONG><a name="[12a]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
+<P><STRONG><a name="[129]"></a>__scatterload_zeroinit</STRONG> (Thumb, 28 bytes, Stack size unknown bytes, __scatter_zi.o(!!handler_zi), UNUSED)
 
 <P><STRONG><a name="[41]"></a>__rt_lib_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit.o(.ARM.Collect$$libinit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_li
 </UL>
 
-<P><STRONG><a name="[12b]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
+<P><STRONG><a name="[12a]"></a>__rt_lib_init_alloca_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002E))
 
-<P><STRONG><a name="[12c]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
+<P><STRONG><a name="[12b]"></a>__rt_lib_init_argv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000002C))
 
-<P><STRONG><a name="[12d]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
+<P><STRONG><a name="[12c]"></a>__rt_lib_init_atexit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001B))
 
-<P><STRONG><a name="[12e]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
+<P><STRONG><a name="[12d]"></a>__rt_lib_init_clock_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000021))
 
-<P><STRONG><a name="[12f]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
+<P><STRONG><a name="[12e]"></a>__rt_lib_init_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000032))
 
-<P><STRONG><a name="[130]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
+<P><STRONG><a name="[12f]"></a>__rt_lib_init_exceptions_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000030))
 
-<P><STRONG><a name="[131]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
+<P><STRONG><a name="[130]"></a>__rt_lib_init_fp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000002))
 
-<P><STRONG><a name="[132]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
+<P><STRONG><a name="[131]"></a>__rt_lib_init_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001F))
 
-<P><STRONG><a name="[133]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
+<P><STRONG><a name="[132]"></a>__rt_lib_init_getenv_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000023))
 
-<P><STRONG><a name="[134]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
+<P><STRONG><a name="[133]"></a>__rt_lib_init_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000A))
 
-<P><STRONG><a name="[135]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
+<P><STRONG><a name="[134]"></a>__rt_lib_init_lc_collate_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000011))
 
-<P><STRONG><a name="[136]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
+<P><STRONG><a name="[135]"></a>__rt_lib_init_lc_ctype_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000013))
 
-<P><STRONG><a name="[137]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
+<P><STRONG><a name="[136]"></a>__rt_lib_init_lc_monetary_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000015))
 
-<P><STRONG><a name="[138]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
+<P><STRONG><a name="[137]"></a>__rt_lib_init_lc_numeric_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000017))
 
-<P><STRONG><a name="[139]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
+<P><STRONG><a name="[138]"></a>__rt_lib_init_lc_time_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000019))
 
-<P><STRONG><a name="[13a]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
+<P><STRONG><a name="[139]"></a>__rt_lib_init_preinit_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000004))
 
-<P><STRONG><a name="[13b]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
+<P><STRONG><a name="[13a]"></a>__rt_lib_init_rand_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000E))
 
-<P><STRONG><a name="[13c]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
+<P><STRONG><a name="[13b]"></a>__rt_lib_init_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000033))
 
-<P><STRONG><a name="[13d]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
+<P><STRONG><a name="[13c]"></a>__rt_lib_init_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000001D))
 
-<P><STRONG><a name="[13e]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
+<P><STRONG><a name="[13d]"></a>__rt_lib_init_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$00000025))
 
-<P><STRONG><a name="[13f]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
+<P><STRONG><a name="[13e]"></a>__rt_lib_init_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libinit2.o(.ARM.Collect$$libinit$$0000000C))
 
 <P><STRONG><a name="[46]"></a>__rt_lib_shutdown</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown.o(.ARM.Collect$$libshutdown$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_ls
 </UL>
 
-<P><STRONG><a name="[140]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
+<P><STRONG><a name="[13f]"></a>__rt_lib_shutdown_cpp_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000002))
 
-<P><STRONG><a name="[141]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
+<P><STRONG><a name="[140]"></a>__rt_lib_shutdown_fp_trap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000007))
 
-<P><STRONG><a name="[142]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
+<P><STRONG><a name="[141]"></a>__rt_lib_shutdown_heap_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000F))
 
-<P><STRONG><a name="[143]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
+<P><STRONG><a name="[142]"></a>__rt_lib_shutdown_return</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000010))
 
-<P><STRONG><a name="[144]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
+<P><STRONG><a name="[143]"></a>__rt_lib_shutdown_signal_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000A))
 
-<P><STRONG><a name="[145]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
+<P><STRONG><a name="[144]"></a>__rt_lib_shutdown_stdio_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$00000004))
 
-<P><STRONG><a name="[146]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
+<P><STRONG><a name="[145]"></a>__rt_lib_shutdown_user_alloc_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, libshutdown2.o(.ARM.Collect$$libshutdown$$0000000C))
 
 <P><STRONG><a name="[3c]"></a>__rt_entry</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry.o(.ARM.Collect$$rtentry$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload_rt2
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
 
-<P><STRONG><a name="[147]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
+<P><STRONG><a name="[146]"></a>__rt_entry_presh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000002))
 
 <P><STRONG><a name="[3e]"></a>__rt_entry_sh</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry4.o(.ARM.Collect$$rtentry$$00000004))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -189,17 +189,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_init
 </UL>
 
-<P><STRONG><a name="[148]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
+<P><STRONG><a name="[147]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[42]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 620 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+<BR><BR>[Stack]<UL><LI>Max Depth = 840 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
-<P><STRONG><a name="[149]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
+<P><STRONG><a name="[148]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
 <P><STRONG><a name="[54]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -209,7 +209,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_lib_shutdown
 </UL>
 
-<P><STRONG><a name="[14a]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
+<P><STRONG><a name="[149]"></a>__rt_exit_prels_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000002))
 
 <P><STRONG><a name="[47]"></a>__rt_exit_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit2.o(.ARM.Collect$$rtexit$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
@@ -352,20 +352,20 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[de]"></a>memcmp</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, memcmp.o(.text))
+<P><STRONG><a name="[dd]"></a>memcmp</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, memcmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Match
+<BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Match
 </UL>
 
-<P><STRONG><a name="[7f]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
+<P><STRONG><a name="[7d]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
 </UL>
 
-<P><STRONG><a name="[107]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
+<P><STRONG><a name="[106]"></a>__aeabi_memcpy</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memcpy_v6.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -373,26 +373,26 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 
-<P><STRONG><a name="[14b]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
+<P><STRONG><a name="[14a]"></a>_memcpy_lastbytes</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_v6.o(.text), UNUSED)
 
 <P><STRONG><a name="[4a]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Commit
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Commit
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memcpy
 </UL>
 
-<P><STRONG><a name="[14c]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[14b]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[14d]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[14c]"></a>__rt_memcpy_w</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[14e]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
+<P><STRONG><a name="[14d]"></a>_memcpy_lastbytes_aligned</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memcpy_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[4e]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
 </UL>
 
@@ -400,17 +400,17 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset_w
 </UL>
 
-<P><STRONG><a name="[14f]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
+<P><STRONG><a name="[14e]"></a>_memset</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr.o(.text), UNUSED)
 
-<P><STRONG><a name="[77]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text))
+<P><STRONG><a name="[75]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
 </UL>
 
-<P><STRONG><a name="[150]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[14f]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
-<P><STRONG><a name="[151]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
+<P><STRONG><a name="[150]"></a>__rt_memclr_w</STRONG> (Thumb, 78 bytes, Stack size 4 bytes, rt_memclr_w.o(.text), UNUSED)
 
 <P><STRONG><a name="[4c]"></a>_memset_w</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rt_memclr_w.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_memclr
@@ -421,21 +421,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetValueString
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Runtime_Apply
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Runtime_Apply
 </UL>
 
-<P><STRONG><a name="[82]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<P><STRONG><a name="[81]"></a>strcmp</STRONG> (Thumb, 128 bytes, Stack size 0 bytes, strcmpv7m.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[152]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[151]"></a>__use_two_region_memory</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[153]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[152]"></a>__rt_heap_escrow$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
-<P><STRONG><a name="[154]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
+<P><STRONG><a name="[153]"></a>__rt_heap_expand$2region</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, heapauxi.o(.text), UNUSED)
 
 <P><STRONG><a name="[4f]"></a>__read_errno</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, _rserrno.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
@@ -446,7 +445,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
 <P><STRONG><a name="[50]"></a>__aeabi_errno_addr</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text))
@@ -454,17 +453,17 @@ Global Symbols
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__read_errno
 </UL>
 
-<P><STRONG><a name="[155]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[154]"></a>__errno$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[156]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
+<P><STRONG><a name="[155]"></a>__rt_errno_addr$intlibspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_errno_addr_intlibspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[157]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[156]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[52]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
-<P><STRONG><a name="[158]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
+<P><STRONG><a name="[157]"></a>__user_perthread_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
 <P><STRONG><a name="[3f]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
@@ -489,14 +488,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[159]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[158]"></a>__I$use$semihosting</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[15a]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
+<P><STRONG><a name="[159]"></a>__use_no_semihosting_swi</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, use_no_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[7]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[15b]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
+<P><STRONG><a name="[15a]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, indicate_semi.o(.text), UNUSED)
 
 <P><STRONG><a name="[55]"></a>Buzzer_Init</STRONG> (Thumb, 200 bytes, Stack size 48 bytes, led.o(i.Buzzer_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = Buzzer_Init &rArr; TimerClockPclk1 &rArr; RCC_GetClocksFreq
@@ -521,11 +520,11 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 </UL>
 
@@ -534,9 +533,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
 <P><STRONG><a name="[62]"></a>Buzzer_SetDuty</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, led.o(i.Buzzer_SetDuty))
@@ -556,402 +555,395 @@ Global Symbols
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCapture3
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Start
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Start
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
 </UL>
 
-<P><STRONG><a name="[6e]"></a>ConfigManager_Commit</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_Commit))
+<P><STRONG><a name="[71]"></a>ConfigManager_Commit</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_Commit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ConfigManager_Commit &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
 </UL>
 
-<P><STRONG><a name="[6f]"></a>ConfigManager_CopyCurrent</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_CopyCurrent))
+<P><STRONG><a name="[72]"></a>ConfigManager_CopyCurrent</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_CopyCurrent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ConfigManager_CopyCurrent &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
 </UL>
 
-<P><STRONG><a name="[101]"></a>ConfigManager_Get</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, config_manager.o(i.ConfigManager_Get))
+<P><STRONG><a name="[100]"></a>ConfigManager_Get</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, config_manager.o(i.ConfigManager_Get))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[84]"></a>ConfigManager_GetCount</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, config_manager.o(i.ConfigManager_GetCount))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<P><STRONG><a name="[83]"></a>ConfigManager_GetCount</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, config_manager.o(i.ConfigManager_GetCount))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[70]"></a>ConfigManager_GetValueString</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, config_manager.o(i.ConfigManager_GetValueString))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = ConfigManager_GetValueString &rArr; UintToText
+<P><STRONG><a name="[73]"></a>ConfigManager_Init</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, config_manager.o(i.ConfigManager_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 288<LI>Call Chain = ConfigManager_Init &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UintToText
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadU32
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
-</UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-</UL>
-
-<P><STRONG><a name="[73]"></a>ConfigManager_Init</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = ConfigManager_Init &rArr; ConfigManager_Validate &rArr; strlen
-</UL>
-<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigChecksum
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigDefaultsChecksum
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigChecksum
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[74]"></a>ConfigManager_LoadDefaults</STRONG> (Thumb, 312 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_LoadDefaults))
+<P><STRONG><a name="[6f]"></a>ConfigManager_LoadDefaults</STRONG> (Thumb, 312 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_LoadDefaults))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigDefaultsChecksum
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
 </UL>
 
-<P><STRONG><a name="[78]"></a>ConfigManager_RestoreDefaults</STRONG> (Thumb, 34 bytes, Stack size 256 bytes, config_manager.o(i.ConfigManager_RestoreDefaults))
-<BR><BR>[Stack]<UL><LI>Max Depth = 580<LI>Call Chain = ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+<P><STRONG><a name="[76]"></a>ConfigManager_RestoreDefaults</STRONG> (Thumb, 34 bytes, Stack size 256 bytes, config_manager.o(i.ConfigManager_RestoreDefaults))
+<BR><BR>[Stack]<UL><LI>Max Depth = 816<LI>Call Chain = ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Commit
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Commit
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[79]"></a>ConfigManager_Save</STRONG> (Thumb, 128 bytes, Stack size 280 bytes, config_manager.o(i.ConfigManager_Save))
-<BR><BR>[Stack]<UL><LI>Max Depth = 324<LI>Call Chain = ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+<P><STRONG><a name="[77]"></a>ConfigManager_Save</STRONG> (Thumb, 142 bytes, Stack size 288 bytes, config_manager.o(i.ConfigManager_Save))
+<BR><BR>[Stack]<UL><LI>Max Depth = 560<LI>Call Chain = ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigChecksum
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigDefaultsChecksum
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigChecksum
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[7b]"></a>ConfigManager_SetValueString</STRONG> (Thumb, 128 bytes, Stack size 32 bytes, config_manager.o(i.ConfigManager_SetValueString))
+<P><STRONG><a name="[79]"></a>ConfigManager_SetValueString</STRONG> (Thumb, 128 bytes, Stack size 32 bytes, config_manager.o(i.ConfigManager_SetValueString))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = ConfigManager_SetValueString &rArr; ParseUint
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteU32
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParseUint
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsStringDigits
+<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WriteU32
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ParseUint
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsStringDigits
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[76]"></a>ConfigManager_Validate</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, config_manager.o(i.ConfigManager_Validate))
+<P><STRONG><a name="[74]"></a>ConfigManager_Validate</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, config_manager.o(i.ConfigManager_Validate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ConfigManager_Validate &rArr; strlen
 </UL>
-<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadU32
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsStringDigits
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadU32
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsStringDigits
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
 <P><STRONG><a name="[a]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[a4]"></a>Delay_ms</STRONG> (Thumb, 24 bytes, Stack size 4 bytes, delay.o(i.Delay_ms))
+<P><STRONG><a name="[a3]"></a>Delay_ms</STRONG> (Thumb, 24 bytes, Stack size 4 bytes, delay.o(i.Delay_ms))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Delay_ms
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
+<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
 </UL>
 
-<P><STRONG><a name="[a5]"></a>Delay_us</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, delay.o(i.Delay_us))
-<BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
+<P><STRONG><a name="[a4]"></a>Delay_us</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, delay.o(i.Delay_us))
+<BR><BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 
-<P><STRONG><a name="[af]"></a>FLASH_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+<P><STRONG><a name="[ae]"></a>FLASH_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_ClearFlag))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
 </UL>
 
-<P><STRONG><a name="[aa]"></a>FLASH_ErasePage</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, stm32f10x_flash.o(i.FLASH_ErasePage))
+<P><STRONG><a name="[a9]"></a>FLASH_ErasePage</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, stm32f10x_flash.o(i.FLASH_ErasePage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = FLASH_ErasePage &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
-</UL>
-
-<P><STRONG><a name="[ad]"></a>FLASH_GetBank1Status</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_GetBank1Status))
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
 </UL>
 
-<P><STRONG><a name="[b0]"></a>FLASH_Lock</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_Lock))
-<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+<P><STRONG><a name="[ac]"></a>FLASH_GetBank1Status</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_GetBank1Status))
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
 
-<P><STRONG><a name="[ac]"></a>FLASH_ProgramHalfWord</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, stm32f10x_flash.o(i.FLASH_ProgramHalfWord))
+<P><STRONG><a name="[af]"></a>FLASH_Lock</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_Lock))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+</UL>
+
+<P><STRONG><a name="[ab]"></a>FLASH_ProgramHalfWord</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, stm32f10x_flash.o(i.FLASH_ProgramHalfWord))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
-</UL>
-
-<P><STRONG><a name="[ae]"></a>FLASH_Unlock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_Unlock))
-<BR><BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
 </UL>
 
-<P><STRONG><a name="[ab]"></a>FLASH_WaitForLastOperation</STRONG> (Thumb, 38 bytes, Stack size 4 bytes, stm32f10x_flash.o(i.FLASH_WaitForLastOperation))
+<P><STRONG><a name="[ad]"></a>FLASH_Unlock</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f10x_flash.o(i.FLASH_Unlock))
+<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
+</UL>
+
+<P><STRONG><a name="[aa]"></a>FLASH_WaitForLastOperation</STRONG> (Thumb, 38 bytes, Stack size 4 bytes, stm32f10x_flash.o(i.FLASH_WaitForLastOperation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_GetBank1Status
+<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_GetBank1Status
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ErasePage
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ErasePage
 </UL>
 
 <P><STRONG><a name="[58]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[a1]"></a>GPIO_PinRemapConfig</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, stm32f10x_gpio.o(i.GPIO_PinRemapConfig))
+<P><STRONG><a name="[a0]"></a>GPIO_PinRemapConfig</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, stm32f10x_gpio.o(i.GPIO_PinRemapConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_PinRemapConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
+<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
 </UL>
 
-<P><STRONG><a name="[a3]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
-<BR><BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuser_IsActive
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ReadRows
+<P><STRONG><a name="[a2]"></a>GPIO_ReadInputDataBit</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ReadInputDataBit))
+<BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuser_IsActive
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ReadRows
 </UL>
 
-<P><STRONG><a name="[bf]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_Off
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
+<P><STRONG><a name="[be]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_ResetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_Off
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
 </UL>
 
-<P><STRONG><a name="[c4]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
+<P><STRONG><a name="[c3]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
 </UL>
 
 <P><STRONG><a name="[5]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[9c]"></a>LCD_Backlight_On</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Backlight_On))
+<P><STRONG><a name="[9b]"></a>LCD_Backlight_On</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Backlight_On))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = LCD_Backlight_On &rArr; LCD_Backlight_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
+<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[b1]"></a>LCD_Backlight_Set</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Backlight_Set))
+<P><STRONG><a name="[b0]"></a>LCD_Backlight_Set</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Backlight_Set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_Backlight_Set
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_On
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_On
 </UL>
 
 <P><STRONG><a name="[69]"></a>LCD_BeginFrame</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, 1601a.o(i.LCD_BeginFrame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_BeginFrame
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ResetGlyphCache
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ResetGlyphCache
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 </UL>
 
-<P><STRONG><a name="[be]"></a>LCD_INIT</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, 1601a.o(i.LCD_INIT))
+<P><STRONG><a name="[bd]"></a>LCD_INIT</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, 1601a.o(i.LCD_INIT))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_INIT &rArr; LCD_GPIO_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ResetGlyphCache
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
+<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ResetGlyphCache
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c2]"></a>LCD_WRITE_ByteDATA</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, 1601a.o(i.LCD_WRITE_ByteDATA))
+<P><STRONG><a name="[c1]"></a>LCD_WRITE_ByteDATA</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, 1601a.o(i.LCD_WRITE_ByteDATA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_WRITE_ByteDATA &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
 </UL>
 
-<P><STRONG><a name="[c1]"></a>LCD_WRITE_CMD</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, 1601a.o(i.LCD_WRITE_CMD))
+<P><STRONG><a name="[c0]"></a>LCD_WRITE_CMD</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, 1601a.o(i.LCD_WRITE_CMD))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
 </UL>
 
-<P><STRONG><a name="[b4]"></a>LCD_WRITE_StrDATA</STRONG> (Thumb, 70 bytes, Stack size 32 bytes, 1601a.o(i.LCD_WRITE_StrDATA))
+<P><STRONG><a name="[b3]"></a>LCD_WRITE_StrDATA</STRONG> (Thumb, 70 bytes, Stack size 32 bytes, 1601a.o(i.LCD_WRITE_StrDATA))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_MapCol
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_MapCol
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteFixed
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 </UL>
 
-<P><STRONG><a name="[c7]"></a>LCD_WRITE_StrDATA_Password</STRONG> (Thumb, 200 bytes, Stack size 40 bytes, 1601a.o(i.LCD_WRITE_StrDATA_Password))
+<P><STRONG><a name="[c6]"></a>LCD_WRITE_StrDATA_Password</STRONG> (Thumb, 200 bytes, Stack size 40 bytes, 1601a.o(i.LCD_WRITE_StrDATA_Password))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = LCD_WRITE_StrDATA_Password &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_MapCol
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetCursorPhysical
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_MapCol
+<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
 </UL>
 
-<P><STRONG><a name="[ca]"></a>LED_AllOff</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.LED_AllOff))
+<P><STRONG><a name="[c9]"></a>LED_AllOff</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.LED_AllOff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LED_AllOff &rArr; LED_SetColor
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
-<P><STRONG><a name="[9a]"></a>LED_GetPwmMax</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, led.o(i.LED_GetPwmMax))
+<P><STRONG><a name="[99]"></a>LED_GetPwmMax</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, led.o(i.LED_GetPwmMax))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[cd]"></a>LED_Init</STRONG> (Thumb, 252 bytes, Stack size 48 bytes, led.o(i.LED_Init))
+<P><STRONG><a name="[cc]"></a>LED_Init</STRONG> (Thumb, 252 bytes, Stack size 48 bytes, led.o(i.LED_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = LED_Init &rArr; TimerClockPclk1 &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[cb]"></a>LED_SetColor</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, led.o(i.LED_SetColor))
+<P><STRONG><a name="[ca]"></a>LED_SetColor</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, led.o(i.LED_SetColor))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = LED_SetColor
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
 </UL>
 
-<P><STRONG><a name="[9d]"></a>LED_SetGreen</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, led.o(i.LED_SetGreen))
+<P><STRONG><a name="[9c]"></a>LED_SetGreen</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, led.o(i.LED_SetGreen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LED_SetGreen &rArr; LED_SetColor
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[a8]"></a>LED_SetYellow</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, led.o(i.LED_SetYellow))
+<P><STRONG><a name="[a7]"></a>LED_SetYellow</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, led.o(i.LED_SetYellow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LED_SetYellow &rArr; LED_SetColor
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 </UL>
 
-<P><STRONG><a name="[105]"></a>MatrixKey_GetHold</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, matrixkey.o(i.MatrixKey_GetHold))
+<P><STRONG><a name="[104]"></a>MatrixKey_GetHold</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, matrixkey.o(i.MatrixKey_GetHold))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[104]"></a>MatrixKey_GetValue</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, matrixkey.o(i.MatrixKey_GetValue))
+<P><STRONG><a name="[103]"></a>MatrixKey_GetValue</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, matrixkey.o(i.MatrixKey_GetValue))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d6]"></a>MatrixKey_Init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, matrixkey.o(i.MatrixKey_Init))
+<P><STRONG><a name="[d5]"></a>MatrixKey_Init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, matrixkey.o(i.MatrixKey_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = MatrixKey_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d9]"></a>MatrixKey_Update</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, matrixkey.o(i.MatrixKey_Update))
+<P><STRONG><a name="[d8]"></a>MatrixKey_Update</STRONG> (Thumb, 78 bytes, Stack size 16 bytes, matrixkey.o(i.MatrixKey_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = MatrixKey_Update &rArr; MatrixKey_ScanRaw &rArr; MatrixKey_ReadRows
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Millis
+<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Millis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -962,84 +954,84 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[f0]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[ef]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
 <P><STRONG><a name="[b]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[57]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
 <P><STRONG><a name="[56]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[f1]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[f0]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Relay_Off</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.Relay_Off))
+<P><STRONG><a name="[9a]"></a>Relay_Off</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.Relay_Off))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Relay_Off
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[a7]"></a>Relay_On</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.Relay_On))
+<P><STRONG><a name="[a6]"></a>Relay_On</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, led.o(i.Relay_On))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Relay_On
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 </UL>
 
 <P><STRONG><a name="[9]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[e0]"></a>Serial_Init</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, serial.o(i.Serial_Init))
+<P><STRONG><a name="[df]"></a>Serial_Init</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, serial.o(i.Serial_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = Serial_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_Init
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_Init
 </UL>
 
-<P><STRONG><a name="[d5]"></a>Serial_SendArray</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, serial.o(i.Serial_SendArray))
+<P><STRONG><a name="[d4]"></a>Serial_SendArray</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, serial.o(i.Serial_SendArray))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
+<BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
+<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
 </UL>
 
-<P><STRONG><a name="[e3]"></a>Serial_SendByte</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, serial.o(i.Serial_SendByte))
+<P><STRONG><a name="[e2]"></a>Serial_SendByte</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, serial.o(i.Serial_SendByte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetFlagStatus
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendArray
+<BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendArray
 </UL>
 
 <P><STRONG><a name="[c]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SysTick_Handler))
@@ -1048,32 +1040,32 @@ Global Symbols
 <P><STRONG><a name="[38]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[2b]"></a>TIM4_IRQHandler</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, stm32f10x_it.o(i.TIM4_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM4_IRQHandler &rArr; TIM_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Tick
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Tick
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[5d]"></a>TIM_ARRPreloadConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ARRPreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 </UL>
 
-<P><STRONG><a name="[eb]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[ea]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
 <P><STRONG><a name="[5e]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
 <P><STRONG><a name="[63]"></a>TIM_GetCapture3</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_GetCapture3))
@@ -1081,688 +1073,688 @@ Global Symbols
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetDuty
 </UL>
 
-<P><STRONG><a name="[ea]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[e9]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, stm32f10x_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ef]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<P><STRONG><a name="[ee]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
-<P><STRONG><a name="[ce]"></a>TIM_OC2Init</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC2Init))
+<P><STRONG><a name="[cd]"></a>TIM_OC2Init</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC2Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC2Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
-<P><STRONG><a name="[cf]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_OC2PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<P><STRONG><a name="[ce]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_OC2PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 </UL>
 
 <P><STRONG><a name="[5b]"></a>TIM_OC3Init</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC3Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC3Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 </UL>
 
 <P><STRONG><a name="[5c]"></a>TIM_OC3PreloadConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_OC3PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 </UL>
 
-<P><STRONG><a name="[b9]"></a>TIM_OC4Init</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC4Init))
+<P><STRONG><a name="[b8]"></a>TIM_OC4Init</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, stm32f10x_tim.o(i.TIM_OC4Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC4Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[ba]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_OC4PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
+<P><STRONG><a name="[b9]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_OC4PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GPIO_Init
 </UL>
 
 <P><STRONG><a name="[65]"></a>TIM_SetAutoreload</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetAutoreload))
 <BR><BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetFreq
 </UL>
 
-<P><STRONG><a name="[d0]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare2))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<P><STRONG><a name="[cf]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare2))
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
 </UL>
 
 <P><STRONG><a name="[60]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare3))
-<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetFreq
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetDuty
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_On
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Off
 </UL>
 
-<P><STRONG><a name="[b2]"></a>TIM_SetCompare4</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare4))
-<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
+<P><STRONG><a name="[b1]"></a>TIM_SetCompare4</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_SetCompare4))
+<BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_Set
 </UL>
 
 <P><STRONG><a name="[5a]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, stm32f10x_tim.o(i.TIM_TimeBaseInit))
-<BR><BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR><BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
-<P><STRONG><a name="[ed]"></a>Timebase_Init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, systick.o(i.Timebase_Init))
+<P><STRONG><a name="[ec]"></a>Timebase_Init</STRONG> (Thumb, 102 bytes, Stack size 32 bytes, systick.o(i.Timebase_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Timebase_Init &rArr; TimerClockPclk1 &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TimerClockPclk1
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[da]"></a>Timebase_Millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, systick.o(i.Timebase_Millis))
+<P><STRONG><a name="[d9]"></a>Timebase_Millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, systick.o(i.Timebase_Millis))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
 </UL>
 
-<P><STRONG><a name="[ec]"></a>Timebase_Tick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, systick.o(i.Timebase_Tick))
+<P><STRONG><a name="[eb]"></a>Timebase_Tick</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, systick.o(i.Timebase_Tick))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[e2]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
+<P><STRONG><a name="[e1]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
 </UL>
 
-<P><STRONG><a name="[e5]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
-<BR><BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
+<P><STRONG><a name="[e4]"></a>USART_GetFlagStatus</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_GetFlagStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
 </UL>
 
-<P><STRONG><a name="[e1]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
+<P><STRONG><a name="[e0]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
 </UL>
 
-<P><STRONG><a name="[e4]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
-<BR><BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
+<P><STRONG><a name="[e3]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_SendData))
+<BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendByte
 </UL>
 
 <P><STRONG><a name="[8]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[100]"></a>__ARM_fpclassify</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, fpclassify.o(i.__ARM_fpclassify))
-<BR><BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<P><STRONG><a name="[ff]"></a>__ARM_fpclassify</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, fpclassify.o(i.__ARM_fpclassify))
+<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[f2]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
+<P><STRONG><a name="[f1]"></a>__kernel_poly</STRONG> (Thumb, 170 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
-</UL>
-
-<P><STRONG><a name="[f5]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan))
-<BR><BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-</UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[f7]"></a>__mathlib_dbl_overflow</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_overflow))
-<BR><BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
+<P><STRONG><a name="[f4]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_infnan))
+<BR><BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
-</UL>
-
-<P><STRONG><a name="[f8]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
-<BR><BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-</UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[90]"></a>exp</STRONG> (Thumb, 554 bytes, Stack size 48 bytes, exp.o(i.exp))
+<P><STRONG><a name="[f6]"></a>__mathlib_dbl_overflow</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_overflow))
+<BR><BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+</UL>
+
+<P><STRONG><a name="[f7]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dunder.o(i.__mathlib_dbl_underflow))
+<BR><BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+</UL>
+
+<P><STRONG><a name="[8f]"></a>exp</STRONG> (Thumb, 554 bytes, Stack size 48 bytes, exp.o(i.exp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = exp &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
 <P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 900 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 620<LI>Call Chain = main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+<BR><BR>[Stack]<UL><LI>Max Depth = 840<LI>Call Chain = main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Get
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Runtime_Apply
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Match
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_IsComplete
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputRight
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputLeft
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuser_IsActive
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateScroll
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_SetVolume
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_Init
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Get
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Update
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartupBeep_Update
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Runtime_Apply
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Match
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_IsComplete
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputRight
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputLeft
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuser_IsActive
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateScroll
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_SetVolume
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_Init
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetColor
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_AllOff
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetFreq
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetDuty
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Off
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetValue
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetHold
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Millis
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Init
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetValue
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetHold
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Millis
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[102]"></a>mp3_Init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, mp3.o(i.mp3_Init))
+<P><STRONG><a name="[101]"></a>mp3_Init</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, mp3.o(i.mp3_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = mp3_Init &rArr; Serial_Init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[89]"></a>mp3_PlayMp3Track</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mp3.o(i.mp3_PlayMp3Track))
+<P><STRONG><a name="[88]"></a>mp3_PlayMp3Track</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mp3.o(i.mp3_PlayMp3Track))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = mp3_PlayMp3Track &rArr; MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
 </UL>
 
-<P><STRONG><a name="[103]"></a>mp3_SetVolume</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mp3.o(i.mp3_SetVolume))
+<P><STRONG><a name="[102]"></a>mp3_SetVolume</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, mp3.o(i.mp3_SetVolume))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = mp3_SetVolume &rArr; MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_SendFrame
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[91]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
+<P><STRONG><a name="[90]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[108]"></a>_d2f</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[107]"></a>_d2f</STRONG> (Thumb, 98 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[f4]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
+<P><STRONG><a name="[f3]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[10b]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
+<P><STRONG><a name="[10a]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
 </UL>
 
-<P><STRONG><a name="[10e]"></a>__fpl_dcheck_NaN1</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dcheck1.o(x$fpl$dcheck1))
-<BR><BR>[Calls]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_return_NaN
+<P><STRONG><a name="[10d]"></a>__fpl_dcheck_NaN1</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, dcheck1.o(x$fpl$dcheck1))
+<BR><BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_return_NaN
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
-</UL>
-
-<P><STRONG><a name="[113]"></a>__fpl_dcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, dcmpi.o(x$fpl$dcmpinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbn
 </UL>
 
-<P><STRONG><a name="[ff]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
+<P><STRONG><a name="[112]"></a>__fpl_dcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, dcmpi.o(x$fpl$dcmpinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+</UL>
+
+<P><STRONG><a name="[fe]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[110]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[10f]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[fc]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
+<P><STRONG><a name="[fb]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[111]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[110]"></a>_dfix</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[fd]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
-<BR><BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<P><STRONG><a name="[fc]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
+<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[15c]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
+<P><STRONG><a name="[15b]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
 
-<P><STRONG><a name="[fa]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf))
+<P><STRONG><a name="[f9]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_cdcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[112]"></a>_dcmple</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[111]"></a>_dcmple</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[116]"></a>__fpl_dcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, dleqf.o(x$fpl$dleqf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drcmple
+<P><STRONG><a name="[115]"></a>__fpl_dcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, dleqf.o(x$fpl$dleqf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drcmple
 </UL>
 
-<P><STRONG><a name="[f3]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
+<P><STRONG><a name="[f2]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[114]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<P><STRONG><a name="[113]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[10a]"></a>__fpl_dnaninf</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, dnaninf.o(x$fpl$dnaninf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dfix
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2f
+<P><STRONG><a name="[109]"></a>__fpl_dnaninf</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, dnaninf.o(x$fpl$dnaninf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
+<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmple
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dfix
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2f
 </UL>
 
-<P><STRONG><a name="[10d]"></a>__fpl_dretinf</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dretinf.o(x$fpl$dretinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
+<P><STRONG><a name="[10c]"></a>__fpl_dretinf</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, dretinf.o(x$fpl$dretinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ddiv
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
 </UL>
 
-<P><STRONG><a name="[f9]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))
+<P><STRONG><a name="[f8]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cdrcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[115]"></a>_drcmple</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmple_InfNaN
+<P><STRONG><a name="[114]"></a>_drcmple</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmple_InfNaN
 </UL>
 
-<P><STRONG><a name="[fe]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
+<P><STRONG><a name="[fd]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_drsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[117]"></a>_drsb</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
+<P><STRONG><a name="[116]"></a>_drsb</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub1
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
 </UL>
 
-<P><STRONG><a name="[fb]"></a>__aeabi_dsub</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub))
+<P><STRONG><a name="[fa]"></a>__aeabi_dsub</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
 </UL>
 
-<P><STRONG><a name="[119]"></a>_dsub</STRONG> (Thumb, 464 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
+<P><STRONG><a name="[118]"></a>_dsub</STRONG> (Thumb, 464 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd1
 </UL>
 
-<P><STRONG><a name="[8f]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
+<P><STRONG><a name="[8e]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[11a]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
+<P><STRONG><a name="[119]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dretinf
 </UL>
 
-<P><STRONG><a name="[8e]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd))
+<P><STRONG><a name="[8d]"></a>__aeabi_fadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[11c]"></a>_fadd</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
+<P><STRONG><a name="[11b]"></a>_fadd</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub1
 </UL>
 
-<P><STRONG><a name="[121]"></a>__fpl_fcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fcmpi.o(x$fpl$fcmpinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
+<P><STRONG><a name="[120]"></a>__fpl_fcmp_Inf</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, fcmpi.o(x$fpl$fcmpinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
 </UL>
 
-<P><STRONG><a name="[8c]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv))
+<P><STRONG><a name="[8b]"></a>__aeabi_fdiv</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[11e]"></a>_fdiv</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<P><STRONG><a name="[11d]"></a>_fdiv</STRONG> (Thumb, 384 bytes, Stack size 16 bytes, fdiv.o(x$fpl$fdiv), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[93]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, ffixu.o(x$fpl$ffixu))
+<P><STRONG><a name="[92]"></a>__aeabi_f2uiz</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, ffixu.o(x$fpl$ffixu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2uiz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[11f]"></a>_ffixu</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ffixu.o(x$fpl$ffixu), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<P><STRONG><a name="[11e]"></a>_ffixu</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ffixu.o(x$fpl$ffixu), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[8b]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
-<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<P><STRONG><a name="[8a]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[15d]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
+<P><STRONG><a name="[15c]"></a>_ffltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu), UNUSED)
 
-<P><STRONG><a name="[92]"></a>__aeabi_cfcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf))
+<P><STRONG><a name="[91]"></a>__aeabi_cfcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cfcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[120]"></a>_fcmple</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
+<P><STRONG><a name="[11f]"></a>_fcmple</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, fleqf.o(x$fpl$fleqf), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fcmp_Inf
 </UL>
 
-<P><STRONG><a name="[15e]"></a>__fpl_fcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fleqf.o(x$fpl$fleqf), UNUSED)
+<P><STRONG><a name="[15d]"></a>__fpl_fcmple_InfNaN</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, fleqf.o(x$fpl$fleqf), UNUSED)
 
-<P><STRONG><a name="[8d]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
+<P><STRONG><a name="[8c]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
+<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[122]"></a>_fmul</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<P><STRONG><a name="[121]"></a>_fmul</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fretinf
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[11b]"></a>__fpl_fnaninf</STRONG> (Thumb, 140 bytes, Stack size 8 bytes, fnaninf.o(x$fpl$fnaninf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ffixu
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
+<P><STRONG><a name="[11a]"></a>__fpl_fnaninf</STRONG> (Thumb, 140 bytes, Stack size 8 bytes, fnaninf.o(x$fpl$fnaninf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fcmple
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_ffixu
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_f2d
 </UL>
 
-<P><STRONG><a name="[109]"></a>__fpl_fretinf</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fretinf.o(x$fpl$fretinf), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2f
+<P><STRONG><a name="[108]"></a>__fpl_fretinf</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fretinf.o(x$fpl$fretinf), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fmul
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fdiv
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_d2f
 </UL>
 
-<P><STRONG><a name="[15f]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
+<P><STRONG><a name="[15e]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
 
-<P><STRONG><a name="[123]"></a>_fsub</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
-</UL>
-
-<P><STRONG><a name="[10f]"></a>__fpl_return_NaN</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, retnan.o(x$fpl$retnan))
-<BR><BR>[Calls]<UL><LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_cmpreturn
-</UL>
-<BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcheck_NaN1
+<P><STRONG><a name="[122]"></a>_fsub</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd1
 </UL>
 
-<P><STRONG><a name="[f6]"></a>__ARM_scalbn</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, scalbn.o(x$fpl$scalbn))
-<BR><BR>[Calls]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcheck_NaN1
+<P><STRONG><a name="[10e]"></a>__fpl_return_NaN</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, retnan.o(x$fpl$retnan))
+<BR><BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_cmpreturn
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcheck_NaN1
 </UL>
 
-<P><STRONG><a name="[125]"></a>__fpl_cmpreturn</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, trapv.o(x$fpl$trapveneer))
-<BR><BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_return_NaN
+<P><STRONG><a name="[f5]"></a>__ARM_scalbn</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, scalbn.o(x$fpl$scalbn))
+<BR><BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcheck_NaN1
+</UL>
+<BR>[Called By]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_overflow
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+</UL>
+
+<P><STRONG><a name="[124]"></a>__fpl_cmpreturn</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, trapv.o(x$fpl$trapveneer))
+<BR><BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_return_NaN
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[e6]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
+<P><STRONG><a name="[e5]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[e7]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[e6]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 
-<P><STRONG><a name="[ee]"></a>TimerClockPclk1</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, systick.o(i.TimerClockPclk1))
+<P><STRONG><a name="[ed]"></a>TimerClockPclk1</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, systick.o(i.TimerClockPclk1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = TimerClockPclk1 &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
+<BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
 </UL>
 
-<P><STRONG><a name="[b5]"></a>LCD_EncodeChar</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_EncodeChar))
+<P><STRONG><a name="[b4]"></a>LCD_EncodeChar</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_EncodeChar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
+<BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 </UL>
 
-<P><STRONG><a name="[b8]"></a>LCD_GPIO_Init</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GPIO_Init))
+<P><STRONG><a name="[b7]"></a>LCD_GPIO_Init</STRONG> (Thumb, 152 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = LCD_GPIO_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
 </UL>
 
-<P><STRONG><a name="[b7]"></a>LCD_GetGlyphSlot</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GetGlyphSlot))
+<P><STRONG><a name="[b6]"></a>LCD_GetGlyphSlot</STRONG> (Thumb, 134 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GetGlyphSlot))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
-<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
+<BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphIndex
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
-</UL>
-
-<P><STRONG><a name="[b6]"></a>LCD_GlyphIndex</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, 1601a.o(i.LCD_GlyphIndex))
-<BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
+<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
 </UL>
 
-<P><STRONG><a name="[bc]"></a>LCD_GlyphRow</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GlyphRow))
+<P><STRONG><a name="[b5]"></a>LCD_GlyphIndex</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, 1601a.o(i.LCD_GlyphIndex))
+<BR><BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_EncodeChar
+</UL>
+
+<P><STRONG><a name="[bb]"></a>LCD_GlyphRow</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, 1601a.o(i.LCD_GlyphRow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LCD_GlyphRow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Reverse5
+<BR>[Calls]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Reverse5
 </UL>
-<BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
+<BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_LoadGlyph
 </UL>
 
-<P><STRONG><a name="[bb]"></a>LCD_LoadGlyph</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, 1601a.o(i.LCD_LoadGlyph))
+<P><STRONG><a name="[ba]"></a>LCD_LoadGlyph</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, 1601a.o(i.LCD_LoadGlyph))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphRow
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphRow
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
-</UL>
-
-<P><STRONG><a name="[c9]"></a>LCD_MapCol</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, 1601a.o(i.LCD_MapCol))
-<BR><BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetGlyphSlot
 </UL>
 
-<P><STRONG><a name="[c3]"></a>LCD_PulseEnable</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, 1601a.o(i.LCD_PulseEnable))
+<P><STRONG><a name="[c8]"></a>LCD_MapCol</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, 1601a.o(i.LCD_MapCol))
+<BR><BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+</UL>
+
+<P><STRONG><a name="[c2]"></a>LCD_PulseEnable</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, 1601a.o(i.LCD_PulseEnable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_PulseEnable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
 </UL>
 
-<P><STRONG><a name="[b3]"></a>LCD_ResetGlyphCache</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, 1601a.o(i.LCD_ResetGlyphCache))
-<BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<P><STRONG><a name="[b2]"></a>LCD_ResetGlyphCache</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, 1601a.o(i.LCD_ResetGlyphCache))
+<BR><BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
 
-<P><STRONG><a name="[bd]"></a>LCD_Reverse5</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, 1601a.o(i.LCD_Reverse5))
-<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphRow
+<P><STRONG><a name="[bc]"></a>LCD_Reverse5</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, 1601a.o(i.LCD_Reverse5))
+<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GlyphRow
 </UL>
 
-<P><STRONG><a name="[c5]"></a>LCD_SetCursorPhysical</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_SetCursorPhysical))
+<P><STRONG><a name="[c4]"></a>LCD_SetCursorPhysical</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, 1601a.o(i.LCD_SetCursorPhysical))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = LCD_SetCursorPhysical &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
-<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 </UL>
 
-<P><STRONG><a name="[c6]"></a>LCD_SetDataNibble</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, 1601a.o(i.LCD_SetDataNibble))
+<P><STRONG><a name="[c5]"></a>LCD_SetDataNibble</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, 1601a.o(i.LCD_SetDataNibble))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
+<BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
 </UL>
 
-<P><STRONG><a name="[c0]"></a>LCD_Write4Bits</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Write4Bits))
+<P><STRONG><a name="[bf]"></a>LCD_Write4Bits</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Write4Bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
+<BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetDataNibble
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_PulseEnable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write8Bits
 </UL>
 
-<P><STRONG><a name="[c8]"></a>LCD_Write8Bits</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Write8Bits))
+<P><STRONG><a name="[c7]"></a>LCD_Write8Bits</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, 1601a.o(i.LCD_Write8Bits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
+<BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Write4Bits
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
+<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_CMD
+<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_ByteDATA
 </UL>
 
-<P><STRONG><a name="[d7]"></a>MatrixKey_ReadRows</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, matrixkey.o(i.MatrixKey_ReadRows))
+<P><STRONG><a name="[d6]"></a>MatrixKey_ReadRows</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, matrixkey.o(i.MatrixKey_ReadRows))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = MatrixKey_ReadRows
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
+<BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ScanRaw
 </UL>
 
-<P><STRONG><a name="[d8]"></a>MatrixKey_ScanRaw</STRONG> (Thumb, 186 bytes, Stack size 16 bytes, matrixkey.o(i.MatrixKey_ScanRaw))
+<P><STRONG><a name="[d7]"></a>MatrixKey_ScanRaw</STRONG> (Thumb, 186 bytes, Stack size 16 bytes, matrixkey.o(i.MatrixKey_ScanRaw))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = MatrixKey_ScanRaw &rArr; MatrixKey_ReadRows
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ReadRows
+<BR>[Calls]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_ReadRows
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_Update
 </UL>
 
 <P><STRONG><a name="[59]"></a>TimerClockPclk1</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, led.o(i.TimerClockPclk1))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = TimerClockPclk1 &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
+<BR>[Called By]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Init
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Init
 </UL>
 
-<P><STRONG><a name="[d4]"></a>MP3_SendFrame</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, mp3.o(i.MP3_SendFrame))
+<P><STRONG><a name="[d3]"></a>MP3_SendFrame</STRONG> (Thumb, 72 bytes, Stack size 24 bytes, mp3.o(i.MP3_SendFrame))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendArray
+<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_SendArray
 </UL>
-<BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_SetVolume
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
+<BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_SetVolume
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
 </UL>
 
 <P><STRONG><a name="[67]"></a>CfgInput_Clear</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, main.o(i.CfgInput_Clear))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgInput_Push
 </UL>
 
@@ -1771,7 +1763,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgInput_Clear
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
 <P><STRONG><a name="[68]"></a>CfgShowPromptId</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.CfgShowPromptId))
@@ -1781,8 +1773,8 @@ Local Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Init
 </UL>
 
 <P><STRONG><a name="[6c]"></a>CfgShowPromptValue</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, main.o(i.CfgShowPromptValue))
@@ -1792,7 +1784,7 @@ Local Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
 <P><STRONG><a name="[6d]"></a>CfgShowShort</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, main.o(i.CfgShowShort))
@@ -1802,155 +1794,152 @@ Local Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[80]"></a>ConfigMode_Init</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.ConfigMode_Init))
+<P><STRONG><a name="[7f]"></a>ConfigMode_Init</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.ConfigMode_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = ConfigMode_Init &rArr; CfgShowPromptId &rArr; LCD_WriteFixed &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgInput_Clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>ConfigMode_Update</STRONG> (Thumb, 406 bytes, Stack size 32 bytes, main.o(i.ConfigMode_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 612<LI>Call Chain = ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
+<P><STRONG><a name="[80]"></a>ConfigMode_Update</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, main.o(i.ConfigMode_Update))
+<BR><BR>[Stack]<UL><LI>Max Depth = 832<LI>Call Chain = ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetValueString
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetCount
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LocalParseUint
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteFixed
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_RestoreDefaults
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetCount
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_CopyCurrent
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LocalParseUint
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgInput_Push
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgInput_Clear
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[85]"></a>Countdown_Start</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, main.o(i.Countdown_Start))
+<P><STRONG><a name="[84]"></a>Countdown_Start</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, main.o(i.Countdown_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = Countdown_Start &rArr; LCD_ShowScrollWithTime &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Stop
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Stop
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8a]"></a>Countdown_UpdateBeep</STRONG> (Thumb, 216 bytes, Stack size 56 bytes, main.o(i.Countdown_UpdateBeep))
+<P><STRONG><a name="[89]"></a>Countdown_UpdateBeep</STRONG> (Thumb, 216 bytes, Stack size 56 bytes, main.o(i.Countdown_UpdateBeep))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = Countdown_UpdateBeep &rArr; exp &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_On
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Off
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exp
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>Countdown_UpdateScroll</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, main.o(i.Countdown_UpdateScroll))
+<P><STRONG><a name="[93]"></a>Countdown_UpdateScroll</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, main.o(i.Countdown_UpdateScroll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = Countdown_UpdateScroll &rArr; LCD_ShowScrollWithTime &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[95]"></a>DefuseAnim_Reset</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.DefuseAnim_Reset))
+<P><STRONG><a name="[94]"></a>DefuseAnim_Reset</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.DefuseAnim_Reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DefuseAnim_Reset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
 </UL>
 
-<P><STRONG><a name="[96]"></a>DefuseAnim_Start</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, main.o(i.DefuseAnim_Start))
+<P><STRONG><a name="[95]"></a>DefuseAnim_Start</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, main.o(i.DefuseAnim_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = DefuseAnim_Start &rArr; LCD_ShowPassword &rArr; LCD_ClearLine &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>DefuseAnim_Update</STRONG> (Thumb, 212 bytes, Stack size 16 bytes, main.o(i.DefuseAnim_Update))
+<P><STRONG><a name="[97]"></a>DefuseAnim_Update</STRONG> (Thumb, 212 bytes, Stack size 16 bytes, main.o(i.DefuseAnim_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = DefuseAnim_Update &rArr; LCD_ShowScrollWithTime &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[99]"></a>Defuse_Success</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, main.o(i.Defuse_Success))
+<P><STRONG><a name="[98]"></a>Defuse_Success</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, main.o(i.Defuse_Success))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Defuse_Success &rArr; LCD_ShowPassword &rArr; LCD_ClearLine &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Start
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartDefuse
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_Off
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SuccessBeep_Start
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartDefuse
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_Off
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetGreen
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Off
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_On
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Backlight_On
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a0]"></a>DefuserInput_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.DefuserInput_Init))
+<P><STRONG><a name="[9f]"></a>DefuserInput_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i.DefuserInput_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DefuserInput_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinRemapConfig
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinRemapConfig
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a2]"></a>Defuser_IsActive</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, main.o(i.Defuser_IsActive))
+<P><STRONG><a name="[a1]"></a>Defuser_IsActive</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, main.o(i.Defuser_IsActive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Defuser_IsActive
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a6]"></a>Explosion_Start</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, main.o(i.Explosion_Start))
+<P><STRONG><a name="[a5]"></a>Explosion_Start</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, main.o(i.Explosion_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = Explosion_Start &rArr; LCD_ClearLine &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartExplosion
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartExplosion
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Relay_On
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_Off
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1959,148 +1948,146 @@ Local Symbols
 <P><STRONG><a name="[6a]"></a>LCD_ClearLine</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, main.o(i.LCD_ClearLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = LCD_ClearLine &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 </UL>
 
-<P><STRONG><a name="[97]"></a>LCD_ShowPassword</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.LCD_ShowPassword))
+<P><STRONG><a name="[96]"></a>LCD_ShowPassword</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.LCD_ShowPassword))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = LCD_ShowPassword &rArr; LCD_ClearLine &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA_Password
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
 </UL>
 
-<P><STRONG><a name="[88]"></a>LCD_ShowScrollWithTime</STRONG> (Thumb, 300 bytes, Stack size 48 bytes, main.o(i.LCD_ShowScrollWithTime))
+<P><STRONG><a name="[87]"></a>LCD_ShowScrollWithTime</STRONG> (Thumb, 300 bytes, Stack size 48 bytes, main.o(i.LCD_ShowScrollWithTime))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = LCD_ShowScrollWithTime &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateScroll
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Update
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateScroll
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
 </UL>
 
 <P><STRONG><a name="[6b]"></a>LCD_WriteFixed</STRONG> (Thumb, 86 bytes, Stack size 40 bytes, main.o(i.LCD_WriteFixed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = LCD_WriteFixed &rArr; LCD_WRITE_StrDATA &rArr; LCD_EncodeChar &rArr; LCD_GetGlyphSlot &rArr; LCD_LoadGlyph &rArr; LCD_WRITE_CMD &rArr; LCD_Write8Bits &rArr; LCD_Write4Bits &rArr; LCD_SetDataNibble
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 </UL>
 
-<P><STRONG><a name="[cc]"></a>LED_Breath</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, main.o(i.LED_Breath))
+<P><STRONG><a name="[cb]"></a>LED_Breath</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, main.o(i.LED_Breath))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = LED_Breath &rArr; LED_SetYellow &rArr; LED_SetColor
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_SetYellow
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_GetPwmMax
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[83]"></a>LocalParseUint</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, main.o(i.LocalParseUint))
+<P><STRONG><a name="[82]"></a>LocalParseUint</STRONG> (Thumb, 66 bytes, Stack size 12 bytes, main.o(i.LocalParseUint))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = LocalParseUint
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[9f]"></a>MP3Sequence_StartDefuse</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.MP3Sequence_StartDefuse))
+<P><STRONG><a name="[9e]"></a>MP3Sequence_StartDefuse</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.MP3Sequence_StartDefuse))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = MP3Sequence_StartDefuse &rArr; MP3Sequence_Update &rArr; mp3_PlayMp3Track &rArr; MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[a9]"></a>MP3Sequence_StartExplosion</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.MP3Sequence_StartExplosion))
+<P><STRONG><a name="[a8]"></a>MP3Sequence_StartExplosion</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i.MP3Sequence_StartExplosion))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = MP3Sequence_StartExplosion &rArr; MP3Sequence_Update &rArr; mp3_PlayMp3Track &rArr; MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
-</UL>
-
-<P><STRONG><a name="[87]"></a>MP3Sequence_Stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.MP3Sequence_Stop))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 </UL>
 
-<P><STRONG><a name="[d1]"></a>MP3Sequence_Update</STRONG> (Thumb, 346 bytes, Stack size 16 bytes, main.o(i.MP3Sequence_Update))
+<P><STRONG><a name="[86]"></a>MP3Sequence_Stop</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.MP3Sequence_Stop))
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+</UL>
+
+<P><STRONG><a name="[d0]"></a>MP3Sequence_Update</STRONG> (Thumb, 346 bytes, Stack size 16 bytes, main.o(i.MP3Sequence_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = MP3Sequence_Update &rArr; mp3_PlayMp3Track &rArr; MP3_SendFrame &rArr; Serial_SendArray &rArr; Serial_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_TrackTMusicbox
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_TrackCtMusicbox
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Stop
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
+<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_TrackTMusicbox
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3_TrackCtMusicbox
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Stop
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mp3_PlayMp3Track
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartExplosion
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartDefuse
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartExplosion
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartDefuse
 </UL>
 
-<P><STRONG><a name="[d2]"></a>MP3_TrackCtMusicbox</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.MP3_TrackCtMusicbox))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<P><STRONG><a name="[d1]"></a>MP3_TrackCtMusicbox</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.MP3_TrackCtMusicbox))
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
 </UL>
 
-<P><STRONG><a name="[d3]"></a>MP3_TrackTMusicbox</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.MP3_TrackTMusicbox))
-<BR><BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
+<P><STRONG><a name="[d2]"></a>MP3_TrackTMusicbox</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(i.MP3_TrackTMusicbox))
+<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
 </UL>
 
-<P><STRONG><a name="[db]"></a>Password_InputLeft</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, main.o(i.Password_InputLeft))
+<P><STRONG><a name="[da]"></a>Password_InputLeft</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, main.o(i.Password_InputLeft))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Password_InputLeft
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[dc]"></a>Password_InputRight</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, main.o(i.Password_InputRight))
+<P><STRONG><a name="[db]"></a>Password_InputRight</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, main.o(i.Password_InputRight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Password_InputRight
 </UL>
-<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[106]"></a>Password_IsComplete</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.Password_IsComplete))
+<P><STRONG><a name="[105]"></a>Password_IsComplete</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(i.Password_IsComplete))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[dd]"></a>Password_Match</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.Password_Match))
+<P><STRONG><a name="[dc]"></a>Password_Match</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, main.o(i.Password_Match))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Password_Match &rArr; memcmp
 </UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
+<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 </UL>
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>Password_Reset</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(i.Password_Reset))
+<P><STRONG><a name="[85]"></a>Password_Reset</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(i.Password_Reset))
 <BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputRight
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputLeft
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputRight
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Password_InputLeft
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Start
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuseAnim_Reset
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
 </UL>
 
-<P><STRONG><a name="[df]"></a>Runtime_Apply</STRONG> (Thumb, 432 bytes, Stack size 8 bytes, main.o(i.Runtime_Apply))
+<P><STRONG><a name="[de]"></a>Runtime_Apply</STRONG> (Thumb, 432 bytes, Stack size 8 bytes, main.o(i.Runtime_Apply))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Runtime_Apply &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
@@ -2108,7 +2095,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e8]"></a>StartupBeep_Update</STRONG> (Thumb, 130 bytes, Stack size 8 bytes, main.o(i.StartupBeep_Update))
+<P><STRONG><a name="[e7]"></a>StartupBeep_Update</STRONG> (Thumb, 130 bytes, Stack size 8 bytes, main.o(i.StartupBeep_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = StartupBeep_Update &rArr; Buzzer_On
 </UL>
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_On
@@ -2117,15 +2104,15 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9e]"></a>SuccessBeep_Start</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.SuccessBeep_Start))
+<P><STRONG><a name="[9d]"></a>SuccessBeep_Start</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.SuccessBeep_Start))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SuccessBeep_Start &rArr; Buzzer_SetFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_SetFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuse_Success
 </UL>
 
-<P><STRONG><a name="[e9]"></a>SuccessBeep_Update</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, main.o(i.SuccessBeep_Update))
+<P><STRONG><a name="[e8]"></a>SuccessBeep_Update</STRONG> (Thumb, 172 bytes, Stack size 8 bytes, main.o(i.SuccessBeep_Update))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SuccessBeep_Update &rArr; Buzzer_On
 </UL>
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Buzzer_On
@@ -2134,67 +2121,71 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[75]"></a>ConfigChecksum</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, config_manager.o(i.ConfigChecksum))
+<P><STRONG><a name="[70]"></a>ConfigChecksum</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, config_manager.o(i.ConfigChecksum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ConfigChecksum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigDefaultsChecksum
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
 <LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>FlashWrite</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, config_manager.o(i.FlashWrite))
+<P><STRONG><a name="[6e]"></a>ConfigDefaultsChecksum</STRONG> (Thumb, 22 bytes, Stack size 256 bytes, config_manager.o(i.ConfigDefaultsChecksum))
+<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
+</UL>
+<BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigChecksum
+</UL>
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
+</UL>
+
+<P><STRONG><a name="[78]"></a>FlashWrite</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, config_manager.o(i.FlashWrite))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = FlashWrite &rArr; FLASH_ProgramHalfWord &rArr; FLASH_WaitForLastOperation
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Lock
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ErasePage
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ClearFlag
+<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Unlock
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ProgramHalfWord
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_Lock
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ErasePage
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_ClearFlag
 </UL>
-<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
-</UL>
-
-<P><STRONG><a name="[7e]"></a>IsStringDigits</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, config_manager.o(i.IsStringDigits))
-<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Save
 </UL>
 
-<P><STRONG><a name="[7c]"></a>ParseUint</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, config_manager.o(i.ParseUint))
+<P><STRONG><a name="[7c]"></a>IsStringDigits</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, config_manager.o(i.IsStringDigits))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+</UL>
+
+<P><STRONG><a name="[7a]"></a>ParseUint</STRONG> (Thumb, 68 bytes, Stack size 12 bytes, config_manager.o(i.ParseUint))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = ParseUint
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
 </UL>
 
-<P><STRONG><a name="[71]"></a>ReadU32</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, config_manager.o(i.ReadU32))
-<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetValueString
+<P><STRONG><a name="[7e]"></a>ReadU32</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, config_manager.o(i.ReadU32))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
 </UL>
 
-<P><STRONG><a name="[72]"></a>UintToText</STRONG> (Thumb, 116 bytes, Stack size 32 bytes, config_manager.o(i.UintToText))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = UintToText
-</UL>
-<BR>[Called By]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_GetValueString
+<P><STRONG><a name="[7b]"></a>WriteU32</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, config_manager.o(i.WriteU32))
+<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
 </UL>
 
-<P><STRONG><a name="[7d]"></a>WriteU32</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, config_manager.o(i.WriteU32))
-<BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
+<P><STRONG><a name="[123]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
 </UL>
 
-<P><STRONG><a name="[124]"></a>_fadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fsub
+<P><STRONG><a name="[11c]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
 </UL>
 
-<P><STRONG><a name="[11d]"></a>_fsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_fadd
+<P><STRONG><a name="[117]"></a>_dadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drsb
 </UL>
 
-<P><STRONG><a name="[118]"></a>_dadd1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsub
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drsb
-</UL>
-
-<P><STRONG><a name="[10c]"></a>_dsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drsb
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
+<P><STRONG><a name="[10b]"></a>_dsub1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drsb
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
 </UL>
 <P>
 <H3>

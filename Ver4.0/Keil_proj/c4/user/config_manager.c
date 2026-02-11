@@ -1,11 +1,11 @@
-#include "config_manager.h"
-#include "config_defaults.h"
+﻿#include "config_manager.h"
+#include "config.h"
 #include "stm32f10x_flash.h"
 #include <stddef.h>
 #include <string.h>
 
 #define CONFIG_STORE_MAGIC 0x34474643U
-#define CONFIG_STORE_VERSION 1U
+#define CONFIG_STORE_VERSION 2U
 #define CONFIG_FLASH_PAGE_ADDR 0x0800FC00U
 
 #define CFG_TYPE_U32 0U
@@ -27,6 +27,7 @@ typedef struct
 	uint32_t version;
 	uint32_t config_count;
 	uint32_t payload_size;
+	uint32_t defaults_checksum;
 	uint32_t checksum;
 	AppConfig payload;
 } ConfigStoreImage;
@@ -96,6 +97,8 @@ static const ConfigMeta g_config_meta[CONFIG_ID_COUNT] = {
 };
 
 static AppConfig g_cfg;
+
+static uint32_t ConfigDefaultsChecksum(void);
 
 static uint32_t ConfigChecksum(const uint8_t *data, uint32_t len)
 {
@@ -242,6 +245,13 @@ static uint8_t FlashWrite(const uint8_t *bytes, uint16_t len)
 	return 1U;
 }
 
+static uint32_t ConfigDefaultsChecksum(void)
+{
+	AppConfig defaults;
+	ConfigManager_LoadDefaults(&defaults);
+	return ConfigChecksum((const uint8_t *)&defaults, sizeof(AppConfig));
+}
+
 void ConfigManager_LoadDefaults(AppConfig *cfg)
 {
 	if (cfg == NULL)
@@ -250,82 +260,82 @@ void ConfigManager_LoadDefaults(AppConfig *cfg)
 	}
 	memset(cfg, 0, sizeof(AppConfig));
 
-	cfg->ignore_range = CONFIG_DEFAULT_IGNORE_RANGE;
+	cfg->ignore_range = CONFIG_IGNORE_RANGE;
 
-	cfg->password_len = CONFIG_DEFAULT_PASSWORD_LEN;
-	cfg->lcd_cols = CONFIG_DEFAULT_LCD_COLS;
-	cfg->lcd_normal_mount = CONFIG_DEFAULT_LCD_NORMAL_MOUNT;
-	cfg->password_col = CONFIG_DEFAULT_PASSWORD_COL;
-	cfg->countdown_ms = CONFIG_DEFAULT_COUNTDOWN_MS;
-	cfg->arm_delay_ms = CONFIG_DEFAULT_ARM_DELAY_MS;
+	cfg->password_len = CONFIG_PASSWORD_LEN;
+	cfg->lcd_cols = CONFIG_LCD_COLS;
+	cfg->lcd_normal_mount = CONFIG_LCD_NORMAL_MOUNT;
+	cfg->password_col = CONFIG_PASSWORD_COL;
+	cfg->countdown_ms = CONFIG_COUNTDOWN_MS;
+	cfg->arm_delay_ms = CONFIG_ARM_DELAY_MS;
 
-	cfg->arm_preset_enable = CONFIG_DEFAULT_ARM_PRESET_ENABLE;
-	strncpy(cfg->arm_preset_password, CONFIG_DEFAULT_ARM_PRESET_PASSWORD, CONFIG_PASSWORD_LEN_MAX);
+	cfg->arm_preset_enable = CONFIG_ARM_PRESET_ENABLE;
+	strncpy(cfg->arm_preset_password, CONFIG_ARM_PRESET_PASSWORD, CONFIG_PASSWORD_LEN_MAX);
 	cfg->arm_preset_password[CONFIG_PASSWORD_LEN_MAX] = '\0';
 
-	cfg->defuse_enable_password = CONFIG_DEFAULT_DEFUSE_ENABLE_PASSWORD;
-	cfg->defuse_enable_manual = CONFIG_DEFAULT_DEFUSE_ENABLE_MANUAL;
-	cfg->defuse_enable_external = CONFIG_DEFAULT_DEFUSE_ENABLE_EXTERNAL;
+	cfg->defuse_enable_password = CONFIG_DEFUSE_ENABLE_PASSWORD;
+	cfg->defuse_enable_manual = CONFIG_DEFUSE_ENABLE_MANUAL;
+	cfg->defuse_enable_external = CONFIG_DEFUSE_ENABLE_EXTERNAL;
 
-	cfg->lcd_backlight_pct = CONFIG_DEFAULT_LCD_BACKLIGHT_PCT;
+	cfg->lcd_backlight_pct = CONFIG_LCD_BACKLIGHT_PCT;
 
-	cfg->beep_len_ms = CONFIG_DEFAULT_BEEP_LEN_MS;
-	cfg->beep_interval_base_ms = CONFIG_DEFAULT_BEEP_INTERVAL_BASE_MS;
-	cfg->beep_interval_scale_ms = CONFIG_DEFAULT_BEEP_INTERVAL_SCALE_MS;
-	cfg->beep_interval_min_ms = CONFIG_DEFAULT_BEEP_INTERVAL_MIN_MS;
-	cfg->beep_initial_ms = CONFIG_DEFAULT_BEEP_INITIAL_MS;
+	cfg->beep_len_ms = CONFIG_BEEP_LEN_MS;
+	cfg->beep_interval_base_ms = CONFIG_BEEP_INTERVAL_BASE_MS;
+	cfg->beep_interval_scale_ms = CONFIG_BEEP_INTERVAL_SCALE_MS;
+	cfg->beep_interval_min_ms = CONFIG_BEEP_INTERVAL_MIN_MS;
+	cfg->beep_initial_ms = CONFIG_BEEP_INITIAL_MS;
 
-	cfg->led_pwm_max = CONFIG_DEFAULT_LED_PWM_MAX;
-	cfg->led_breath_period_ms = CONFIG_DEFAULT_LED_BREATH_PERIOD_MS;
-	cfg->led_yellow_red_pct = CONFIG_DEFAULT_LED_YELLOW_RED_PCT;
+	cfg->led_pwm_max = CONFIG_LED_PWM_MAX;
+	cfg->led_breath_period_ms = CONFIG_LED_BREATH_PERIOD_MS;
+	cfg->led_yellow_red_pct = CONFIG_LED_YELLOW_RED_PCT;
 
-	cfg->scroll_interval_ms = CONFIG_DEFAULT_SCROLL_INTERVAL_MS;
-	cfg->scroll_pattern_len = CONFIG_DEFAULT_SCROLL_PATTERN_LEN;
-	cfg->digital_countdown_enable = CONFIG_DEFAULT_DIGITAL_COUNTDOWN_ENABLE;
+	cfg->scroll_interval_ms = CONFIG_SCROLL_INTERVAL_MS;
+	cfg->scroll_pattern_len = CONFIG_SCROLL_PATTERN_LEN;
+	cfg->digital_countdown_enable = CONFIG_DIGITAL_COUNTDOWN_ENABLE;
 
-	cfg->long_press_ms = CONFIG_DEFAULT_LONG_PRESS_MS;
-	cfg->manual_defuse_ms = CONFIG_DEFAULT_MANUAL_DEFUSE_MS;
-	cfg->external_defuse_ms = CONFIG_DEFAULT_EXTERNAL_DEFUSE_MS;
-	cfg->defuse_display_hold_ms = CONFIG_DEFAULT_DEFUSE_DISPLAY_HOLD_MS;
-	cfg->defuse_cycle_steps = CONFIG_DEFAULT_DEFUSE_CYCLE_STEPS;
+	cfg->long_press_ms = CONFIG_LONG_PRESS_MS;
+	cfg->manual_defuse_ms = CONFIG_MANUAL_DEFUSE_MS;
+	cfg->external_defuse_ms = CONFIG_EXTERNAL_DEFUSE_MS;
+	cfg->defuse_display_hold_ms = CONFIG_DEFUSE_DISPLAY_HOLD_MS;
+	cfg->defuse_cycle_steps = CONFIG_DEFUSE_CYCLE_STEPS;
 
-	cfg->defuse_flash_toggle_ms = CONFIG_DEFAULT_DEFUSE_FLASH_TOGGLE_MS;
-	cfg->defuse_flash_toggles = CONFIG_DEFAULT_DEFUSE_FLASH_TOGGLES;
-	cfg->defuse_blink_ms = CONFIG_DEFAULT_DEFUSE_BLINK_MS;
+	cfg->defuse_flash_toggle_ms = CONFIG_DEFUSE_FLASH_TOGGLE_MS;
+	cfg->defuse_flash_toggles = CONFIG_DEFUSE_FLASH_TOGGLES;
+	cfg->defuse_blink_ms = CONFIG_DEFUSE_BLINK_MS;
 
-	cfg->buzzer_startup_freq_hz = CONFIG_DEFAULT_BUZZER_STARTUP_FREQ_HZ;
-	cfg->buzzer_countdown_freq_hz = CONFIG_DEFAULT_BUZZER_COUNTDOWN_FREQ_HZ;
-	cfg->buzzer_duty_pct = CONFIG_DEFAULT_BUZZER_DUTY_PCT;
-	cfg->startup_beep_on_ms = CONFIG_DEFAULT_STARTUP_BEEP_ON_MS;
-	cfg->startup_beep_gap_ms = CONFIG_DEFAULT_STARTUP_BEEP_GAP_MS;
-	cfg->startup_beep_enable = CONFIG_DEFAULT_STARTUP_BEEP_ENABLE;
+	cfg->buzzer_startup_freq_hz = CONFIG_BUZZER_STARTUP_FREQ_HZ;
+	cfg->buzzer_countdown_freq_hz = CONFIG_BUZZER_COUNTDOWN_FREQ_HZ;
+	cfg->buzzer_duty_pct = CONFIG_BUZZER_DUTY_PCT;
+	cfg->startup_beep_on_ms = CONFIG_STARTUP_BEEP_ON_MS;
+	cfg->startup_beep_gap_ms = CONFIG_STARTUP_BEEP_GAP_MS;
+	cfg->startup_beep_enable = CONFIG_STARTUP_BEEP_ENABLE;
 
-	cfg->mp3_volume = CONFIG_DEFAULT_MP3_VOLUME;
-	cfg->mp3_arm_success_enable = CONFIG_DEFAULT_MP3_ARM_SUCCESS_ENABLE;
-	cfg->mp3_defuse_success_enable = CONFIG_DEFAULT_MP3_DEFUSE_SUCCESS_ENABLE;
+	cfg->mp3_volume = CONFIG_MP3_VOLUME;
+	cfg->mp3_arm_success_enable = CONFIG_MP3_ARM_SUCCESS_ENABLE;
+	cfg->mp3_defuse_success_enable = CONFIG_MP3_DEFUSE_SUCCESS_ENABLE;
 
-	cfg->mp3_track_arm_success = CONFIG_DEFAULT_MP3_TRACK_ARM_SUCCESS;
-	cfg->mp3_track_explosion = CONFIG_DEFAULT_MP3_TRACK_EXPLOSION;
-	cfg->mp3_track_defuse_success = CONFIG_DEFAULT_MP3_TRACK_DEFUSE_SUCCESS;
-	cfg->mp3_track_ctwin = CONFIG_DEFAULT_MP3_TRACK_CTWIN;
-	cfg->mp3_track_terwin = CONFIG_DEFAULT_MP3_TRACK_TERWIN;
+	cfg->mp3_track_arm_success = CONFIG_MP3_TRACK_ARM_SUCCESS;
+	cfg->mp3_track_explosion = CONFIG_MP3_TRACK_EXPLOSION;
+	cfg->mp3_track_defuse_success = CONFIG_MP3_TRACK_DEFUSE_SUCCESS;
+	cfg->mp3_track_ctwin = CONFIG_MP3_TRACK_CTWIN;
+	cfg->mp3_track_terwin = CONFIG_MP3_TRACK_TERWIN;
 
-	cfg->mp3_defuse_stage_enable = CONFIG_DEFAULT_MP3_DEFUSE_STAGE_ENABLE;
-	cfg->mp3_exploded_stage_enable = CONFIG_DEFAULT_MP3_EXPLODED_STAGE_ENABLE;
+	cfg->mp3_defuse_stage_enable = CONFIG_MP3_DEFUSE_STAGE_ENABLE;
+	cfg->mp3_exploded_stage_enable = CONFIG_MP3_EXPLODED_STAGE_ENABLE;
 
-	cfg->mp3_explosion_enable = CONFIG_DEFAULT_MP3_EXPLOSION_ENABLE;
-	cfg->mp3_ct_win_musicbox_enable = CONFIG_DEFAULT_MP3_CT_WIN_MUSICBOX_ENABLE;
-	cfg->mp3_t_win_musicbox_enable = CONFIG_DEFAULT_MP3_T_WIN_MUSICBOX_ENABLE;
-	cfg->mp3_ctwin_enable = CONFIG_DEFAULT_MP3_CTWIN_ENABLE;
-	cfg->mp3_terwin_enable = CONFIG_DEFAULT_MP3_TERWIN_ENABLE;
+	cfg->mp3_explosion_enable = CONFIG_MP3_EXPLOSION_ENABLE;
+	cfg->mp3_ct_win_musicbox_enable = CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE;
+	cfg->mp3_t_win_musicbox_enable = CONFIG_MP3_T_WIN_MUSICBOX_ENABLE;
+	cfg->mp3_ctwin_enable = CONFIG_MP3_CTWIN_ENABLE;
+	cfg->mp3_terwin_enable = CONFIG_MP3_TERWIN_ENABLE;
 
-	cfg->mp3_ct_win_musicbox_track = CONFIG_DEFAULT_MP3_CT_WIN_MUSICBOX_TRACK;
-	cfg->mp3_t_win_musicbox_track = CONFIG_DEFAULT_MP3_T_WIN_MUSICBOX_TRACK;
+	cfg->mp3_ct_win_musicbox_track = CONFIG_MP3_CT_WIN_MUSICBOX_TRACK;
+	cfg->mp3_t_win_musicbox_track = CONFIG_MP3_T_WIN_MUSICBOX_TRACK;
 
-	cfg->mp3_defuse_success_wait_ms = CONFIG_DEFAULT_MP3_DEFUSE_SUCCESS_WAIT_MS;
-	cfg->mp3_ct_musicbox_wait_ms = CONFIG_DEFAULT_MP3_CT_MUSICBOX_WAIT_MS;
-	cfg->mp3_t_musicbox_wait_ms = CONFIG_DEFAULT_MP3_T_MUSICBOX_WAIT_MS;
-	cfg->mp3_explosion_only_wait_ms = CONFIG_DEFAULT_MP3_EXPLOSION_ONLY_WAIT_MS;
+	cfg->mp3_defuse_success_wait_ms = CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS;
+	cfg->mp3_ct_musicbox_wait_ms = CONFIG_MP3_CT_MUSICBOX_WAIT_MS;
+	cfg->mp3_t_musicbox_wait_ms = CONFIG_MP3_T_MUSICBOX_WAIT_MS;
+	cfg->mp3_explosion_only_wait_ms = CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
 }
 
 void ConfigManager_CopyCurrent(AppConfig *cfg)
@@ -417,6 +427,7 @@ uint8_t ConfigManager_Save(const AppConfig *cfg)
 	img.version = CONFIG_STORE_VERSION;
 	img.config_count = CONFIG_ID_COUNT;
 	img.payload_size = sizeof(AppConfig);
+	img.defaults_checksum = ConfigDefaultsChecksum();
 	memcpy(&img.payload, cfg, sizeof(AppConfig));
 	img.checksum = ConfigChecksum((const uint8_t *)&img.payload, sizeof(AppConfig));
 
@@ -427,7 +438,7 @@ uint8_t ConfigManager_Save(const AppConfig *cfg)
 
 	{
 		const ConfigStoreImage *verify = (const ConfigStoreImage *)CONFIG_FLASH_PAGE_ADDR;
-		if (verify->magic != img.magic || verify->version != img.version || verify->config_count != img.config_count || verify->payload_size != img.payload_size || verify->checksum != img.checksum)
+		if (verify->magic != img.magic || verify->version != img.version || verify->config_count != img.config_count || verify->payload_size != img.payload_size || verify->defaults_checksum != img.defaults_checksum || verify->checksum != img.checksum)
 		{
 			return 0U;
 		}
@@ -520,7 +531,9 @@ uint8_t ConfigManager_SetValueString(AppConfig *cfg, uint16_t id, const char *va
 void ConfigManager_Init(void)
 {
 	const ConfigStoreImage *img = (const ConfigStoreImage *)CONFIG_FLASH_PAGE_ADDR;
+	uint32_t defaults_checksum;
 	ConfigManager_LoadDefaults(&g_cfg);
+	defaults_checksum = ConfigDefaultsChecksum();
 
 	if (img->magic != CONFIG_STORE_MAGIC)
 	{
@@ -538,6 +551,10 @@ void ConfigManager_Init(void)
 	{
 		return;
 	}
+	if (img->defaults_checksum != defaults_checksum)
+	{
+		return;
+	}
 	if (img->checksum != ConfigChecksum((const uint8_t *)&img->payload, sizeof(AppConfig)))
 	{
 		return;
@@ -549,3 +566,5 @@ void ConfigManager_Init(void)
 
 	memcpy(&g_cfg, &img->payload, sizeof(AppConfig));
 }
+
+

@@ -172,8 +172,6 @@ uint32_t g_mp3_explosion_only_wait_ms = CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
 #define MP3_CT_MUSICBOX_BASE 1000U
 #define MP3_T_MUSICBOX_BASE 2000U
 
-#define CONFIG_RESET_CODE CONFIG_DEFAULT_RESET_CODE
-
 static void Runtime_Apply(const AppConfig *cfg)
 {
 	if (cfg == 0)
@@ -1004,7 +1002,6 @@ static void ConfigMode_Init(void)
 static uint8_t ConfigMode_Update(char key)
 {
 	uint32_t id_num;
-	char buf[17];
 
 	switch (cfg_mode_state)
 	{
@@ -1016,7 +1013,7 @@ static uint8_t ConfigMode_Update(char key)
 					if (strcmp(cfg_input, CONFIG_RESET_CODE) == 0)
 					{
 						cfg_mode_state = CFG_MODE_CONFIRM_RESTORE;
-						CfgShowShort("RESTORE?", "#=Y *=N");
+						CfgShowShort("REST?#/*", "");
 					}
 					else if (LocalParseUint(cfg_input, &id_num))
 					{
@@ -1050,7 +1047,7 @@ static uint8_t ConfigMode_Update(char key)
 				}
 				else
 				{
-					CfgShowShort("RESTFAIL", "RETRY");
+					CfgShowShort("RESTFAIL", "");
 					cfg_mode_state = CFG_MODE_INPUT_ID;
 					CfgInput_Clear();
 				}
@@ -1080,16 +1077,7 @@ static uint8_t ConfigMode_Update(char key)
 						return 0U;
 					}
 					cfg_mode_state = CFG_MODE_CONFIRM_SAVE;
-					if (ConfigManager_GetValueString(&cfg_edit, cfg_selected_id, buf, sizeof(buf)))
-					{
-						LCD_ClearLine();
-						LCD_WriteFixed("SAVE?", 0, 5);
-						LCD_WriteFixed(buf, 6, 6);
-					}
-					else
-					{
-						CfgShowShort("SAVE?", "#=Y *=N");
-					}
+					CfgShowShort("SAVE?#/*", "");
 					return 0U;
 				}
 				CfgInput_Push(key);
@@ -1106,7 +1094,7 @@ static uint8_t ConfigMode_Update(char key)
 				}
 				else
 				{
-					CfgShowShort("SAVEFAIL", "RETRY");
+					CfgShowShort("SAVEFAIL", "");
 					cfg_mode_state = CFG_MODE_INPUT_ID;
 					CfgInput_Clear();
 				}

@@ -741,11 +741,6 @@
               <FilePath>.\user\config.h</FilePath>
             </File>
             <File>
-              <FileName>config_defaults.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\user\config_defaults.h</FilePath>
-            </File>
-            <File>
               <FileName>config_manager.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\config_manager.c</FilePath>

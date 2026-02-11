@@ -42,7 +42,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
    - 详细说明见：[TFCard_Files](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files)
 6. 配置与修改
    - 用户配置说明：[`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
-   - 出厂默认模板：[`Keil_proj/c4/user/default_config_CH.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_CH.h)
+   - 默认配置定义文件：[`Keil_proj/c4/user/config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
    - 可在不重新烧录的情况下修改单个配置（上电时按住 `#` 进入配置模式）
    - 新增倒计时数字显示开关：`CONFIG_DIGITAL_COUNTDOWN_ENABLE`
 
@@ -61,8 +61,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
 
 ### 配置
 - 用户配置指南（含编号与操作步骤）：[`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
-- 默认配置模板（中文）：[`Keil_proj/c4/user/default_config_CH.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_CH.h)
-- 默认配置模板（英文）：[`Keil_proj/c4/user/default_config_EN.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_EN.h)
+- 默认配置定义文件：[`Keil_proj/c4/user/config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
 - 技术说明：[`V4说明.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4%E8%AF%B4%E6%98%8E.md)
 
 ### 详细说明
@@ -112,7 +111,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
    - Details: [TFCard_Files](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files)
 6. Configuration and tuning
    - User guide: [`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
-   - Factory-default templates: [`default_config_CH.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_CH.h) / [`default_config_EN.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_EN.h)
+   - Default configuration source: [`config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
    - Supports single-item configuration update without reflashing (hold `#` during power-on)
    - Added digital countdown toggle: `CONFIG_DIGITAL_COUNTDOWN_ENABLE`
 
@@ -132,7 +131,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
 ### Configuration
 - User-facing configuration guide: [`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
 - Technical notes: [`V4说明.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4%E8%AF%B4%E6%98%8E.md)
-- Default config templates: [`default_config_CH.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_CH.h), [`default_config_EN.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/default_config_EN.h)
+- Default configuration source: [`config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
 
 ### Detailed Docs
 For deeper details and theory, go to [Github repo](https://github.com/AzidoPP/STM-C4) and see the Chinese document: [V4说明.md](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4说明.md)
