@@ -5,6 +5,7 @@ V4说明.md
 
 Updates:
 - Converted all README image links to full GitHub raw URLs (root, Ver4.0, and V1.0 purchase record gallery).
+- Fixed LCD 7x5 glyph row mapping in `hardware/1601a.c` so both normal and inverted mount are top-aligned on 8-row LCD cells and no longer crop the glyph last row.
 - Added a full English section to `Ver4.0/README.md` and converted all file/image links to absolute GitHub URLs.
 - Refined Ver4.0/README.md with clean CN/EN formatting and direct folder links in the soldering/assembly section.
 - Updated Ver4.0/README.md with in-section images, direct config links, quick-start tuning items, and MIT badge logo.

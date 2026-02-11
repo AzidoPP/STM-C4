@@ -98,14 +98,14 @@ static uint8_t LCD_GlyphRow(const uint8_t *pattern, uint8_t row)
 		{
 			return 0U;
 		}
-		src_row = (uint8_t)(7U - row);
+		src_row = (uint8_t)(8U - row);
 		raw = (uint8_t)(pattern[src_row] & 0x1FU);
 		return LCD_Reverse5(raw);
 	}
 
 	if (row < 7U)
 	{
-		raw = (uint8_t)(pattern[row] & 0x1FU);
+		raw = (uint8_t)(pattern[(uint8_t)(row + 1U)] & 0x1FU);
 	}
 	else
 	{
