@@ -106,6 +106,7 @@ uint32_t g_countdown_ms = CONFIG_COUNTDOWN_MS;
 uint32_t g_arm_delay_ms = CONFIG_ARM_DELAY_MS;
 uint8_t g_arm_preset_enable = CONFIG_ARM_PRESET_ENABLE;
 char g_arm_preset_password[CONFIG_PASSWORD_LEN_MAX + 1U] = CONFIG_ARM_PRESET_PASSWORD;
+uint8_t g_arm_error_hint_enable = CONFIG_ARM_ERROR_HINT_ENABLE;
 
 uint8_t g_defuse_enable_password = CONFIG_DEFUSE_ENABLE_PASSWORD;
 uint8_t g_defuse_enable_manual = CONFIG_DEFUSE_ENABLE_MANUAL;
@@ -192,6 +193,7 @@ static void Runtime_Apply(const AppConfig *cfg)
 	g_arm_preset_enable = (uint8_t)cfg->arm_preset_enable;
 	strncpy(g_arm_preset_password, cfg->arm_preset_password, CONFIG_PASSWORD_LEN_MAX);
 	g_arm_preset_password[CONFIG_PASSWORD_LEN_MAX] = '\0';
+	g_arm_error_hint_enable = (uint8_t)cfg->arm_error_hint_enable;
 
 	g_defuse_enable_password = (uint8_t)cfg->defuse_enable_password;
 	g_defuse_enable_manual = (uint8_t)cfg->defuse_enable_manual;
@@ -1256,8 +1258,17 @@ int main(void)
 						}
 						else
 						{
+							if (g_arm_error_hint_enable)
+							{
+								LCD_BeginFrame();
+								LCD_ClearLine();
+								LCD_WriteFixed("ERROR", 0, 16);
+							}
 							Password_Reset(arm_input);
-							LCD_ShowPassword(arm_input);
+							if (!g_arm_error_hint_enable)
+							{
+								LCD_ShowPassword(arm_input);
+							}
 							arm_last_change_ms = now;
 						}
 					}

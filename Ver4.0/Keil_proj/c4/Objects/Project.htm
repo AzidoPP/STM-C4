@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Feb 11 20:03:42 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Feb 11 20:26:35 2026
 <BR><P>
-<H3>Maximum Stack Usage =        856 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        864 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 <P>
@@ -192,7 +192,7 @@ Global Symbols
 <P><STRONG><a name="[147]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[42]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 856 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 864 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -598,7 +598,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6f]"></a>ConfigManager_LoadDefaults</STRONG> (Thumb, 322 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_LoadDefaults))
+<P><STRONG><a name="[6f]"></a>ConfigManager_LoadDefaults</STRONG> (Thumb, 328 bytes, Stack size 8 bytes, config_manager.o(i.ConfigManager_LoadDefaults))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy
@@ -610,7 +610,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[76]"></a>ConfigManager_RestoreDefaults</STRONG> (Thumb, 34 bytes, Stack size 264 bytes, config_manager.o(i.ConfigManager_RestoreDefaults))
-<BR><BR>[Stack]<UL><LI>Max Depth = 832<LI>Call Chain = ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
+<BR><BR>[Stack]<UL><LI>Max Depth = 840<LI>Call Chain = ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_LoadDefaults
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Commit
@@ -619,8 +619,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigMode_Update
 </UL>
 
-<P><STRONG><a name="[77]"></a>ConfigManager_Save</STRONG> (Thumb, 148 bytes, Stack size 288 bytes, config_manager.o(i.ConfigManager_Save))
-<BR><BR>[Stack]<UL><LI>Max Depth = 568<LI>Call Chain = ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
+<P><STRONG><a name="[77]"></a>ConfigManager_Save</STRONG> (Thumb, 148 bytes, Stack size 296 bytes, config_manager.o(i.ConfigManager_Save))
+<BR><BR>[Stack]<UL><LI>Max Depth = 576<LI>Call Chain = ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FlashWrite
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigDefaultsChecksum
@@ -784,7 +784,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ResetGlyphCache
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowScrollWithTime
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
@@ -1242,8 +1243,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_UpdateBeep
 </UL>
 
-<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 954 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 856<LI>Call Chain = main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
+<P><STRONG><a name="[43]"></a>main</STRONG> (Thumb, 984 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 864<LI>Call Chain = main &rArr; ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Init
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Get
@@ -1258,7 +1259,9 @@ Global Symbols
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_Update
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MP3Sequence_StartExplosion
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Breath
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WriteFixed
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ClearLine
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Defuser_IsActive
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DefuserInput_Init
@@ -1288,6 +1291,7 @@ Global Symbols
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetValue
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MatrixKey_GetHold
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_INIT
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Millis
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timebase_Init
@@ -1812,7 +1816,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[80]"></a>ConfigMode_Update</STRONG> (Thumb, 360 bytes, Stack size 16 bytes, main.o(i.ConfigMode_Update))
-<BR><BR>[Stack]<UL><LI>Max Depth = 848<LI>Call Chain = ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
+<BR><BR>[Stack]<UL><LI>Max Depth = 856<LI>Call Chain = ConfigMode_Update &rArr; ConfigManager_RestoreDefaults &rArr; ConfigManager_Save &rArr; ConfigDefaultsChecksum &rArr; ConfigManager_LoadDefaults &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_Validate
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigManager_SetValueString
@@ -1955,7 +1959,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_BeginFrame
 </UL>
-<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPassword
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Explosion_Start
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
@@ -1991,7 +1996,8 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_WRITE_StrDATA
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
+<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowShort
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptValue
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CfgShowPromptId
 </UL>
@@ -2091,7 +2097,7 @@ Local Symbols
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Countdown_Start
 </UL>
 
-<P><STRONG><a name="[de]"></a>Runtime_Apply</STRONG> (Thumb, 440 bytes, Stack size 8 bytes, main.o(i.Runtime_Apply))
+<P><STRONG><a name="[de]"></a>Runtime_Apply</STRONG> (Thumb, 448 bytes, Stack size 8 bytes, main.o(i.Runtime_Apply))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Runtime_Apply &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strncpy

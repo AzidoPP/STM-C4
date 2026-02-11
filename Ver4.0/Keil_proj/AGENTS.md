@@ -12,6 +12,7 @@ Updates:
 - Added bilingual user-facing step-by-step config-mode tutorial (with example) at the top of `Ver4.0/config.md`.
 - Refined config tutorial wording (CN/EN) to clarify users can modify settings directly in config mode without re-uploading firmware.
 - Added configurable pre-explosion beep stage: on explosion entry, LED turns full yellow, buzzer sounds at 3600Hz for `CONFIG_EXPLOSION_BEEP_MS`, then continues original explosion flow.
+- Added configurable arm wrong-password hint: when preset arm password is enabled, wrong input can now show `ERROR` via `CONFIG_ARM_ERROR_HINT_ENABLE`; default remains silent clear for backward behavior.
 - Simplified config sources: removed `config_defaults.h` and switched runtime default loading to `config.h` as the single source of truth.
 - Simplified docs: merged CN/EN config explanations into `Ver4.0/config.md` with per-item config IDs beside each setting description.
 - Removed `default_config_CH.h` and `default_config_EN.h`, and updated README docs to point users to `config.md` + `config.h` only.

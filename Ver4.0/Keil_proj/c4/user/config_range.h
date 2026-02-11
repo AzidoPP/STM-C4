@@ -176,6 +176,9 @@
 #if (CONFIG_ARM_PRESET_ENABLE > 1)
 #error "CONFIG_ARM_PRESET_ENABLE out of range"
 #endif
+#if (CONFIG_ARM_ERROR_HINT_ENABLE > 1)
+#error "CONFIG_ARM_ERROR_HINT_ENABLE out of range"
+#endif
 #if CONFIG_ARM_PRESET_ENABLE
 typedef char config_arm_preset_password_len_check[(sizeof(CONFIG_ARM_PRESET_PASSWORD) - 1U) == CONFIG_PASSWORD_LEN ? 1 : -1];
 #endif

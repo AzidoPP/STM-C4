@@ -1815,7 +1815,7 @@
       <ActiveTab>1</ActiveTab>
       <Doc>
         <Name>.\user\main.c</Name>
-        <ColumnNumber>4</ColumnNumber>
+        <ColumnNumber>13</ColumnNumber>
         <TopLine>1068</TopLine>
         <CurrentLine>1082</CurrentLine>
         <Folding>1</Folding>
@@ -1824,16 +1824,16 @@
       </Doc>
       <Doc>
         <Name>.\user\config.h</Name>
-        <ColumnNumber>34</ColumnNumber>
+        <ColumnNumber>33</ColumnNumber>
         <TopLine>62</TopLine>
-        <CurrentLine>86</CurrentLine>
+        <CurrentLine>87</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
         <Name>.\user\config_manager.c</Name>
-        <ColumnNumber>49</ColumnNumber>
+        <ColumnNumber>52</ColumnNumber>
         <TopLine>73</TopLine>
         <CurrentLine>89</CurrentLine>
         <Folding>1</Folding>

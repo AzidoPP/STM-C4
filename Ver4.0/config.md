@@ -57,6 +57,10 @@
 #define CONFIG_ARM_PRESET_ENABLE 0U
 /* CONFIG_ARM_PRESET_PASSWORD: 预设密码（长度必须等于 CONFIG_PASSWORD_LEN） [8] */
 #define CONFIG_ARM_PRESET_PASSWORD "1234567"
+/* CONFIG_ARM_ERROR_HINT_ENABLE: 下包固定密码输错时是否显示 ERROR（0/1） [60]
+   0 = 静默清空（当前默认）
+   1 = 显示 ERROR 后清空 */
+#define CONFIG_ARM_ERROR_HINT_ENABLE 0U
 
 /* 拆弹模式开关（0/1） */
 /* CONFIG_DEFUSE_ENABLE_PASSWORD: 允许输入密码拆弹 1为启用（0/1） [9] */
@@ -291,6 +295,10 @@
 #define CONFIG_ARM_PRESET_ENABLE 0U
 /* CONFIG_ARM_PRESET_PASSWORD: preset password (length must equal CONFIG_PASSWORD_LEN) [8] */
 #define CONFIG_ARM_PRESET_PASSWORD "1234567"
+/* CONFIG_ARM_ERROR_HINT_ENABLE: show ERROR when preset arm password is wrong (0/1) [60]
+   0 = silent clear (current default)
+   1 = show ERROR then clear */
+#define CONFIG_ARM_ERROR_HINT_ENABLE 0U
 
 /* Defuse mode enable (0/1) */
 /* CONFIG_DEFUSE_ENABLE_PASSWORD: allow password input defuse, 1 = enable (0/1) [9] */
