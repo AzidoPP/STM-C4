@@ -5,9 +5,8 @@
 #include "config.h"
 #include <stdint.h>
 
-#define LED_PWM_MAX CONFIG_LED_PWM_MAX
-
 void LED_Init(void);
+uint16_t LED_GetPwmMax(void);
 void LED_SetColor(uint16_t red, uint16_t green);
 void LED_SetRed(uint16_t red);
 void LED_SetGreen(uint16_t green);

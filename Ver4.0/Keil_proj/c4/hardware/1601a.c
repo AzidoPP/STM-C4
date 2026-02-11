@@ -3,7 +3,10 @@
 #include "config.h"
 #include "stm32f10x_tim.h"
 
-#define LCD_COLS CONFIG_LCD_COLS
+extern uint8_t g_lcd_cols;
+extern uint8_t g_lcd_normal_mount;
+extern uint8_t g_lcd_backlight_pct;
+extern uint16_t g_led_pwm_max;
 
 #define LCD_RS_PORT GPIOB
 #define LCD_RS_PIN GPIO_Pin_12
@@ -24,7 +27,7 @@
 #define LCD_BLED_PORT GPIOA
 #define LCD_BLED_PIN GPIO_Pin_3
 
-static const char lcd_glyph_chars[] = "0123456789*";
+static const char lcd_glyph_chars[] = "0123456789*:#=?ADEFGILNORSTVY";
 
 static const uint8_t lcd_glyphs[][8] = {
 	{0x00, 0x0E, 0x11, 0x13, 0x15, 0x19, 0x11, 0x0E},
@@ -38,6 +41,24 @@ static const uint8_t lcd_glyphs[][8] = {
 	{0x00, 0x0E, 0x11, 0x11, 0x0E, 0x11, 0x11, 0x0E},
 	{0x00, 0x06, 0x08, 0x10, 0x1E, 0x11, 0x11, 0x0E},
 	{0x00, 0x00, 0x0A, 0x04, 0x1F, 0x04, 0x0A, 0x00},
+	{0x00, 0x00, 0x0C, 0x0C, 0x00, 0x0C, 0x0C, 0x00},
+	{0x00, 0x0A, 0x0A, 0x1F, 0x0A, 0x1F, 0x0A, 0x0A},
+	{0x00, 0x00, 0x00, 0x1F, 0x00, 0x1F, 0x00, 0x00},
+	{0x00, 0x0E, 0x11, 0x01, 0x02, 0x04, 0x00, 0x04},
+	{0x00, 0x0E, 0x11, 0x11, 0x11, 0x1F, 0x11, 0x11},
+	{0x00, 0x1C, 0x12, 0x11, 0x11, 0x11, 0x12, 0x1C},
+	{0x00, 0x1F, 0x10, 0x10, 0x1E, 0x10, 0x10, 0x1F},
+	{0x00, 0x1F, 0x10, 0x10, 0x1E, 0x10, 0x10, 0x10},
+	{0x00, 0x0E, 0x11, 0x10, 0x17, 0x11, 0x11, 0x0F},
+	{0x00, 0x0E, 0x04, 0x04, 0x04, 0x04, 0x04, 0x0E},
+	{0x00, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x1F},
+	{0x00, 0x11, 0x11, 0x19, 0x15, 0x13, 0x11, 0x11},
+	{0x00, 0x0E, 0x11, 0x11, 0x11, 0x11, 0x11, 0x0E},
+	{0x00, 0x1E, 0x11, 0x11, 0x1E, 0x14, 0x12, 0x11},
+	{0x00, 0x0F, 0x10, 0x10, 0x0E, 0x01, 0x01, 0x1E},
+	{0x00, 0x1F, 0x04, 0x04, 0x04, 0x04, 0x04, 0x04},
+	{0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 0x0A, 0x04},
+	{0x00, 0x11, 0x11, 0x11, 0x0A, 0x04, 0x04, 0x04},
 };
 
 static char lcd_slots[8] = {0};
@@ -58,20 +79,20 @@ static uint8_t LCD_Reverse5(uint8_t row)
 
 static uint8_t LCD_GlyphRow(const uint8_t *pattern, uint8_t row)
 {
-#if CONFIG_LCD_NORMAL_MOUNT
-	return LCD_Reverse5(pattern[(uint8_t)(7U - row)]);
-#else
+	if (g_lcd_normal_mount)
+	{
+		return LCD_Reverse5(pattern[(uint8_t)(7U - row)]);
+	}
 	return pattern[row];
-#endif
 }
 
 static uint8_t LCD_MapCol(uint8_t user_col)
 {
-#if CONFIG_LCD_NORMAL_MOUNT
-	return user_col;
-#else
-	return (uint8_t)((LCD_COLS - 1U) - user_col);
-#endif
+	if (g_lcd_normal_mount)
+	{
+		return user_col;
+	}
+	return (uint8_t)((g_lcd_cols - 1U) - user_col);
 }
 
 static void LCD_SetDataNibble(uint8_t data)
@@ -234,10 +255,10 @@ void LCD_INIT(void)
 	LCD_WRITE_CMD(0x06);
 	LCD_WRITE_CMD(0x0C);
 
-	lcd_backlight_default = (uint16_t)((CONFIG_LED_PWM_MAX * CONFIG_LCD_BACKLIGHT_PCT) / 100U);
-	if (lcd_backlight_default > CONFIG_LED_PWM_MAX)
+	lcd_backlight_default = (uint16_t)((g_led_pwm_max * g_lcd_backlight_pct) / 100U);
+	if (lcd_backlight_default > g_led_pwm_max)
 	{
-		lcd_backlight_default = CONFIG_LED_PWM_MAX;
+		lcd_backlight_default = g_led_pwm_max;
 	}
 	lcd_backlight_saved = lcd_backlight_default;
 	LCD_Backlight_Set(lcd_backlight_default);
@@ -272,7 +293,7 @@ void LCD_WRITE_StrDATA(unsigned char *str, unsigned char col)
 		unsigned char user_col = (unsigned char)(col + i);
 		uint8_t phys_col;
 		uint8_t data;
-		if (user_col >= LCD_COLS)
+		if (user_col >= g_lcd_cols)
 		{
 			break;
 		}
@@ -294,7 +315,7 @@ void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned 
 		int idx;
 		uint8_t slot;
 
-		if (user_col >= LCD_COLS)
+		if (user_col >= g_lcd_cols)
 		{
 			break;
 		}
@@ -331,7 +352,7 @@ void LCD_WRITE_StrDATA_Password(unsigned char *str, unsigned char col, unsigned 
 	{
 		unsigned char user_col = (unsigned char)(col + i);
 		uint8_t phys_col;
-		if (user_col >= LCD_COLS)
+		if (user_col >= g_lcd_cols)
 		{
 			break;
 		}
@@ -349,9 +370,9 @@ void LCD_Clear(void)
 
 void LCD_Backlight_Set(uint16_t level)
 {
-	if (level > CONFIG_LED_PWM_MAX)
+	if (level > g_led_pwm_max)
 	{
-		level = CONFIG_LED_PWM_MAX;
+		level = g_led_pwm_max;
 	}
 	if (level > 0U)
 	{

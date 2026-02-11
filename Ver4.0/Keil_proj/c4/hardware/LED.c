@@ -1,6 +1,11 @@
 #include "LED.h"
 #include "stm32f10x_tim.h"
 
+extern uint16_t g_led_pwm_max;
+extern uint8_t g_led_yellow_red_pct;
+extern uint32_t g_buzzer_startup_freq_hz;
+extern uint8_t g_buzzer_duty_pct;
+
 static uint16_t led_red = 0;
 static uint16_t led_green = 0;
 static uint16_t buzzer_pulse = 0;
@@ -16,6 +21,11 @@ static uint32_t TimerClockPclk1(void)
 		return clocks.PCLK1_Frequency * 2U;
 	}
 	return clocks.PCLK1_Frequency;
+}
+
+uint16_t LED_GetPwmMax(void)
+{
+	return g_led_pwm_max;
 }
 
 void LED_Init(void)
@@ -49,7 +59,7 @@ void LED_Init(void)
 	timer_clk = TimerClockPclk1();
 	prescaler = (uint16_t)(timer_clk / 1000000U) - 1U;
 
-	tim.TIM_Period = LED_PWM_MAX - 1U;
+	tim.TIM_Period = g_led_pwm_max - 1U;
 	tim.TIM_Prescaler = prescaler;
 	tim.TIM_ClockDivision = 0;
 	tim.TIM_CounterMode = TIM_CounterMode_Up;
@@ -74,8 +84,8 @@ void LED_Init(void)
 
 void LED_SetColor(uint16_t red, uint16_t green)
 {
-	if (red > LED_PWM_MAX) { red = LED_PWM_MAX; }
-	if (green > LED_PWM_MAX) { green = LED_PWM_MAX; }
+	if (red > g_led_pwm_max) { red = g_led_pwm_max; }
+	if (green > g_led_pwm_max) { green = g_led_pwm_max; }
 	led_red = red;
 	led_green = green;
 	TIM_SetCompare3(TIM2, led_red);
@@ -94,7 +104,7 @@ void LED_SetGreen(uint16_t green)
 
 void LED_SetYellow(uint16_t level)
 {
-	uint16_t red = (uint16_t)((level * CONFIG_LED_YELLOW_RED_PCT) / 100U);
+	uint16_t red = (uint16_t)((level * g_led_yellow_red_pct) / 100U);
 	LED_SetColor(red, level);
 }
 
@@ -132,10 +142,10 @@ void Buzzer_Init(void)
 
 	timer_clk = TimerClockPclk1();
 	prescaler = (uint16_t)(timer_clk / 1000000U) - 1U;
-	period = (1000000U / CONFIG_BUZZER_STARTUP_FREQ_HZ);
+	period = (1000000U / g_buzzer_startup_freq_hz);
 	if (period == 0U) { period = 1U; }
 	buzzer_base_hz = 1000000U;
-	buzzer_duty_pct = CONFIG_BUZZER_DUTY_PCT;
+	buzzer_duty_pct = g_buzzer_duty_pct;
 
 	tim.TIM_Period = (uint16_t)(period - 1U);
 	tim.TIM_Prescaler = prescaler;

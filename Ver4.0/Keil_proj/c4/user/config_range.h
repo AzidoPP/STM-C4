@@ -53,6 +53,9 @@
 #if (CONFIG_SCROLL_PATTERN_LEN < 1) || (CONFIG_SCROLL_PATTERN_LEN > 16)
 #error "CONFIG_SCROLL_PATTERN_LEN out of range"
 #endif
+#if (CONFIG_DIGITAL_COUNTDOWN_ENABLE > 1)
+#error "CONFIG_DIGITAL_COUNTDOWN_ENABLE out of range"
+#endif
 #if (CONFIG_LONG_PRESS_MS < 200) || (CONFIG_LONG_PRESS_MS > 3000)
 #error "CONFIG_LONG_PRESS_MS out of range"
 #endif
@@ -172,6 +175,9 @@
 #endif
 #if CONFIG_ARM_PRESET_ENABLE
 typedef char config_arm_preset_password_len_check[(sizeof(CONFIG_ARM_PRESET_PASSWORD) - 1U) == CONFIG_PASSWORD_LEN ? 1 : -1];
+#endif
+#if (CONFIG_RESET_MAGIC == 0)
+#error "CONFIG_RESET_MAGIC out of range"
 #endif
 #endif
 

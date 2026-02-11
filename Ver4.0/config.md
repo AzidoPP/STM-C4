@@ -1,0 +1,197 @@
+# Ver4.0 配置说明（用户）
+
+本页是给使用者的配置操作说明。
+
+## 1. 倒计时数字显示
+
+- 功能编号：`23`
+- 配置名：`CONFIG_DIGITAL_COUNTDOWN_ENABLE`
+- 含义：
+  - `0`：只显示左侧滚动动画
+  - `1`：左侧滚动动画 + 右侧数字倒计时（`mm:ss`）
+
+显示布局（16 字符）：
+- 左侧 8 字符：滚动动画
+- 右侧 8 字符：前 2 格留空，再显示 `mm:ss`
+
+当进入拆弹动画时：
+- 数字倒计时会自动隐藏，只显示拆弹动画。
+
+---
+
+## 2. 不重新烧录修改配置
+
+> 一次上电只修改一个配置。
+
+### 进入配置模式
+
+1. 按住 `#`
+2. 同时按 `RESET` 或重新上电
+3. 屏幕进入配置界面
+
+### 修改单个配置
+
+1. 输入配置编号（例如 `23`）
+2. 按 `#` 确认编号
+3. 输入新的值
+4. 按 `#` 进入保存确认
+5. 再按 `#` 保存
+6. 屏幕提示 `SAVED / RESET`
+7. 按 `RESET` 重新开始
+
+按键说明：
+- `0~9`：输入数字
+- `*`：删除一位
+- `#`：确认当前步骤
+
+### 恢复默认配置
+
+1. 进入配置模式
+2. 输入编号：`90405`（输入 `090405` 也可以）
+3. 按 `#`
+4. 屏幕显示恢复确认（`RESTORE?`）
+5. 再按 `#` 执行恢复
+6. 屏幕提示 `RESTORED / RESET`
+7. 按 `RESET` 重启
+
+---
+
+## 3. 全部配置编号
+
+`0  - CONFIG_IGNORE_RANGE`
+
+`1  - CONFIG_PASSWORD_LEN`
+
+`2  - CONFIG_LCD_COLS`
+
+`3  - CONFIG_LCD_NORMAL_MOUNT`
+
+`4  - CONFIG_PASSWORD_COL`
+
+`5  - CONFIG_COUNTDOWN_MS`
+
+`6  - CONFIG_ARM_DELAY_MS`
+
+`7  - CONFIG_ARM_PRESET_ENABLE`
+
+`8  - CONFIG_ARM_PRESET_PASSWORD`
+
+`9  - CONFIG_DEFUSE_ENABLE_PASSWORD`
+
+`10 - CONFIG_DEFUSE_ENABLE_MANUAL`
+
+`11 - CONFIG_DEFUSE_ENABLE_EXTERNAL`
+
+`12 - CONFIG_LCD_BACKLIGHT_PCT`
+
+`13 - CONFIG_BEEP_LEN_MS`
+
+`14 - CONFIG_BEEP_INTERVAL_BASE_MS`
+
+`15 - CONFIG_BEEP_INTERVAL_SCALE_MS`
+
+`16 - CONFIG_BEEP_INTERVAL_MIN_MS`
+
+`17 - CONFIG_BEEP_INITIAL_MS`
+
+`18 - CONFIG_LED_PWM_MAX`
+
+`19 - CONFIG_LED_BREATH_PERIOD_MS`
+
+`20 - CONFIG_LED_YELLOW_RED_PCT`
+
+`21 - CONFIG_SCROLL_INTERVAL_MS`
+
+`22 - CONFIG_SCROLL_PATTERN_LEN`
+
+`23 - CONFIG_DIGITAL_COUNTDOWN_ENABLE`
+
+`24 - CONFIG_LONG_PRESS_MS`
+
+`25 - CONFIG_MANUAL_DEFUSE_MS`
+
+`26 - CONFIG_EXTERNAL_DEFUSE_MS`
+
+`27 - CONFIG_DEFUSE_DISPLAY_HOLD_MS`
+
+`28 - CONFIG_DEFUSE_CYCLE_STEPS`
+
+`29 - CONFIG_DEFUSE_FLASH_TOGGLE_MS`
+
+`30 - CONFIG_DEFUSE_FLASH_TOGGLES`
+
+`31 - CONFIG_DEFUSE_BLINK_MS`
+
+`32 - CONFIG_BUZZER_STARTUP_FREQ_HZ`
+
+`33 - CONFIG_BUZZER_COUNTDOWN_FREQ_HZ`
+
+`34 - CONFIG_BUZZER_DUTY_PCT`
+
+`35 - CONFIG_STARTUP_BEEP_ON_MS`
+
+`36 - CONFIG_STARTUP_BEEP_GAP_MS`
+
+`37 - CONFIG_STARTUP_BEEP_ENABLE`
+
+`38 - CONFIG_MP3_VOLUME`
+
+`39 - CONFIG_MP3_ARM_SUCCESS_ENABLE`
+
+`40 - CONFIG_MP3_DEFUSE_SUCCESS_ENABLE`
+
+`41 - CONFIG_MP3_TRACK_ARM_SUCCESS`
+
+`42 - CONFIG_MP3_TRACK_EXPLOSION`
+
+`43 - CONFIG_MP3_TRACK_DEFUSE_SUCCESS`
+
+`44 - CONFIG_MP3_TRACK_CTWIN`
+
+`45 - CONFIG_MP3_TRACK_TERWIN`
+
+`46 - CONFIG_MP3_DEFUSE_STAGE_ENABLE`
+
+`47 - CONFIG_MP3_EXPLODED_STAGE_ENABLE`
+
+`48 - CONFIG_MP3_EXPLOSION_ENABLE`
+
+`49 - CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE`
+
+`50 - CONFIG_MP3_T_WIN_MUSICBOX_ENABLE`
+
+`51 - CONFIG_MP3_CTWIN_ENABLE`
+
+`52 - CONFIG_MP3_TERWIN_ENABLE`
+
+`53 - CONFIG_MP3_CT_WIN_MUSICBOX_TRACK`
+
+`54 - CONFIG_MP3_T_WIN_MUSICBOX_TRACK`
+
+`55 - CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS`
+
+`56 - CONFIG_MP3_CT_MUSICBOX_WAIT_MS`
+
+`57 - CONFIG_MP3_T_MUSICBOX_WAIT_MS`
+
+`58 - CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS`
+
+---
+
+## 4. 屏幕提示说明（16 字符）
+
+- 配置界面使用短提示词，避免挤在一起：`ID:` / `VAL:` / `SAVE?` / `RESTORE?` / `RESET`
+- 输入错误时提示：`ID ERR` / `VAL ERR` / `RANGEERR`，可直接重新输入。
+- 保存成功或恢复成功后，会停在 `SAVED/RESET` 或 `RESTORED/RESET`，等待你按 `RESET`。
+
+---
+
+## 5. 重新烧录说明
+
+- 重新烧录后，程序会使用本次固件内的默认配置结构。
+- 当配置结构版本或配置数量与旧记录不一致时，会自动使用新的默认值。
+- Keil + ST-Link 下载时，通常会擦除目标程序相关区域；是否“整片擦除”取决于下载设置（不是每次都固定整片擦除）。
+
+建议：
+- 升级到新固件后，先按一次 `RESET` 正常运行；
+- 如需统一回默认值，可在配置模式输入 `90405` 执行恢复。

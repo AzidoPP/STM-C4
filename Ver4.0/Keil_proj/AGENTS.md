@@ -40,6 +40,19 @@ Updates:
 - When preset arm password is enabled, a wrong entry now clears the input back to stars.
 - Normalized config toggle comments (explicit 1=enable) and kept preset password length check as a typedef guard for Keil compatibility.
 
+- Added runtime configuration manager with Flash persistence (`config_manager.c/.h`) and factory defaults file (`config_defaults.h`).
+- Added numbered config table (0..58) and one-item-at-a-time startup config mode (hold `#` during power-on), including restore-default command id `90405` with confirmation.
+- Added digital countdown toggle (`CONFIG_DIGITAL_COUNTDOWN_ENABLE`): left half keeps scroll animation, right half shows `mm:ss`, and auto-hides during defuse animation.
+- Switched key runtime logic from compile-time `CONFIG_*` macros to loaded runtime config values in `main.c`.
+- Updated LCD/LED drivers to use runtime config values (LCD columns/mount/backlight, LED PWM max, yellow ratio, buzzer startup defaults).
+- Updated Keil project file to include new config manager/default files.
+- Added user-facing config guide `Ver4.0/config.md` and updated `README.md`/`V4说明.md` accordingly.
+
+Notes:
+- Flash config record now contains magic/version/config-count/payload-size/checksum; if structure changes after reflashing, old record is ignored and factory defaults are used.
+
 TODO:
 - Verify LCD glyph appearance on hardware and tweak patterns if needed.
 - Confirm countdown duration and timing constants on device.
+
+- Hardware-verify startup config-mode detection window and prompt readability on real LCD1601A.

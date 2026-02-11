@@ -741,6 +741,21 @@
               <FilePath>.\user\config.h</FilePath>
             </File>
             <File>
+              <FileName>config_defaults.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\config_defaults.h</FilePath>
+            </File>
+            <File>
+              <FileName>config_manager.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\config_manager.c</FilePath>
+            </File>
+            <File>
+              <FileName>config_manager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\config_manager.h</FilePath>
+            </File>
+            <File>
               <FileName>stm32f10x_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\user\stm32f10x_conf.h</FilePath>
