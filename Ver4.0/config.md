@@ -1,8 +1,56 @@
 ﻿# Ver4.0 配置说明 / Configuration Guide
 
-- 默认配置唯一入口：`Ver4.0/Keil_proj/c4/user/config.h`
-- 配置编号与运行时管理：`Ver4.0/Keil_proj/c4/user/config_manager.c`
-- 配置模式：上电按住 `#`，按编号修改。
+- 不用重新烧录，也可以直接改配置。
+
+## 快速教程（中文）
+
+### 如何进入配置模式
+1. 先按住 `#` 不放。
+2. 在按住 `#` 的同时，按一下 `RESET`（或重新上电）。
+3. 继续按住 `#` 约 1 秒，直到屏幕进入配置界面。
+
+### 如何修改一个配置
+1. 输入配置编号（例如 `24`）。
+2. 按 `#` 确认编号。
+3. 输入新数值（例如 `500`）。
+4. 按 `#` 进入保存确认。
+5. 再按一次 `#` 保存。
+6. 屏幕出现 `STORED` 后，按 `RESET` 重新开始。
+
+### 按键说明
+- `0~9`：输入数字
+- `*`：删掉最后一位
+- `#`：确认当前步骤
+
+### 示例：把长按时间改成 500ms
+- 目标配置：`CONFIG_LONG_PRESS_MS`，编号是 `[24]`
+- 操作顺序：进入配置模式 -> 输入 `24` -> 按 `#` -> 输入 `500` -> 按 `#` -> 再按 `#` 保存 -> 按 `RESET`
+
+---
+
+## Quick Tutorial (English)
+
+### Enter config mode
+1. Hold `#`.
+2. While holding `#`, press `RESET` (or power cycle).
+3. Keep holding `#` for about 1 second until config screen appears.
+
+### Change one config item
+1. Enter the config ID (example: `24`).
+2. Press `#` to confirm the ID.
+3. Enter the new value (example: `500`).
+4. Press `#` to go to save confirmation.
+5. Press `#` again to save.
+6. When `STORED` appears, press `RESET`.
+
+### Keys
+- `0~9`: input digits
+- `*`: delete last digit
+- `#`: confirm current step
+
+### Example: set long-press time to 500ms
+- Target: `CONFIG_LONG_PRESS_MS`, ID `[24]`
+- Steps: enter config mode -> input `24` -> press `#` -> input `500` -> press `#` -> press `#` to save -> press `RESET`
 
 ## 中文说明（来自 default_config_CH.h）
 

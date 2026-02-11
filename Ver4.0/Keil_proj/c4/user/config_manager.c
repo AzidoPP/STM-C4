@@ -1,4 +1,4 @@
-﻿#include "config_manager.h"
+#include "config_manager.h"
 #include "config.h"
 #include "stm32f10x_flash.h"
 #include <stddef.h>
