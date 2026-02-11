@@ -66,6 +66,16 @@ static uint8_t lcd_slot_next = 0;
 static uint16_t lcd_backlight_default = 0;
 static uint16_t lcd_backlight_saved = 0;
 
+static void LCD_ResetGlyphCache(void)
+{
+	uint8_t i;
+	for (i = 0; i < 8; i++)
+	{
+		lcd_slots[i] = 0;
+	}
+	lcd_slot_next = 0;
+}
+
 static uint8_t LCD_Reverse5(uint8_t row)
 {
 	row &= 0x1FU;
@@ -79,11 +89,29 @@ static uint8_t LCD_Reverse5(uint8_t row)
 
 static uint8_t LCD_GlyphRow(const uint8_t *pattern, uint8_t row)
 {
+	uint8_t raw;
+	uint8_t src_row;
+
 	if (!g_lcd_normal_mount)
 	{
-		return LCD_Reverse5(pattern[(uint8_t)(7U - row)]);
+		if (row == 0U)
+		{
+			return 0U;
+		}
+		src_row = (uint8_t)(7U - row);
+		raw = (uint8_t)(pattern[src_row] & 0x1FU);
+		return LCD_Reverse5(raw);
 	}
-	return pattern[row];
+
+	if (row < 7U)
+	{
+		raw = (uint8_t)(pattern[row] & 0x1FU);
+	}
+	else
+	{
+		raw = 0U;
+	}
+	return raw;
 }
 
 static uint8_t LCD_MapCol(uint8_t user_col)
@@ -193,6 +221,8 @@ static void LCD_LoadGlyph(uint8_t slot, const uint8_t *pattern)
 static uint8_t LCD_GetGlyphSlot(char ch)
 {
 	uint8_t i;
+	uint8_t slot;
+	int idx;
 	for (i = 0; i < 8; i++)
 	{
 		if (lcd_slots[i] == ch)
@@ -200,17 +230,31 @@ static uint8_t LCD_GetGlyphSlot(char ch)
 			return i;
 		}
 	}
+
+	for (i = 0; i < 8; i++)
 	{
-		uint8_t slot = lcd_slot_next;
-		int idx = LCD_GlyphIndex(ch);
-		lcd_slot_next = (uint8_t)((lcd_slot_next + 1) % 8);
-		if (idx >= 0)
+		if (lcd_slots[i] == 0)
 		{
-			LCD_LoadGlyph(slot, lcd_glyphs[idx]);
-			lcd_slots[slot] = ch;
+			slot = i;
+			idx = LCD_GlyphIndex(ch);
+			if (idx >= 0)
+			{
+				LCD_LoadGlyph(slot, lcd_glyphs[idx]);
+				lcd_slots[slot] = ch;
+			}
+			return slot;
 		}
-		return slot;
 	}
+
+	slot = lcd_slot_next;
+	idx = LCD_GlyphIndex(ch);
+	lcd_slot_next = (uint8_t)((lcd_slot_next + 1U) % 8U);
+	if (idx >= 0)
+	{
+		LCD_LoadGlyph(slot, lcd_glyphs[idx]);
+		lcd_slots[slot] = ch;
+	}
+	return slot;
 }
 
 static uint8_t LCD_EncodeChar(char ch)
@@ -230,11 +274,7 @@ void LCD_INIT(void)
 {
 	uint8_t i;
 	LCD_GPIO_Init();
-	for (i = 0; i < 8; i++)
-	{
-		lcd_slots[i] = 0;
-	}
-	lcd_slot_next = 0;
+	LCD_ResetGlyphCache();
 
 	GPIO_ResetBits(LCD_RS_PORT, LCD_RS_PIN);
 	GPIO_ResetBits(LCD_EN_PORT, LCD_EN_PIN);
@@ -283,6 +323,11 @@ void LCD_WRITE_ByteDATA(unsigned char data)
 	GPIO_SetBits(LCD_RS_PORT, LCD_RS_PIN);
 	LCD_Write8Bits(data);
 	Delay_us(50);
+}
+
+void LCD_BeginFrame(void)
+{
+	LCD_ResetGlyphCache();
 }
 
 void LCD_WRITE_StrDATA(unsigned char *str, unsigned char col)

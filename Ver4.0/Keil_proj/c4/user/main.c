@@ -73,6 +73,8 @@ static unsigned char scroll_line[CONFIG_LCD_COLS_MAX + 1U];
 
 static uint32_t last_defuse_input_ms = 0;
 static uint32_t hash_hold_ms = 0;
+static uint8_t config_boot_latched = 0;
+static uint8_t config_hold_armed = 0;
 
 static char success_stars[CONFIG_PASSWORD_LEN_MAX + 1U];
 static uint8_t success_show_code = 0;
@@ -345,6 +347,7 @@ static uint8_t Password_Match(const char *a, const char *b)
 static void LCD_ClearLine(void)
 {
 	static unsigned char spaces[] = "                ";
+	LCD_BeginFrame();
 	LCD_WRITE_StrDATA(spaces, 0);
 }
 
@@ -371,6 +374,7 @@ static void LCD_WriteFixed(const char *text, uint8_t col, uint8_t width)
 
 static void LCD_ShowPassword(const char *buf)
 {
+	LCD_BeginFrame();
 	LCD_ClearLine();
 	LCD_WRITE_StrDATA_Password((unsigned char *)buf, g_password_col, g_password_len);
 }
@@ -389,6 +393,8 @@ static void LCD_ShowScrollWithTime(uint16_t pos, uint32_t now)
 	{
 		pos = max_pos;
 	}
+
+	LCD_BeginFrame();
 
 	for (i = 0; i < g_lcd_cols; i++)
 	{
@@ -964,6 +970,7 @@ static void CfgInput_Push(char key)
 
 static void CfgShowPromptId(void)
 {
+	LCD_BeginFrame();
 	LCD_ClearLine();
 	LCD_WriteFixed("ID:", 0, 3);
 	LCD_WriteFixed(cfg_input, 4, 8);
@@ -971,6 +978,7 @@ static void CfgShowPromptId(void)
 
 static void CfgShowPromptValue(void)
 {
+	LCD_BeginFrame();
 	LCD_ClearLine();
 	LCD_WriteFixed("VAL:", 0, 4);
 	LCD_WriteFixed(cfg_input, 4, 12);
@@ -978,6 +986,7 @@ static void CfgShowPromptValue(void)
 
 static void CfgShowShort(const char *left, const char *right)
 {
+	LCD_BeginFrame();
 	LCD_ClearLine();
 	LCD_WriteFixed(left, 0, 8);
 	LCD_WriteFixed(right, 8, 8);
@@ -1092,7 +1101,7 @@ static uint8_t ConfigMode_Update(char key)
 			{
 				if (ConfigManager_Save(&cfg_edit))
 				{
-					CfgShowShort("SAVED", "RESET");
+					CfgShowShort("STORED", "RESET");
 					return 1U;
 				}
 				else
@@ -1120,7 +1129,8 @@ int main(void)
 {
 	uint32_t now;
 	uint32_t init_now;
-	uint32_t config_entry_deadline_ms;
+	uint32_t config_hold_start_ms;
+	uint32_t config_boot_latch_deadline_ms;
 	char key;
 	char hold;
 	uint8_t defuser_active;
@@ -1148,7 +1158,10 @@ int main(void)
 	Password_Reset(arm_code);
 	Password_Reset(defuse_input);
 	LCD_ShowPassword(arm_input);
-	config_entry_deadline_ms = init_now + 1200U;
+	config_hold_start_ms = 0U;
+	config_boot_latched = 0U;
+	config_hold_armed = 0U;
+	config_boot_latch_deadline_ms = init_now + 120U;
 
 	while (1)
 	{
@@ -1158,26 +1171,57 @@ int main(void)
 		hold = MatrixKey_GetHold();
 		defuser_active = Defuser_IsActive();
 
-		if (app_state == STATE_IDLE && now <= config_entry_deadline_ms && hold == '#')
+		if (!config_boot_latched)
 		{
-			Buzzer_Off();
-			ConfigMode_Init();
-			while (1)
+			if (hold == '#')
 			{
-				uint32_t cfg_now = Timebase_Millis();
-				StartupBeep_Update(cfg_now);
-				LED_Breath(cfg_now);
-				MatrixKey_Update();
-				key = MatrixKey_GetValue();
-				if (ConfigMode_Update(key))
+				config_boot_latched = 1U;
+				config_hold_armed = 1U;
+				config_hold_start_ms = now;
+			}
+			else if (hold != ' ')
+			{
+				config_boot_latched = 1U;
+				config_hold_armed = 0U;
+			}
+			else if (now >= config_boot_latch_deadline_ms)
+			{
+				config_boot_latched = 1U;
+				config_hold_armed = 0U;
+			}
+		}
+
+		if (app_state == STATE_IDLE && config_hold_armed)
+		{
+			if (hold == '#')
+			{
+				if ((now - config_hold_start_ms) >= 300U)
 				{
+					Buzzer_Off();
+					ConfigMode_Init();
 					while (1)
 					{
-						uint32_t wait_now = Timebase_Millis();
-						StartupBeep_Update(wait_now);
-						LED_Breath(wait_now);
+						uint32_t cfg_now = Timebase_Millis();
+						StartupBeep_Update(cfg_now);
+						LED_Breath(cfg_now);
+						MatrixKey_Update();
+						key = MatrixKey_GetValue();
+						if (ConfigMode_Update(key))
+						{
+							while (1)
+							{
+								uint32_t wait_now = Timebase_Millis();
+								StartupBeep_Update(wait_now);
+								LED_Breath(wait_now);
+							}
+						}
 					}
 				}
+			}
+			else
+			{
+				config_hold_armed = 0U;
+				config_hold_start_ms = 0U;
 			}
 		}
 

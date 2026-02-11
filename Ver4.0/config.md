@@ -27,7 +27,7 @@
 
 1. 按住 `#`
 2. 同时按 `RESET` 或重新上电
-3. 屏幕进入配置界面
+3. 必须保持 `#` 继续按住一小段时间后，屏幕进入配置界面
 
 ### 修改单个配置
 
@@ -36,7 +36,7 @@
 3. 输入新的值
 4. 按 `#` 进入保存确认
 5. 再按 `#` 保存
-6. 屏幕提示 `SAVED / RESET`
+6. 屏幕提示 `STORED / RESET`
 7. 按 `RESET` 重新开始
 
 按键说明：
@@ -182,7 +182,7 @@
 
 - 配置界面使用短提示词，避免挤在一起：`ID:` / `VAL:` / `SAVE?` / `RESTORE?` / `RESET`
 - 输入错误时提示：`ID ERR` / `VAL ERR` / `RANGEERR`，可直接重新输入。
-- 保存成功或恢复成功后，会停在 `SAVED/RESET` 或 `RESTORED/RESET`，等待你按 `RESET`。
+- 保存成功或恢复成功后，会停在 `STORED/RESET` 或 `RESTORED/RESET`，等待你按 `RESET`。
 
 ---
 
@@ -227,7 +227,7 @@ When defuse animation starts:
 
 1. Hold `#`
 2. Press `RESET` (or power on while holding `#`)
-3. The screen enters config mode
+3. Keep holding `#` briefly, then the screen enters config mode
 
 ### Change one config item
 
@@ -236,7 +236,7 @@ When defuse animation starts:
 3. Input new value
 4. Press `#` to enter save confirmation
 5. Press `#` again to save
-6. Screen shows `SAVED / RESET`
+6. Screen shows `STORED / RESET`
 7. Press `RESET` to restart
 
 Keys:
@@ -382,7 +382,7 @@ Keys:
 
 - Short prompts are used: `ID:` / `VAL:` / `SAVE?` / `RESTORE?` / `RESET`
 - On input errors: `ID ERR` / `VAL ERR` / `RANGEERR`, then retry directly.
-- After save/restore success: stay at `SAVED/RESET` or `RESTORED/RESET` until reset.
+- After save/restore success: stay at `STORED/RESET` or `RESTORED/RESET` until reset.
 
 ---
 
