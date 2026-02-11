@@ -80,5 +80,6 @@
 
 /* default id for restore command in config mode */
 #define CONFIG_DEFAULT_RESET_MAGIC 90405U
+#define CONFIG_DEFAULT_RESET_CODE "090405"
 
 #endif

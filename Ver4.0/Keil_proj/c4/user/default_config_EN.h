@@ -264,8 +264,10 @@
    Min: 0     Max: 20000  Typical: 7000 */
 #define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
-/* CONFIG_RESET_MAGIC: config mode restore-default command id */
+/* CONFIG_RESET_MAGIC: numeric restore id for internal compatibility */
 #define CONFIG_RESET_MAGIC 90405U
+/* CONFIG_RESET_CODE: restore input code used in config mode (fixed 6 digits) */
+#define CONFIG_RESET_CODE "090405"
 
 #include "config_range.h"
 

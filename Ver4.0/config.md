@@ -47,7 +47,7 @@
 ### 恢复默认配置
 
 1. 进入配置模式
-2. 输入编号：`90405`（输入 `090405` 也可以）
+2. 输入编号：`090405`（必须是 6 位）
 3. 按 `#`
 4. 屏幕显示恢复确认（`RESTORE?`）
 5. 再按 `#` 执行恢复
@@ -194,4 +194,204 @@
 
 建议：
 - 升级到新固件后，先按一次 `RESET` 正常运行；
-- 如需统一回默认值，可在配置模式输入 `90405` 执行恢复。
+- 如需统一回默认值，可在配置模式输入 `090405` 执行恢复。
+
+---
+
+# Ver4.0 Configuration Guide (User)
+
+This page is the user-facing configuration guide.
+
+## 1. Digital countdown display
+
+- Feature ID: `23`
+- Key: `CONFIG_DIGITAL_COUNTDOWN_ENABLE`
+- Meaning:
+  - `0`: left-side scroll animation only
+  - `1`: left-side scroll + right-side digital countdown (`mm:ss`)
+
+Display layout (16 chars):
+- Left 8 chars: scroll animation
+- Right 8 chars: 2 leading spaces + `mm:ss`
+
+When defuse animation starts:
+- The digital countdown is hidden automatically.
+
+---
+
+## 2. Change config without reflashing
+
+> One power cycle changes one config item only.
+
+### Enter config mode
+
+1. Hold `#`
+2. Press `RESET` (or power on while holding `#`)
+3. The screen enters config mode
+
+### Change one config item
+
+1. Input config ID (example: `23`)
+2. Press `#` to confirm ID
+3. Input new value
+4. Press `#` to enter save confirmation
+5. Press `#` again to save
+6. Screen shows `SAVED / RESET`
+7. Press `RESET` to restart
+
+Keys:
+- `0~9`: input digits
+- `*`: delete one digit
+- `#`: confirm current step
+
+### Restore defaults
+
+1. Enter config mode
+2. Input `090405` (must be 6 digits)
+3. Press `#`
+4. Screen shows `RESTORE?`
+5. Press `#` again to execute restore
+6. Screen shows `RESTORED / RESET`
+7. Press `RESET` to restart
+
+---
+
+## 3. Config IDs
+
+`0  - CONFIG_IGNORE_RANGE`
+
+`1  - CONFIG_PASSWORD_LEN`
+
+`2  - CONFIG_LCD_COLS`
+
+`3  - CONFIG_LCD_NORMAL_MOUNT`
+
+`4  - CONFIG_PASSWORD_COL`
+
+`5  - CONFIG_COUNTDOWN_MS`
+
+`6  - CONFIG_ARM_DELAY_MS`
+
+`7  - CONFIG_ARM_PRESET_ENABLE`
+
+`8  - CONFIG_ARM_PRESET_PASSWORD`
+
+`9  - CONFIG_DEFUSE_ENABLE_PASSWORD`
+
+`10 - CONFIG_DEFUSE_ENABLE_MANUAL`
+
+`11 - CONFIG_DEFUSE_ENABLE_EXTERNAL`
+
+`12 - CONFIG_LCD_BACKLIGHT_PCT`
+
+`13 - CONFIG_BEEP_LEN_MS`
+
+`14 - CONFIG_BEEP_INTERVAL_BASE_MS`
+
+`15 - CONFIG_BEEP_INTERVAL_SCALE_MS`
+
+`16 - CONFIG_BEEP_INTERVAL_MIN_MS`
+
+`17 - CONFIG_BEEP_INITIAL_MS`
+
+`18 - CONFIG_LED_PWM_MAX`
+
+`19 - CONFIG_LED_BREATH_PERIOD_MS`
+
+`20 - CONFIG_LED_YELLOW_RED_PCT`
+
+`21 - CONFIG_SCROLL_INTERVAL_MS`
+
+`22 - CONFIG_SCROLL_PATTERN_LEN`
+
+`23 - CONFIG_DIGITAL_COUNTDOWN_ENABLE`
+
+`24 - CONFIG_LONG_PRESS_MS`
+
+`25 - CONFIG_MANUAL_DEFUSE_MS`
+
+`26 - CONFIG_EXTERNAL_DEFUSE_MS`
+
+`27 - CONFIG_DEFUSE_DISPLAY_HOLD_MS`
+
+`28 - CONFIG_DEFUSE_CYCLE_STEPS`
+
+`29 - CONFIG_DEFUSE_FLASH_TOGGLE_MS`
+
+`30 - CONFIG_DEFUSE_FLASH_TOGGLES`
+
+`31 - CONFIG_DEFUSE_BLINK_MS`
+
+`32 - CONFIG_BUZZER_STARTUP_FREQ_HZ`
+
+`33 - CONFIG_BUZZER_COUNTDOWN_FREQ_HZ`
+
+`34 - CONFIG_BUZZER_DUTY_PCT`
+
+`35 - CONFIG_STARTUP_BEEP_ON_MS`
+
+`36 - CONFIG_STARTUP_BEEP_GAP_MS`
+
+`37 - CONFIG_STARTUP_BEEP_ENABLE`
+
+`38 - CONFIG_MP3_VOLUME`
+
+`39 - CONFIG_MP3_ARM_SUCCESS_ENABLE`
+
+`40 - CONFIG_MP3_DEFUSE_SUCCESS_ENABLE`
+
+`41 - CONFIG_MP3_TRACK_ARM_SUCCESS`
+
+`42 - CONFIG_MP3_TRACK_EXPLOSION`
+
+`43 - CONFIG_MP3_TRACK_DEFUSE_SUCCESS`
+
+`44 - CONFIG_MP3_TRACK_CTWIN`
+
+`45 - CONFIG_MP3_TRACK_TERWIN`
+
+`46 - CONFIG_MP3_DEFUSE_STAGE_ENABLE`
+
+`47 - CONFIG_MP3_EXPLODED_STAGE_ENABLE`
+
+`48 - CONFIG_MP3_EXPLOSION_ENABLE`
+
+`49 - CONFIG_MP3_CT_WIN_MUSICBOX_ENABLE`
+
+`50 - CONFIG_MP3_T_WIN_MUSICBOX_ENABLE`
+
+`51 - CONFIG_MP3_CTWIN_ENABLE`
+
+`52 - CONFIG_MP3_TERWIN_ENABLE`
+
+`53 - CONFIG_MP3_CT_WIN_MUSICBOX_TRACK`
+
+`54 - CONFIG_MP3_T_WIN_MUSICBOX_TRACK`
+
+`55 - CONFIG_MP3_DEFUSE_SUCCESS_WAIT_MS`
+
+`56 - CONFIG_MP3_CT_MUSICBOX_WAIT_MS`
+
+`57 - CONFIG_MP3_T_MUSICBOX_WAIT_MS`
+
+`58 - CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS`
+
+---
+
+## 4. Screen prompts (16-char LCD)
+
+- Short prompts are used: `ID:` / `VAL:` / `SAVE?` / `RESTORE?` / `RESET`
+- On input errors: `ID ERR` / `VAL ERR` / `RANGEERR`, then retry directly.
+- After save/restore success: stay at `SAVED/RESET` or `RESTORED/RESET` until reset.
+
+---
+
+## 5. Reflash notes
+
+- After reflashing, firmware uses its built-in default config structure.
+- If stored config structure/count does not match, defaults are loaded automatically.
+- Keil + ST-Link usually erases relevant program areas; full-chip erase depends on download settings.
+
+Suggestions:
+- After upgrading firmware, press `RESET` once for normal startup.
+- To force default restore, enter `090405` in config mode.

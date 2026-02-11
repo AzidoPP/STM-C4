@@ -265,8 +265,10 @@
    最小: 0     最大: 20000  典型: 7000 */
 #define CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS 7000U
 
-/* CONFIG_RESET_MAGIC: 配置模式“恢复默认”编号（输入此编号触发恢复确认） */
+/* CONFIG_RESET_MAGIC: 配置模式“恢复默认”数值编号（内部兼容） */
 #define CONFIG_RESET_MAGIC 90405U
+/* CONFIG_RESET_CODE: 配置模式“恢复默认”输入码（固定 6 位） */
+#define CONFIG_RESET_CODE "090405"
 
 #include "config_range.h"
 

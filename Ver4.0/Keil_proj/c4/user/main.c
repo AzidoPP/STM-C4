@@ -170,7 +170,7 @@ uint32_t g_mp3_explosion_only_wait_ms = CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS;
 #define MP3_CT_MUSICBOX_BASE 1000U
 #define MP3_T_MUSICBOX_BASE 2000U
 
-#define CONFIG_RESET_MAGIC CONFIG_DEFAULT_RESET_MAGIC
+#define CONFIG_RESET_CODE CONFIG_DEFAULT_RESET_CODE
 
 static void Runtime_Apply(const AppConfig *cfg)
 {
@@ -1004,14 +1004,14 @@ static uint8_t ConfigMode_Update(char key)
 			{
 				if (key == '#')
 				{
-					if (LocalParseUint(cfg_input, &id_num))
+					if (strcmp(cfg_input, CONFIG_RESET_CODE) == 0)
 					{
-						if (id_num == CONFIG_RESET_MAGIC)
-						{
-							cfg_mode_state = CFG_MODE_CONFIRM_RESTORE;
-							CfgShowShort("RESTORE?", "#=Y *=N");
-						}
-						else if (id_num < ConfigManager_GetCount())
+						cfg_mode_state = CFG_MODE_CONFIRM_RESTORE;
+						CfgShowShort("RESTORE?", "#=Y *=N");
+					}
+					else if (LocalParseUint(cfg_input, &id_num))
+					{
+						if (id_num < ConfigManager_GetCount())
 						{
 							cfg_selected_id = (uint16_t)id_num;
 							ConfigManager_CopyCurrent(&cfg_edit);
