@@ -4,7 +4,7 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
-- Converted all README image links to full GitHub raw URLs (root, Ver4.0, and V1.0 purchase record gallery).
+- Converted all README image links to full GitHub raw URLs for the current repository docs.
 - Fixed LCD 7x5 glyph row mapping in `hardware/1601a.c` so both normal and inverted mount are top-aligned on 8-row LCD cells and no longer crop the glyph last row.
 - Fixed config-mode confirmation prompt rendering to avoid custom-glyph overflow artifacts (e.g., `RESTORE?`/`#=Y *=N`) by using compact in-font prompts.
 - Added custom LCD glyph support for `/` so prompts like `SAVE?#/*` render fully without missing slash.
@@ -23,7 +23,7 @@ Updates:
 - Updated Ver4.0/V4说明.md to align behavior with current config macros and removed outdated TODOs.
 - Clarified 3DP_Models readme wording and link to the model provider for print requests in CN/EN.
 - Reformatted `Ver4.0/3DP_Models/readme.md` with clearer wording and bilingual (CN/EN) sections.
-- Updated root README with V4 image, V1 EOL notice + link to Ver4.0, and bilingual intro with English jump anchor.
+- Updated root README with V4 image, repository-scope maintenance notice, and bilingual intro with English jump anchor.
 - Added LCD normal-mount config and moved orientation handling (column mapping + glyph rotation) into the 1601a driver so app logic stays logical-only.
 - Reworked countdown scroll rendering to draw stars at i-1/i/i+1 within bounds using a single moving position.
 - Added symmetric scroll blur ramping at both edges and a 3-beep defuse-success tone using the startup frequency.
