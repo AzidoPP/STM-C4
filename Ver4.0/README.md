@@ -41,7 +41,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
    - 将 [TFCard_Files/](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files) 内容拷贝到 TF 卡根目录
    - 详细说明见：[TFCard_Files](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files)
 6. 配置与修改
-   - 用户配置说明：[`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
+   - 用户配置说明：[`CONFIG.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/CONFIG.md)
    - 默认配置定义文件：[`Keil_proj/c4/user/config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
    - 可在不重新烧录的情况下修改单个配置（上电时按住 `#` 进入配置模式）
    - 新增倒计时数字显示开关：`CONFIG_DIGITAL_COUNTDOWN_ENABLE`
@@ -60,7 +60,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
   - 未启用T音乐盒：播放纯爆炸音效→（可选）T胜利播报。
 
 ### 配置
-- 用户配置指南（含编号与操作步骤）：[`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
+- 用户配置指南（含编号与操作步骤）：[`CONFIG.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/CONFIG.md)
 - 默认配置定义文件：[`Keil_proj/c4/user/config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
 - 技术说明：[`V4说明.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4%E8%AF%B4%E6%98%8E.md)
 
@@ -110,7 +110,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
    - Copy [TFCard_Files/](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files) contents to the TF card root
    - Details: [TFCard_Files](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/TFCard_Files)
 6. Configuration and tuning
-   - User guide: [`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
+   - User guide: [`CONFIG.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/CONFIG.md)
    - Default configuration source: [`config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
    - Supports single-item configuration update without reflashing (hold `#` during power-on)
    - Added digital countdown toggle: `CONFIG_DIGITAL_COUNTDOWN_ENABLE`
@@ -129,7 +129,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
   - Without T music box: play pure explosion track -> (optional) T win announcement.
 
 ### Configuration
-- User-facing configuration guide: [`config.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/config.md)
+- User-facing configuration guide: [`CONFIG.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/CONFIG.md)
 - Technical notes: [`V4说明.md`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/V4%E8%AF%B4%E6%98%8E.md)
 - Default configuration source: [`config.h`](https://github.com/AzidoPP/STM-C4/blob/main/Ver4.0/Keil_proj/c4/user/config.h)
 
