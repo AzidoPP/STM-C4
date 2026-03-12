@@ -11,7 +11,7 @@ A CS2 C4 model based on STM32.
 - 基于 STM32F103C8T6 的 CS2 C4 外观模型，主要用于学习、展示与收藏。
 - 开发环境：Keil5 + ST-Link，外部 8 MHz 晶振。
 - **Ver1.0 已停止维护，仓库内相关内容已移除**；如仍需旧版资料，请自行查看 Git 历史。当前仅保留 **[Ver4.0](Ver4.0)**。
-- Ver4.0 配置修改请参考：[`Ver4.0/config.md`](Ver4.0/config.md)
+- Ver4.0 配置修改请参考：[`Ver4.0/CONFIG.md`](Ver4.0/CONFIG.md)
 
 ## 特别感谢
 - 感谢 Bilibili 博主「下界石嘤」提供 3D 打印模型：[https://space.bilibili.com/318570767](https://space.bilibili.com/318570767)
@@ -26,7 +26,7 @@ A CS2 C4 model based on STM32.
 - A CS2 C4 appearance model based on STM32F103C8T6, for learning, demos, and collection.
 - Tooling: Keil5 + ST-Link with an external 8 MHz HSE.
 - **Ver1.0 has been removed from the repository and is no longer maintained**; if you still need it, please check the Git history. Only **[Ver4.0](Ver4.0)** is kept here.
-- For Ver4.0 configuration edits, see [`Ver4.0/config.md`](Ver4.0/config.md).
+- For Ver4.0 configuration edits, see [`Ver4.0/CONFIG.md`](Ver4.0/CONFIG.md).
 
 ## Special Thanks
 - Thanks to Bilibili creator “下界石嘤” for providing the 3D printable models: [https://space.bilibili.com/318570767](https://space.bilibili.com/318570767)
