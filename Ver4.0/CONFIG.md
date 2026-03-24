@@ -34,7 +34,7 @@
 | 2 | `CONFIG_LCD_COLS` | LCD 列数 | `16` | `8..16`（典型 `16`） |
 | 3 | `CONFIG_LCD_NORMAL_MOUNT` | LCD 安装方向 | `0` | `0=倒装, 1=正装` |
 | 4 | `CONFIG_PASSWORD_COL` | 密码起始列 | `3` | `0..(LCD_COLS-PASSWORD_LEN)`（典型 `3`） |
-| 5 | `CONFIG_COUNTDOWN_MS` | 倒计时毫秒数 | `15000` | `>=1000`（典型 `15000`） |
+| 5 | `CONFIG_COUNTDOWN_MS` | 倒计时毫秒数 | `40000` | `>=1000`（典型 `15000`） |
 | 6 | `CONFIG_ARM_DELAY_MS` | 下包前最后按键延迟（毫秒） | `800` | `0..5000`（典型 `800`） |
 | 7 | `CONFIG_ARM_PRESET_ENABLE` | 是否启用固定下包密码 | `0` | `0/1` |
 | 8 | `CONFIG_ARM_PRESET_PASSWORD` | 固定下包密码 | `1234567` | 仅数字；启用固定密码时长度必须等于密码长度 |
