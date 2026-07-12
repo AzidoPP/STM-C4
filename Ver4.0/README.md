@@ -29,7 +29,7 @@ OSHWHUB 硬件开源地址：https://oshwhub.com/azidopp/CS2-C4
    - LCD1601 转接板焊接示例：
      ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic1.png)
      ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic2.png)
-     ![LCD1601 adapter pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/adaperboard.png)
+     ![LCD1601 adapter pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/adaperboard.jpg)
    - 3D 打印外壳/填充件（可选）：见 [3DP_Models](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/3DP_Models)
    - 完整组装：
      ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic4.png)
@@ -99,7 +99,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
    - LCD1601 adapter soldering example:
      ![LCD1601 adapter pic1](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic1.png)
      ![LCD1601 adapter pic2](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic2.png)
-     ![LCD1601 adapter pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/adaperboard.png)
+     ![LCD1601 adapter pic3](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/adaperboard.jpg)
    - 3D printed shell/fillers (optional): see [3DP_Models](https://github.com/AzidoPP/STM-C4/tree/main/Ver4.0/3DP_Models)
    - Fully assembled board:
      ![Full assambled board](https://raw.githubusercontent.com/AzidoPP/STM-C4/main/pic/pic4.png)
