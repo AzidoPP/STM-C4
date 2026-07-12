@@ -272,8 +272,7 @@ void ConfigManager_LoadDefaults(AppConfig *cfg)
 	cfg->arm_delay_ms = CONFIG_ARM_DELAY_MS;
 
 	cfg->arm_preset_enable = CONFIG_ARM_PRESET_ENABLE;
-	strncpy(cfg->arm_preset_password, CONFIG_ARM_PRESET_PASSWORD, CONFIG_PASSWORD_LEN_MAX);
-	cfg->arm_preset_password[CONFIG_PASSWORD_LEN_MAX] = '\0';
+	snprintf(cfg->arm_preset_password, CONFIG_PASSWORD_LEN_MAX + 1, "%s", CONFIG_ARM_PRESET_PASSWORD);
 
 	cfg->defuse_enable_password = CONFIG_DEFUSE_ENABLE_PASSWORD;
 	cfg->defuse_enable_manual = CONFIG_DEFUSE_ENABLE_MANUAL;
@@ -495,8 +494,7 @@ uint8_t ConfigManager_GetValueString(const AppConfig *cfg, uint16_t id, char *ou
 		UintToText(ReadU32(cfg, meta->offset), out, out_len);
 		return (out[0] != '\0') ? 1U : 0U;
 	}
-	strncpy(out, (const char *)(((const uint8_t *)cfg) + meta->offset), (size_t)(out_len - 1U));
-	out[out_len - 1U] = '\0';
+	snprintf(out, (size_t)out_len, "%s", (const char *)(((const uint8_t *)cfg) + meta->offset));
 	return 1U;
 }
 
@@ -528,7 +526,7 @@ uint8_t ConfigManager_SetValueString(AppConfig *cfg, uint16_t id, const char *va
 		return 0U;
 	}
 	memset(((uint8_t *)cfg) + meta->offset, 0, meta->size);
-	strncpy((char *)(((uint8_t *)cfg) + meta->offset), value, meta->size - 1U);
+	snprintf((char *)(((uint8_t *)cfg) + meta->offset), meta->size, "%s", value);
 	return 1U;
 }
 
