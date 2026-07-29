@@ -4,6 +4,7 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
+- Replaced all LCD digit glyphs (`0`-`9`) with square-cornered 5x7 seven-segment-style bitmaps, retaining the driver's normal/inverted mount rotation path.
 - Expanded the repository `.gitignore` using the HVCCPS V1.4 rules as a baseline, tailored for Keil/STM32 build output, per-user IDE state, editor files, OS metadata, logs, and caches while keeping project documentation and hardware assets trackable.
 - Restored CS2-style LCD behavior: `+` idle placeholders, `-` pending arm-input slots, full-width `+++` countdown scrolling (left half when the digital timer is enabled), alternating `+`/`-` defuse scanning, and three-frame `+`/`-`/code defuse-success blinking.
 - Split the root and Ver4.0 bilingual READMEs into dedicated English `README.md` and Chinese `README_zh.md` files, with bidirectional language navigation matching the HVCCPS V1.4 repository.
