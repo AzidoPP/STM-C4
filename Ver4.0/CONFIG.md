@@ -34,11 +34,11 @@
 | 2 | `CONFIG_LCD_COLS` | LCD 列数 | `16` | `8..16`（典型 `16`） |
 | 3 | `CONFIG_LCD_NORMAL_MOUNT` | LCD 安装方向 | `0` | `0=倒装, 1=正装` |
 | 4 | `CONFIG_PASSWORD_COL` | 密码起始列 | `3` | `0..(LCD_COLS-PASSWORD_LEN)`（典型 `3`） |
-| 5 | `CONFIG_COUNTDOWN_MS` | 倒计时毫秒数 | `40000` | `>=1000`（典型 `15000`） |
+| 5 | `CONFIG_COUNTDOWN_MS` | 倒计时毫秒数 | `40000` | `>=1000`（典型 `40000`） |
 | 6 | `CONFIG_ARM_DELAY_MS` | 下包前最后按键延迟（毫秒） | `800` | `0..5000`（典型 `800`） |
 | 7 | `CONFIG_ARM_PRESET_ENABLE` | 是否启用固定下包密码 | `0` | `0/1` |
-| 8 | `CONFIG_ARM_PRESET_PASSWORD` | 固定下包密码 | `1234567` | 仅数字；启用固定密码时长度必须等于密码长度 |
-| 9 | `CONFIG_DEFUSE_ENABLE_PASSWORD` | 是否启用密码拆弹 | `1` | `0/1` |
+| 8 | `CONFIG_ARM_PRESET_PASSWORD` | 固定下包密码 | `7355608` | 仅数字；启用固定密码时长度必须等于密码长度 |
+| 9 | `CONFIG_DEFUSE_ENABLE_PASSWORD` | 是否启用密码拆弹 | `0` | `0/1` |
 | 10 | `CONFIG_DEFUSE_ENABLE_MANUAL` | 是否启用长按 `#` 拆弹 | `1` | `0/1` |
 | 11 | `CONFIG_DEFUSE_ENABLE_EXTERNAL` | 是否启用外部拆弹器 | `1` | `0/1` |
 | 12 | `CONFIG_LCD_BACKLIGHT_PCT` | LCD 背光亮度百分比 | `50` | `0..100`（典型 `50`） |
@@ -60,7 +60,7 @@
 | 28 | `CONFIG_DEFUSE_CYCLE_STEPS` | 拆弹循环步数 | `10` | `1..20`（典型 `10`） |
 | 29 | `CONFIG_DEFUSE_FLASH_TOGGLE_MS` | 拆弹成功闪烁切换间隔（毫秒） | `10` | `10..200`（典型 `10`） |
 | 30 | `CONFIG_DEFUSE_FLASH_TOGGLES` | 拆弹成功闪烁次数 | `8` | `1..20`（典型 `8`） |
-| 31 | `CONFIG_DEFUSE_BLINK_MS` | 拆弹成功密码/星号切换间隔（毫秒） | `400` | `100..1000`（典型 `400`） |
+| 31 | `CONFIG_DEFUSE_BLINK_MS` | 拆弹成功加号/减号/密码帧间隔（毫秒） | `400` | `100..1000`（典型 `400`） |
 | 32 | `CONFIG_BUZZER_STARTUP_FREQ_HZ` | 上电蜂鸣频率（Hz） | `4250` | `100..10000`（典型 `4250`） |
 | 33 | `CONFIG_BUZZER_COUNTDOWN_FREQ_HZ` | 倒计时蜂鸣频率（Hz） | `3600` | `100..10000`（典型 `3600`） |
 | 34 | `CONFIG_BUZZER_DUTY_PCT` | 蜂鸣占空比（百分比） | `50` | `0..50`（典型 `50`） |
@@ -217,11 +217,11 @@
 | 2 | `CONFIG_LCD_COLS` | LCD columns | `16` | `8..16` (typical `16`) |
 | 3 | `CONFIG_LCD_NORMAL_MOUNT` | LCD mount orientation | `0` | `0=inverted, 1=normal` |
 | 4 | `CONFIG_PASSWORD_COL` | Password start column | `3` | `0..(LCD_COLS-PASSWORD_LEN)` (typical `3`) |
-| 5 | `CONFIG_COUNTDOWN_MS` | Countdown duration (ms) | `15000` | `>=1000` (typical `15000`) |
+| 5 | `CONFIG_COUNTDOWN_MS` | Countdown duration (ms) | `40000` | `>=1000` (typical `40000`) |
 | 6 | `CONFIG_ARM_DELAY_MS` | Delay after last key before arming (ms) | `800` | `0..5000` (typical `800`) |
 | 7 | `CONFIG_ARM_PRESET_ENABLE` | Require preset password to arm | `0` | `0/1` |
-| 8 | `CONFIG_ARM_PRESET_PASSWORD` | Preset arm password | `1234567` | Digits only; if preset enabled, length must equal password length |
-| 9 | `CONFIG_DEFUSE_ENABLE_PASSWORD` | Enable password defuse | `1` | `0/1` |
+| 8 | `CONFIG_ARM_PRESET_PASSWORD` | Preset arm password | `7355608` | Digits only; if preset enabled, length must equal password length |
+| 9 | `CONFIG_DEFUSE_ENABLE_PASSWORD` | Enable password defuse | `0` | `0/1` |
 | 10 | `CONFIG_DEFUSE_ENABLE_MANUAL` | Enable long-press `#` defuse | `1` | `0/1` |
 | 11 | `CONFIG_DEFUSE_ENABLE_EXTERNAL` | Enable external defuser | `1` | `0/1` |
 | 12 | `CONFIG_LCD_BACKLIGHT_PCT` | LCD backlight percent | `50` | `0..100` (typical `50`) |
@@ -243,7 +243,7 @@
 | 28 | `CONFIG_DEFUSE_CYCLE_STEPS` | Defuse cycle steps | `10` | `1..20` (typical `10`) |
 | 29 | `CONFIG_DEFUSE_FLASH_TOGGLE_MS` | Defuse-success flash toggle interval (ms) | `10` | `10..200` (typical `10`) |
 | 30 | `CONFIG_DEFUSE_FLASH_TOGGLES` | Defuse-success flash toggle count | `8` | `1..20` (typical `8`) |
-| 31 | `CONFIG_DEFUSE_BLINK_MS` | Defuse-success code/star swap interval (ms) | `400` | `100..1000` (typical `400`) |
+| 31 | `CONFIG_DEFUSE_BLINK_MS` | Defuse-success plus/minus/code frame interval (ms) | `400` | `100..1000` (typical `400`) |
 | 32 | `CONFIG_BUZZER_STARTUP_FREQ_HZ` | Startup buzzer frequency (Hz) | `4250` | `100..10000` (typical `4250`) |
 | 33 | `CONFIG_BUZZER_COUNTDOWN_FREQ_HZ` | Countdown buzzer frequency (Hz) | `3600` | `100..10000` (typical `3600`) |
 | 34 | `CONFIG_BUZZER_DUTY_PCT` | Buzzer duty cycle (%) | `50` | `0..50` (typical `50`) |
@@ -273,4 +273,3 @@
 | 58 | `CONFIG_MP3_EXPLOSION_ONLY_WAIT_MS` | Wait after explosion-only sound (ms) | `7000` | `0..20000` (typical `7000`) |
 | 59 | `CONFIG_EXPLOSION_BEEP_MS` | Pre-explosion beep duration (ms) | `500` | `0..5000` (typical `500`) |
 | 60 | `CONFIG_ARM_ERROR_HINT_ENABLE` | Show `ERROR` when preset arm password is wrong | `0` | `0=silent clear, 1=show ERROR then clear` |
-

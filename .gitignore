@@ -1,3 +1,77 @@
+# ===== Keil MDK-ARM build output =====
+**/Objects/
+**/Listings/
+**/RTE/_*/
+*.axf
+*.hex
+*.bin
+*.elf
+*.map
+*.lst
+*.crf
 *.o
 *.d
-*.crf
+*.dep
+*.lnp
+*.htm
+*.build_log.htm
+
+# ===== Keil user-specific state =====
+*.uvguix.*
+*.uvgui.*
+*.uvoptx
+*.uvopt
+*.uvmpw.*_Opt.bak
+*.uvprojx.bak
+*.uvoptx.bak
+JLinkLog.txt
+JLinkSettings.ini
+**/DebugConfig/
+
+# ===== STM32CubeMX =====
+.mxproject
+*.ioc.bak
+
+# ===== Other build systems =====
+build/
+Build/
+Debug/
+Release/
+Output/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+compile_commands.json
+
+# ===== IDEs and editors =====
+.vscode/
+.idea/
+.vs/
+.settings/
+.metadata/
+.project
+.cproject
+*.swp
+*.swo
+*~
+
+# ===== OS metadata =====
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ===== Logs, temporary files, and local caches =====
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+.cache/
+__pycache__/
+.pytest_cache/
+
+# ===== Local AI-tool settings =====
+.claude/
+CLAUDE.local.md

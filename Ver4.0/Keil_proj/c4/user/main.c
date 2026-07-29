@@ -33,6 +33,7 @@ typedef struct
 	uint32_t next_step_ms;
 	uint8_t digit_index;
 	uint8_t cycle_step;
+	uint32_t flash_step;
 	char display[CONFIG_PASSWORD_LEN_MAX + 1U];
 } DefuseAnim;
 
@@ -76,8 +77,9 @@ static uint32_t hash_hold_ms = 0;
 static uint8_t config_boot_latched = 0;
 static uint8_t config_hold_armed = 0;
 
-static char success_stars[CONFIG_PASSWORD_LEN_MAX + 1U];
-static uint8_t success_show_code = 0;
+static char success_pluses[CONFIG_PASSWORD_LEN_MAX + 1U];
+static char success_minuses[CONFIG_PASSWORD_LEN_MAX + 1U];
+static uint8_t success_frame = 0;
 static uint32_t success_next_ms = 0;
 
 static uint8_t startup_beep_state = 0;
@@ -279,19 +281,37 @@ static uint8_t Defuser_IsActive(void)
 	return (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_3) == 0) ? 1U : 0U;
 }
 
-static void Password_Reset(char *buf)
+static void Password_Fill(char *buf, char fill)
 {
 	uint8_t i;
 	for (i = 0; i < g_password_len; i++)
 	{
-		buf[i] = '*';
+		buf[i] = fill;
 	}
 	buf[g_password_len] = '\0';
 }
 
+static void Password_Reset(char *buf)
+{
+	Password_Fill(buf, '+');
+}
+
+static uint8_t Password_HasDigit(const char *buf)
+{
+	uint8_t i;
+	for (i = 0; i < g_password_len; i++)
+	{
+		if (buf[i] >= '0' && buf[i] <= '9')
+		{
+			return 1U;
+		}
+	}
+	return 0U;
+}
+
 static uint8_t Password_IsComplete(const char *buf)
 {
-	return (buf[0] != '*') ? 1U : 0U;
+	return (buf[0] >= '0' && buf[0] <= '9') ? 1U : 0U;
 }
 
 static void Password_InputRight(char *buf, char key)
@@ -299,6 +319,10 @@ static void Password_InputRight(char *buf, char key)
 	uint8_t i;
 	if (key >= '0' && key <= '9')
 	{
+		if (!Password_HasDigit(buf))
+		{
+			Password_Fill(buf, '-');
+		}
 		for (i = 0; i < g_password_len - 1U; i++)
 		{
 			buf[i] = buf[i + 1U];
@@ -311,7 +335,11 @@ static void Password_InputRight(char *buf, char key)
 		{
 			buf[i] = buf[i - 1U];
 		}
-		buf[0] = '*';
+		buf[0] = '-';
+		if (!Password_HasDigit(buf))
+		{
+			Password_Reset(buf);
+		}
 	}
 	else if (key == '#')
 	{
@@ -334,7 +362,7 @@ static void Password_InputLeft(char *buf, uint8_t *pos, char key)
 		if (*pos > 0U)
 		{
 			(*pos)--;
-			buf[*pos] = '*';
+			buf[*pos] = '+';
 		}
 	}
 	else if (key == '#')
@@ -384,9 +412,18 @@ static void LCD_ShowPassword(const char *buf)
 	LCD_WRITE_StrDATA_Password((unsigned char *)buf, g_password_col, g_password_len);
 }
 
+static uint16_t LCD_ScrollMaxPos(void)
+{
+	if (g_digital_countdown_enable)
+	{
+		return (uint16_t)((g_lcd_cols - 1U) / 2U);
+	}
+	return (uint16_t)(g_lcd_cols - 1U);
+}
+
 static void LCD_ShowScrollWithTime(uint16_t pos, uint32_t now)
 {
-	uint16_t max_pos = (uint16_t)((g_lcd_cols - 1U) / 2U);
+	uint16_t max_pos = LCD_ScrollMaxPos();
 	uint16_t i;
 	uint32_t remain_ms;
 	uint32_t remain_sec;
@@ -409,12 +446,12 @@ static void LCD_ShowScrollWithTime(uint16_t pos, uint32_t now)
 
 	if (pos > 0U)
 	{
-		scroll_line[pos - 1U] = '*';
+		scroll_line[pos - 1U] = '+';
 	}
-	scroll_line[pos] = '*';
+	scroll_line[pos] = '+';
 	if (pos < max_pos)
 	{
-		scroll_line[pos + 1U] = '*';
+		scroll_line[pos + 1U] = '+';
 	}
 
 	if (g_digital_countdown_enable && defuse_mode == DEFUSE_NONE)
@@ -787,7 +824,7 @@ static void Countdown_UpdateScroll(uint32_t now)
 		return;
 	}
 	scroll_next_ms = now + g_scroll_interval_ms;
-	max_pos = (uint16_t)((g_lcd_cols - 1U) / 2U);
+	max_pos = LCD_ScrollMaxPos();
 	if (scroll_dir == 0U)
 	{
 		if (scroll_pos < max_pos)
@@ -821,23 +858,44 @@ static void DefuseAnim_Reset(void)
 	defuse_anim.next_step_ms = 0U;
 	defuse_anim.digit_index = 0U;
 	defuse_anim.cycle_step = 0U;
+	defuse_anim.flash_step = 0U;
 	Password_Reset(defuse_anim.display);
+}
+
+static void DefuseAnim_RenderScan(uint8_t scan_step)
+{
+	uint8_t i;
+	uint8_t fill_count = (uint8_t)(g_password_len - defuse_anim.digit_index - 1U);
+	char fill = (((defuse_anim.flash_step / 3U) % 2U) == 0U) ? '-' : '+';
+
+	for (i = 0U; i < fill_count; i++)
+	{
+		defuse_anim.display[i] = fill;
+	}
+	for (i = 0U; i < defuse_anim.digit_index; i++)
+	{
+		defuse_anim.display[fill_count + i] = arm_code[i];
+	}
+	defuse_anim.display[g_password_len - 1U] = (char)('0' + ((scan_step + 1U) % 10U));
+	defuse_anim.display[g_password_len] = '\0';
+	defuse_anim.flash_step++;
 }
 
 static void DefuseAnim_Start(uint32_t now, DefuseMode mode)
 {
 	uint32_t duration = (mode == DEFUSE_EXTERNAL) ? g_external_defuse_ms : g_manual_defuse_ms;
-	uint32_t steps = g_password_len * ((uint32_t)g_defuse_cycle_steps + 1U);
+	uint32_t steps = (g_password_len * (uint32_t)g_defuse_cycle_steps) + 1U;
 	uint32_t step_ms = (steps == 0U) ? duration : (duration / steps);
 
 	DefuseAnim_Reset();
 	defuse_anim.active = 1U;
 	defuse_anim.mode = mode;
 	defuse_anim.step_ms = (step_ms == 0U) ? 1U : step_ms;
-	defuse_anim.next_step_ms = now;
+	defuse_anim.next_step_ms = now + defuse_anim.step_ms;
 	defuse_anim.digit_index = 0U;
-	defuse_anim.cycle_step = 0U;
-	Password_Reset(defuse_anim.display);
+	defuse_anim.cycle_step = 1U;
+	defuse_anim.flash_step = 0U;
+	DefuseAnim_RenderScan(0U);
 	defuse_mode = mode;
 	LCD_ShowPassword(defuse_anim.display);
 }
@@ -874,14 +932,22 @@ static uint8_t DefuseAnim_Update(uint32_t now, uint8_t defuser_active, char hold
 	}
 	if (defuse_anim.cycle_step < g_defuse_cycle_steps)
 	{
-		defuse_anim.display[defuse_anim.digit_index] = (char)('0' + defuse_anim.cycle_step);
+		DefuseAnim_RenderScan(defuse_anim.cycle_step);
 		defuse_anim.cycle_step++;
 	}
 	else
 	{
-		defuse_anim.display[defuse_anim.digit_index] = arm_code[defuse_anim.digit_index];
 		defuse_anim.digit_index++;
 		defuse_anim.cycle_step = 0U;
+		if (defuse_anim.digit_index >= g_password_len)
+		{
+			memcpy(defuse_anim.display, arm_code, g_password_len + 1U);
+		}
+		else
+		{
+			DefuseAnim_RenderScan(0U);
+			defuse_anim.cycle_step = 1U;
+		}
 	}
 	LCD_ShowPassword(defuse_anim.display);
 	return 0U;
@@ -898,11 +964,12 @@ static void Defuse_Success(uint32_t now)
 	DefuseAnim_Reset();
 	defuse_mode = DEFUSE_NONE;
 
-	Password_Reset(success_stars);
-	success_show_code = 0U;
+	Password_Fill(success_pluses, '+');
+	Password_Fill(success_minuses, '-');
+	success_frame = 0U;
 	success_next_ms = now + g_defuse_blink_ms;
 	LCD_Backlight_On();
-	LCD_ShowPassword(success_stars);
+	LCD_ShowPassword(success_pluses);
 
 	LED_SetGreen(max_pwm);
 	SuccessBeep_Start(now);
@@ -1371,15 +1438,19 @@ int main(void)
 				SuccessBeep_Update(now);
 				if (now >= success_next_ms)
 				{
-					success_show_code = (uint8_t)(!success_show_code);
+					success_frame = (uint8_t)((success_frame + 1U) % 3U);
 					success_next_ms = now + g_defuse_blink_ms;
-					if (success_show_code)
+					if (success_frame == 0U)
 					{
-						LCD_ShowPassword(arm_code);
+						LCD_ShowPassword(success_pluses);
+					}
+					else if (success_frame == 1U)
+					{
+						LCD_ShowPassword(success_minuses);
 					}
 					else
 					{
-						LCD_ShowPassword(success_stars);
+						LCD_ShowPassword(arm_code);
 					}
 				}
 				break;

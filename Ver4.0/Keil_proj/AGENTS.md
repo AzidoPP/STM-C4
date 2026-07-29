@@ -4,6 +4,8 @@ V4说明.md
 如果你是参与项目的LLM，请维护此AGENTS.md，描述你修改的内容，添加或修改的东西，项目重点，TODO等：
 
 Updates:
+- Expanded the repository `.gitignore` using the HVCCPS V1.4 rules as a baseline, tailored for Keil/STM32 build output, per-user IDE state, editor files, OS metadata, logs, and caches while keeping project documentation and hardware assets trackable.
+- Restored CS2-style LCD behavior: `+` idle placeholders, `-` pending arm-input slots, full-width `+++` countdown scrolling (left half when the digital timer is enabled), alternating `+`/`-` defuse scanning, and three-frame `+`/`-`/code defuse-success blinking.
 - Split the root and Ver4.0 bilingual READMEs into dedicated English `README.md` and Chinese `README_zh.md` files, with bidirectional language navigation matching the HVCCPS V1.4 repository.
 - Converted all README image links to full GitHub raw URLs for the current repository docs.
 - Fixed LCD 7x5 glyph row mapping in `hardware/1601a.c` so both normal and inverted mount are top-aligned on 8-row LCD cells and no longer crop the glyph last row.

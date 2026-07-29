@@ -56,7 +56,7 @@ OSHWHUB hardware page: https://oshwhub.com/azidopp/CS2-C4
 
 - Startup uses buzzer only (no MP3), while LED breathes in yellow.
 - Enter any 7-digit code as the “plant” password.
-- After entry, the countdown starts (default 15s, configurable); the LED and buzzer become more urgent.
+- After entry, the countdown starts (default 40s, configurable); the LED and buzzer become more urgent.
 - During the countdown, there are three defuse methods:
   - Password defuse: enter the same password again to defuse successfully.
   - Manual defuse: long press `#` to start; succeed after 10 seconds.
